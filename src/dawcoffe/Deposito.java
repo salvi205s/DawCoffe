@@ -11,14 +11,25 @@ package dawcoffe;
  */
 public class Deposito {
 
-    private double cantidadMax=1000,
-            cantidadUmbral=250,
-            cantidadActual;
+    private double cantidadMax = 1000,
+            cantidadUmbral = 250,
+            cantidadActual=0;
     private String contenido;
     private boolean reserva;
 
     //metodos
     //----------------------------------
+    
+    //reponer el contenido
+    public void llenarDeposito() {
+        this.cantidadActual = cantidadMax;
+    }
+
+    public void servirContenido(int cantidad) {
+        
+        this.cantidadActual-=cantidad;
+    }
+
     public boolean isReserva() {
 
         if (this.cantidadActual <= this.cantidadUmbral) {
