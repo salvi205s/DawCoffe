@@ -11,11 +11,18 @@ package dawcoffe;
  */
 public class Cafeteria {
 
-    private double saldoAcumulado=0,
-            saldoCliente=0,
+    private double saldoAcumulado = 0,
+            saldoCliente = 0,
             precios;
 
     private int numVentas;
+
+    Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
+    Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
+    Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
+    Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
+    Deposito agua = new Deposito(1000, 250, 1000, "agua");
+    Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
     public void setSaldoAcumulado(double saldoAcumulado) {
         this.saldoAcumulado += saldoAcumulado;
