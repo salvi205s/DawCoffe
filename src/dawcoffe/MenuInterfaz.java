@@ -29,6 +29,14 @@ public class MenuInterfaz {
         String chocolate = "Chocolate (1.40€), codigo 200";
         String lecheFria = "Leche fría (0.50€) codigo 300";
         String lecheCaliente = "Leche caliente (0.50€), codigo 301";
+
+        do {
+            System.out.println("1. Venta de productos");
+            System.out.println("2. Administración de la cafetera");
+            opcion = entrada.nextInt();
+
+        } while (opcion < 1 || opcion > 2);
+
     }
 
 }
