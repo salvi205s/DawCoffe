@@ -21,6 +21,7 @@ public class MenuInterfaz {
         Cafetera monedas = new Cafetera();
         int cantidadAzucar = 0;
         String Azucar = null;
+        double saldoCliente;
 
         String cafe1 = "Café solo (0.80€), codigo 101";
         String cafe2 = "Café solo largo (0.90€), codigo 102";
@@ -48,8 +49,13 @@ public class MenuInterfaz {
                     codigo = entrada.nextInt();
 
                     //introduce el dinero
-                    System.out.println("Introduzca el dinero");
-                    monedas.setSaldoAcumulado(entrada.nextDouble());
+                    //El set no esta guardando el dinero
+                    System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
+                    saldoCliente=entrada.nextDouble();
+                    monedas.setSaldoAcumulado(saldoCliente);
+                    
+                    System.out.println("Saldo: "+saldoCliente);
+                    System.out.println("Saldo: "+monedas.getSaldoCliente());
 
                     //decide si descafeinado o no
                     if (codigo > 100 && codigo <= 104 && monedas.getSaldoCliente() >= 0.80) {
@@ -91,6 +97,7 @@ public class MenuInterfaz {
                     }
 
                     //Muestra el pedido del cliente....
+                    //problema con el saldo insuficiente
                     switch (codigo) {
                         case 101:
                             //si ha introducido el precio minimo para el articulo
@@ -99,7 +106,13 @@ public class MenuInterfaz {
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
                             } else {
-                                System.out.println("Saldo insuficiente");
+                                while (monedas.getSaldoCliente() <= 0.80) {
+                                    System.out.println("Saldo insuficiente "+monedas.getSaldoCliente());
+                                    //introduce el dinero
+                                    System.out.println("Introduzca mas monedas");
+                                    monedas.setSaldoAcumulado(entrada.nextDouble());
+                                }
+
                             }
                             //resta la cantidad de cafe, agua y azucar al deposito
                             //suma el saldo al saldoAcumulado
@@ -110,7 +123,13 @@ public class MenuInterfaz {
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
                             } else {
-                                System.out.println("Saldo insuficiente");
+                                while (monedas.getSaldoCliente() <= 0.90) {
+                                    System.out.println("Saldo insuficiente "+monedas.getSaldoCliente());
+                                    //introduce el dinero
+                                    System.out.println("Introduzca mas monedas");
+                                    monedas.setSaldoAcumulado(entrada.nextDouble());
+                                }
+
                             }
                             //resta la cantidad de cafe, agua y azucar al deposito
 
@@ -121,7 +140,13 @@ public class MenuInterfaz {
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
                             } else {
-                                System.out.println("Saldo insuficiente");
+                                while (monedas.getSaldoCliente() <= 1.10) {
+                                    System.out.println("Saldo insuficiente "+monedas.getSaldoCliente());
+                                    //introduce el dinero
+                                    System.out.println("Introduzca mas monedas");
+                                    monedas.setSaldoAcumulado(entrada.nextDouble());
+                                }
+
                             }
 
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
@@ -133,7 +158,13 @@ public class MenuInterfaz {
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
                             } else {
-                                System.out.println("Saldo insuficiente");
+                                while (monedas.getSaldoCliente() <= 1.0) {
+                                    System.out.println("Saldo insuficiente "+monedas.getSaldoCliente());
+                                    //introduce el dinero
+                                    System.out.println("Introduzca mas monedas");
+                                    monedas.setSaldoAcumulado(entrada.nextDouble());
+                                }
+
                             }
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
 
@@ -144,7 +175,13 @@ public class MenuInterfaz {
                                 System.out.println("Ha elegido " + chocolate);
                                 System.out.println("Con " + Azucar + " azucar");
                             } else {
-                                System.out.println("Saldo insuficiente");
+                                while (monedas.getSaldoCliente() <= 1.40) {
+                                    System.out.println("Saldo insuficiente "+monedas.getSaldoCliente());
+                                    //introduce el dinero
+                                    System.out.println("Introduzca mas monedas");
+                                    monedas.setSaldoAcumulado(entrada.nextDouble());
+                                }
+
                             }
 
                             //resta la cantidad de chocolate al deposito
