@@ -11,4 +11,11 @@ package dawcoffe;
  */
 public class MenuInterfaz {
     
+        public static void menu() {
+            
+            
+            
+            
+        }
+
 }
