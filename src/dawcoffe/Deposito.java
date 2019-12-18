@@ -11,12 +11,26 @@ package dawcoffe;
  */
 public class Deposito {
 
-    private double cantidadMax,
-            cantidadUmbral,
+    private double cantidadMax=1000,
+            cantidadUmbral=250,
             cantidadActual;
     private String contenido;
     private boolean reserva;
 
+    //metodos
+    //----------------------------------
+    public boolean isReserva() {
+
+        if (this.cantidadActual <= this.cantidadUmbral) {
+            this.reserva = true;
+        }
+
+        return this.reserva;
+
+    }
+
+    //getters y setters
+    //------------------------------------------
     public double getCantidadMax() {
         return cantidadMax;
     }
@@ -49,16 +63,4 @@ public class Deposito {
         this.contenido = contenido;
     }
 
-    public boolean isReserva() {
-        return reserva;
-    }
-
-    public void setReserva(boolean reserva) {
-        this.reserva = reserva;
-    }
-    
-    
-    
-    
-    
 }
