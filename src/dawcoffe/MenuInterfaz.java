@@ -24,6 +24,8 @@ public class MenuInterfaz {
         double saldoCliente = 0;
         double cambio = 0;
 
+        Cafeteria deposito = new Cafeteria();
+
         String cafe1 = "Café solo (0.80€), codigo 101";
         String cafe2 = "Café solo largo (0.90€), codigo 102";
         String cafe3 = "Café con leche (1.10€), codigo 103";
@@ -78,6 +80,21 @@ public class MenuInterfaz {
                         System.out.println("2. poca");
                         System.out.println("3. mucha");
                         cantidadAzucar = entrada.nextInt();
+
+                        //resta el contenido de azucar al deposito
+                        switch (cantidadAzucar) {
+                            case 1:
+                                deposito.azucar.servirContenido(0);
+                                break;
+                            case 2:
+                                deposito.azucar.servirContenido(6);
+
+                                break;
+                            case 3:
+                                deposito.azucar.servirContenido(12);
+
+                                break;
+                        }
 
                     }
 
@@ -253,6 +270,7 @@ public class MenuInterfaz {
                     String usuario;
                     int pass,
                      cont = 0;
+                    int opcionAdmin;
 
                     do {
                         System.out.println("Introduce usuario");
@@ -270,15 +288,8 @@ public class MenuInterfaz {
                     } else {
                         System.out.println("Correcto");
                         //
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+
+
                     }
                     //------------------------------------------
 
