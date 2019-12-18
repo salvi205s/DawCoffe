@@ -10,5 +10,10 @@ package dawcoffe;
  * @author Salva
  */
 public class Programa {
-    
+
+    public static void main(String[] args) {
+
+        MenuInterfaz.menu();
+
+    }
 }
