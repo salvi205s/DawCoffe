@@ -47,14 +47,27 @@ public class MenuInterfaz {
                     System.out.println(lecheCaliente);
                     codigo = entrada.nextInt();
 
+                    //introduce el dinero
+                    System.out.println("Introduzca el dinero");
+                    monedas.setSaldoAcumulado(entrada.nextDouble());
+
+                    //decide si descafeinado o no
+                    if (codigo > 100 && codigo <= 104 && monedas.getSaldoCliente() >= 0.80) {
+                        System.out.println("Lo quiere descafeinado SI/NO");
+                        descafeinado = entrada.next();
+                        do {
+                            if (descafeinado.equalsIgnoreCase("SI")) {
+                                descafeinado = "SI";
+                            } else {
+                                descafeinado = "NO";
+                            }
+                        } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
+
+                    }
+                    
+//--------------------------------------------
             }
 
-            
-            
-            
-            
-            
-            
         } while (opcion < 1 || opcion > 2);
 
     }
