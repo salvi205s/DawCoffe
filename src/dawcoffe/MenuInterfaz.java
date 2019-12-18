@@ -270,7 +270,7 @@ public class MenuInterfaz {
                     String usuario;
                     int pass,
                      cont = 0;
-                    int opcionAdmin;
+                    int opcionAdmin = 0;
 
                     do {
                         System.out.println("Introduce usuario");
@@ -288,8 +288,26 @@ public class MenuInterfaz {
                     } else {
                         System.out.println("Correcto");
                         //
+                        System.out.println("1. Ver capacidad maxima");
+                        System.out.println("2. Ver capacidad Umbral");
+                        System.out.println("3. Ver capacidad actual");
+                        System.out.println("4. Rellenar depositos");
 
+                        opcionAdmin = entrada.nextInt();
 
+                        switch (opcionAdmin) {
+                            case 1:
+                                System.out.println("Que deposito quiere consultar");
+                                break;
+                            case 2:
+                                deposito.azucar.servirContenido(6);
+
+                                break;
+                            case 3:
+                                deposito.azucar.servirContenido(12);
+
+                                break;
+                        }
                     }
                     //------------------------------------------
 
