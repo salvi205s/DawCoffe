@@ -10,5 +10,10 @@ package dawcoffe;
  * @author Salva
  */
 public class Deposito {
-    
+
+    private double cantidadMax,
+            cantidadUmbral,
+            cantidadActual;
+    private String contenido;
+    private boolean reserva;
 }
