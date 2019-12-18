@@ -11,18 +11,18 @@ package dawcoffe;
  */
 public class Cafeteria {
 
-    private double saldoAcumulado,
-            saldoCliente,
+    private double saldoAcumulado=0,
+            saldoCliente=0,
             precios;
 
     private int numVentas;
 
     public void setSaldoAcumulado(double saldoAcumulado) {
-        this.saldoAcumulado = saldoAcumulado;
+        this.saldoAcumulado += saldoAcumulado;
     }
 
     public void setSaldoCliente(double saldoCliente) {
-        this.saldoCliente = saldoCliente;
+        this.saldoCliente += saldoCliente;
     }
 
     public void setPrecios(double precios) {
