@@ -114,10 +114,14 @@ public class MenuInterfaz {
                                 System.out.println("Con " + Azucar + " azucar");
                                 cambio = saldoCliente - 0.80;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
+                                //suma el saldo al saldoAcumulado
+                                monedas.setSaldoAcumulado(0.80);
+                                //incrementa en 1 el numero de ventas
+                                monedas.setNumVentas(+1);
+
                             }
 
                             //resta la cantidad de cafe, agua y azucar al deposito
-                            //suma el saldo al saldoAcumulado
                             break;
                         case 102:
                             while (saldoCliente <= 0.90) {
@@ -133,6 +137,10 @@ public class MenuInterfaz {
                                 System.out.println("Con " + Azucar + " azucar");
                                 cambio = saldoCliente - 0.90;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
+                                //suma el saldo al saldoAcumulado
+                                monedas.setSaldoAcumulado(0.90);
+                                //incrementa en 1 el numero de ventas
+                                monedas.setNumVentas(+1);
                             }
                             //resta la cantidad de cafe, agua y azucar al deposito
 
@@ -151,6 +159,10 @@ public class MenuInterfaz {
                                 System.out.println("Con " + Azucar + " azucar");
                                 cambio = saldoCliente - 1.10;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
+                                //suma el saldo al saldoAcumulado
+                                monedas.setSaldoAcumulado(1.10);
+                                //incrementa en 1 el numero de ventas
+                                monedas.setNumVentas(+1);
                             }
 
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
@@ -170,6 +182,10 @@ public class MenuInterfaz {
                                 System.out.println("Con " + Azucar + " azucar");
                                 cambio = saldoCliente - 1.0;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
+                                //suma el saldo al saldoAcumulado
+                                monedas.setSaldoAcumulado(1.0);
+                                //incrementa en 1 el numero de ventas
+                                monedas.setNumVentas(+1);
                             }
 
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
@@ -189,6 +205,10 @@ public class MenuInterfaz {
                                 System.out.println("Con " + Azucar + " azucar");
                                 cambio = saldoCliente - 1.40;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
+                                //suma el saldo al saldoAcumulado
+                                monedas.setSaldoAcumulado(1.40);
+                                //incrementa en 1 el numero de ventas
+                                monedas.setNumVentas(+1);
                             }
 
                             //resta la cantidad de chocolate al deposito
@@ -198,6 +218,10 @@ public class MenuInterfaz {
                             System.out.println("Con " + Azucar + " azucar");
                             cambio = saldoCliente - 0.50;
                             System.out.printf("Su cambio es: %.2f %n", cambio);
+                            //suma el saldo al saldoAcumulado
+                            monedas.setSaldoAcumulado(0.50);
+                            //incrementa en 1 el numero de ventas
+                            monedas.setNumVentas(+1);
                             //resta la cantidad de leche al deposito
 
                             break;
@@ -207,15 +231,20 @@ public class MenuInterfaz {
                             System.out.println("Con " + Azucar + " azucar");
                             cambio = saldoCliente - 0.50;
                             System.out.printf("Su cambio es: %.2f %n", cambio);
+                            //suma el saldo al saldoAcumulado
+                            monedas.setSaldoAcumulado(0.50);
+                            //incrementa en 1 el numero de ventas
+                            monedas.setNumVentas(+1);
 
                             //resta la cantidad de leche al deposito
-                            
                             break;
 
                         default:
                             System.out.println("Esa opcion no se contempla");
                             opcion = 0;
                     }
+                    saldoCliente = 0;
+
                     //Fin del case 1
                     //--------------------------------------------
                     break;
@@ -240,6 +269,16 @@ public class MenuInterfaz {
                         System.out.println("Lo sentimos, pero el login no se ha podido realizan con exito");
                     } else {
                         System.out.println("Correcto");
+                        //
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     }
                     //------------------------------------------
 
