@@ -35,6 +35,26 @@ public class MenuInterfaz {
             System.out.println("2. Administración de la cafetera");
             opcion = entrada.nextInt();
 
+            switch (opcion) {
+                case 1:
+                    //muestra el menu
+                    System.out.println(cafe1);
+                    System.out.println(cafe2);
+                    System.out.println(cafe3);
+                    System.out.println(cafe4);
+                    System.out.println(chocolate);
+                    System.out.println(lecheFria);
+                    System.out.println(lecheCaliente);
+                    codigo = entrada.nextInt();
+
+            }
+
+            
+            
+            
+            
+            
+            
         } while (opcion < 1 || opcion > 2);
 
     }
