@@ -10,5 +10,17 @@ package dawcoffe;
  * @author Salva
  */
 public class Usuario {
-    
+
+    private String username = "salva";
+    private int password = 1234;
+
+    public boolean identificacion(String usuario, int pass) {
+        boolean login = false;
+
+        if (this.username.equals(usuario) && this.password == pass) {
+            login = true;
+        }
+
+        return login;
+    }
 }
