@@ -195,6 +195,9 @@ public class MenuInterfaz {
                     //------------------------------------------
 
                     break;
+                default:
+                    System.out.println(
+                            "Esa opcion no se contempla");
             }
 
         } while (opcion < 1 || opcion > 2);
