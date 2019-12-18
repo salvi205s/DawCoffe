@@ -89,7 +89,84 @@ public class MenuInterfaz {
 
                             break;
                     }
-//--------------------------------------------
+                    
+  //Muestra el pedido del cliente....
+                    switch (codigo) {
+                        case 101:
+                            //si ha introducido el precio minimo para el articulo
+                            if (monedas.getSaldoCliente() >= 0.80) {
+                                System.out.println("Ha elegido " + cafe1);
+                                System.out.println("Descafeinado: " + descafeinado);
+                                System.out.println("Con " + Azucar + " azucar");
+                            } else {
+                                System.out.println("Saldo insuficiente");
+                            }
+                            //resta la cantidad de cafe, agua y azucar al deposito
+                            //suma el saldo al saldoAcumulado
+                            break;
+                        case 102:
+                            if (monedas.getSaldoCliente() >= 0.90) {
+                                System.out.println("Ha elegido " + cafe2);
+                                System.out.println("Descafeinado: " + descafeinado);
+                                System.out.println("Con " + Azucar + " azucar");
+                            } else {
+                                System.out.println("Saldo insuficiente");
+                            }
+                            //resta la cantidad de cafe, agua y azucar al deposito
+
+                            break;
+                        case 103:
+                            if (monedas.getSaldoCliente() >= 1.10) {
+                                System.out.println("Ha elegido " + cafe3);
+                                System.out.println("Descafeinado: " + descafeinado);
+                                System.out.println("Con " + Azucar + " azucar");
+                            } else {
+                                System.out.println("Saldo insuficiente");
+                            }
+
+                            //resta la cantidad de cafe, agua, leche y azucar al deposito
+                            break;
+                        case 104:
+                            if (monedas.getSaldoCliente() >= 1.0) {
+
+                                System.out.println("Ha elegido " + cafe4);
+                                System.out.println("Descafeinado: " + descafeinado);
+                                System.out.println("Con " + Azucar + " azucar");
+                            } else {
+                                System.out.println("Saldo insuficiente");
+                            }
+                            //resta la cantidad de cafe, agua, leche y azucar al deposito
+
+                            break;
+                        case 200:
+                            if (monedas.getSaldoCliente() >= 1.40) {
+
+                                System.out.println("Ha elegido " + chocolate);
+                                System.out.println("Con " + Azucar + " azucar");
+                            } else {
+                                System.out.println("Saldo insuficiente");
+                            }
+
+                            //resta la cantidad de chocolate al deposito
+                            break;
+                        case 201:
+                            System.out.println("Ha elegido " + lecheFria);
+                            System.out.println("Con " + Azucar + " azucar");
+                            //resta la cantidad de leche al deposito
+
+                            break;
+
+                        case 300:
+                            System.out.println("Ha elegido " + lecheCaliente);
+                            System.out.println("Con " + Azucar + " azucar");
+                            //resta la cantidad de leche al deposito
+
+                            break;
+
+                        default:
+                            System.out.println("Esa opcion no se contempla");
+                            opcion = 0;
+                    }//--------------------------------------------
             }
 
         } while (opcion < 1 || opcion > 2);
