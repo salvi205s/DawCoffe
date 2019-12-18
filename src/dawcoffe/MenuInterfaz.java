@@ -21,7 +21,7 @@ public class MenuInterfaz {
         Cafetera monedas = new Cafetera();
         int cantidadAzucar = 0;
         String Azucar = null;
-        double saldoCliente=0;
+        double saldoCliente = 0;
         double cambio = 0;
 
         String cafe1 = "Café solo (0.80€), codigo 101";
@@ -105,15 +105,15 @@ public class MenuInterfaz {
                                 System.out.println("Saldo insuficiente " + saldoCliente);
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente+=entrada.nextDouble();
+                                saldoCliente += entrada.nextDouble();
                             }
 
                             if (saldoCliente >= 0.80) {
                                 System.out.println("Ha elegido " + cafe1);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
-                                cambio=saldoCliente- 0.80;
-                                System.out.printf("Su cambio es: %.2f %n",cambio);
+                                cambio = saldoCliente - 0.80;
+                                System.out.printf("Su cambio es: %.2f %n", cambio);
                             }
 
                             //resta la cantidad de cafe, agua y azucar al deposito
@@ -124,14 +124,15 @@ public class MenuInterfaz {
                                 System.out.println("Saldo insuficiente " + saldoCliente);
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente+=entrada.nextDouble();
+                                saldoCliente += entrada.nextDouble();
                             }
 
                             if (saldoCliente >= 0.90) {
                                 System.out.println("Ha elegido " + cafe2);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
-                                
+                                cambio = saldoCliente - 0.90;
+                                System.out.printf("Su cambio es: %.2f %n", cambio);
                             }
                             //resta la cantidad de cafe, agua y azucar al deposito
 
@@ -141,13 +142,15 @@ public class MenuInterfaz {
                                 System.out.println("Saldo insuficiente " + saldoCliente);
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente+=entrada.nextDouble();
+                                saldoCliente += entrada.nextDouble();
                             }
 
                             if (saldoCliente >= 1.10) {
                                 System.out.println("Ha elegido " + cafe3);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
+                                cambio = saldoCliente - 1.10;
+                                System.out.printf("Su cambio es: %.2f %n", cambio);
                             }
 
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
@@ -157,7 +160,7 @@ public class MenuInterfaz {
                                 System.out.println("Saldo insuficiente " + saldoCliente);
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente+=entrada.nextDouble();
+                                saldoCliente += entrada.nextDouble();
                             }
 
                             if (saldoCliente >= 1.0) {
@@ -165,6 +168,8 @@ public class MenuInterfaz {
                                 System.out.println("Ha elegido " + cafe4);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
+                                cambio = saldoCliente - 1.0;
+                                System.out.printf("Su cambio es: %.2f %n", cambio);
                             }
 
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
@@ -175,13 +180,15 @@ public class MenuInterfaz {
                                 System.out.println("Saldo insuficiente " + saldoCliente);
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente+=entrada.nextDouble();
+                                saldoCliente += entrada.nextDouble();
                             }
 
                             if (saldoCliente >= 1.40) {
 
                                 System.out.println("Ha elegido " + chocolate);
                                 System.out.println("Con " + Azucar + " azucar");
+                                cambio = saldoCliente - 1.40;
+                                System.out.printf("Su cambio es: %.2f %n", cambio);
                             }
 
                             //resta la cantidad de chocolate al deposito
@@ -189,6 +196,8 @@ public class MenuInterfaz {
                         case 201:
                             System.out.println("Ha elegido " + lecheFria);
                             System.out.println("Con " + Azucar + " azucar");
+                            cambio = saldoCliente - 0.50;
+                            System.out.printf("Su cambio es: %.2f %n", cambio);
                             //resta la cantidad de leche al deposito
 
                             break;
@@ -196,8 +205,11 @@ public class MenuInterfaz {
                         case 300:
                             System.out.println("Ha elegido " + lecheCaliente);
                             System.out.println("Con " + Azucar + " azucar");
-                            //resta la cantidad de leche al deposito
+                            cambio = saldoCliente - 0.50;
+                            System.out.printf("Su cambio es: %.2f %n", cambio);
 
+                            //resta la cantidad de leche al deposito
+                            
                             break;
 
                         default:
