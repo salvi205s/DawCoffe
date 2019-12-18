@@ -64,7 +64,31 @@ public class MenuInterfaz {
                         } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
 
                     }
+
+                    //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
+                    if (monedas.getSaldoCliente() >= 0.50) {
+                        System.out.println("Cuanta azucar quiere");
+                        System.out.println("1. ninguna");
+                        System.out.println("2. poca");
+                        System.out.println("3. mucha");
+                        cantidadAzucar = entrada.nextInt();
+
+                    }
                     
+                    //guarda string de cantidad de azucar, para mostrarlo luego
+                    switch (cantidadAzucar) {
+                        case 1:
+                            Azucar = "ninguna";
+                            break;
+                        case 2:
+                            Azucar = "poca";
+
+                            break;
+                        case 3:
+                            Azucar = "mucha";
+
+                            break;
+                    }
 //--------------------------------------------
             }
 
