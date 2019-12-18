@@ -74,7 +74,7 @@ public class MenuInterfaz {
                         cantidadAzucar = entrada.nextInt();
 
                     }
-                    
+
                     //guarda string de cantidad de azucar, para mostrarlo luego
                     switch (cantidadAzucar) {
                         case 1:
@@ -89,8 +89,8 @@ public class MenuInterfaz {
 
                             break;
                     }
-                    
-  //Muestra el pedido del cliente....
+
+                    //Muestra el pedido del cliente....
                     switch (codigo) {
                         case 101:
                             //si ha introducido el precio minimo para el articulo
@@ -166,7 +166,35 @@ public class MenuInterfaz {
                         default:
                             System.out.println("Esa opcion no se contempla");
                             opcion = 0;
-                    }//--------------------------------------------
+                    }
+                    //Fin del case 1
+                    //--------------------------------------------
+                    break;
+                case 2:
+                    Usuario user = new Usuario();
+                    String usuario;
+                    int pass,
+                     cont = 0;
+
+                    do {
+                        System.out.println("Introduce usuario");
+                        usuario = entrada.next();
+                        System.out.println("Introduce contraseña");
+                        pass = entrada.nextInt();
+
+                        cont++;
+
+                    } while (user.identificacion(usuario, pass)
+                            == false && cont < 3);
+                    if (cont
+                            >= 3) {
+                        System.out.println("Lo sentimos, pero el login no se ha podido realizan con exito");
+                    } else {
+                        System.out.println("Correcto");
+                    }
+                    //------------------------------------------
+
+                    break;
             }
 
         } while (opcion < 1 || opcion > 2);
