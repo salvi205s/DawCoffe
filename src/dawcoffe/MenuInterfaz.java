@@ -24,7 +24,7 @@ public class MenuInterfaz {
         double saldoCliente = 0;
         double cambio = 0;
 
-        Cafeteria deposito = new Cafeteria();
+        Cafetera deposito = new Cafetera();
 
         String cafe1 = "Café solo (0.80€), codigo 101";
         String cafe2 = "Café solo largo (0.90€), codigo 102";
