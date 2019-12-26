@@ -13,7 +13,10 @@ public class Programa {
 
     public static void main(String[] args) {
 
-        MenuInterfaz.menu();
+//        MenuInterfaz menu=new MenuInterfaz();
+//        
+//        menu.menu();
+MenuInterfaz.menu();
 
     }
 }
