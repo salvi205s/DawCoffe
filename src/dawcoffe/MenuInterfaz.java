@@ -51,13 +51,10 @@ public class MenuInterfaz {
                     System.out.println(lecheCaliente);
                     codigo = entrada.nextInt();
 
+//----------------------------------------------------------------------
                     //introduce el dinero
-                    //El set no esta guardando el dinero
-                    System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
-                    saldoCliente = entrada.nextDouble();
-                    monedas.setSaldoCliente(saldoCliente);
-
-                    System.out.println("Saldo: " + saldoCliente);
+                    monedas.introducirMonedas();
+//----------------------------------------------------------------------
 
                     //decide si descafeinado o no
                     if (codigo > 100 && codigo <= 104) {
@@ -74,7 +71,7 @@ public class MenuInterfaz {
                     }
 
                     //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
-                    if (saldoCliente >= 0.50) {
+                    if (monedas.getSaldoCliente() >= 0.50) {
                         System.out.println("Cuanta azucar quiere");
                         System.out.println("1. ninguna");
                         System.out.println("2. poca");
@@ -118,18 +115,19 @@ public class MenuInterfaz {
                     switch (codigo) {
                         case 101:
                             //si ha introducido el precio minimo para el articulo
-                            while (saldoCliente <= 0.80) {
-                                System.out.println("Saldo insuficiente " + saldoCliente);
+                            while (monedas.getSaldoCliente() <= 0.80) {
+                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente += entrada.nextDouble();
+//                                saldoCliente += entrada.nextDouble();
+                                monedas.setSaldoCliente(entrada.nextDouble());
                             }
 
-                            if (saldoCliente >= 0.80) {
+                            if (monedas.getSaldoCliente() >= 0.80) {
                                 System.out.println("Ha elegido " + cafe1);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
-                                cambio = saldoCliente - 0.80;
+                                cambio = monedas.getSaldoCliente() - 0.80;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
                                 //suma el saldo al saldoAcumulado
                                 monedas.setSaldoAcumulado(0.80);
@@ -141,14 +139,14 @@ public class MenuInterfaz {
                             //resta la cantidad de cafe, agua y azucar al deposito
                             break;
                         case 102:
-                            while (saldoCliente <= 0.90) {
-                                System.out.println("Saldo insuficiente " + saldoCliente);
+                            while (monedas.getSaldoCliente() <= 0.90) {
+                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente += entrada.nextDouble();
+                                monedas.setSaldoCliente(entrada.nextDouble());
                             }
 
-                            if (saldoCliente >= 0.90) {
+                            if (monedas.getSaldoCliente() >= 0.90) {
                                 System.out.println("Ha elegido " + cafe2);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
@@ -163,18 +161,18 @@ public class MenuInterfaz {
 
                             break;
                         case 103:
-                            while (saldoCliente <= 1.10) {
-                                System.out.println("Saldo insuficiente " + saldoCliente);
+                            while (monedas.getSaldoCliente() <= 1.10) {
+                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente += entrada.nextDouble();
+                                monedas.setSaldoCliente(entrada.nextDouble());
                             }
 
-                            if (saldoCliente >= 1.10) {
+                            if (monedas.getSaldoCliente() >= 1.10) {
                                 System.out.println("Ha elegido " + cafe3);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
-                                cambio = saldoCliente - 1.10;
+                                cambio = monedas.getSaldoCliente() - 1.10;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
                                 //suma el saldo al saldoAcumulado
                                 monedas.setSaldoAcumulado(1.10);
@@ -185,19 +183,19 @@ public class MenuInterfaz {
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
                             break;
                         case 104:
-                            while (saldoCliente <= 1.0) {
-                                System.out.println("Saldo insuficiente " + saldoCliente);
+                            while (monedas.getSaldoCliente() <= 1.0) {
+                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente += entrada.nextDouble();
+                                monedas.setSaldoCliente(entrada.nextDouble());
                             }
 
-                            if (saldoCliente >= 1.0) {
+                            if (monedas.getSaldoCliente() >= 1.0) {
 
                                 System.out.println("Ha elegido " + cafe4);
                                 System.out.println("Descafeinado: " + descafeinado);
                                 System.out.println("Con " + Azucar + " azucar");
-                                cambio = saldoCliente - 1.0;
+                                cambio = monedas.getSaldoCliente() - 1.0;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
                                 //suma el saldo al saldoAcumulado
                                 monedas.setSaldoAcumulado(1.0);
@@ -209,18 +207,18 @@ public class MenuInterfaz {
                             break;
                         case 200:
 
-                            while (saldoCliente <= 1.40) {
-                                System.out.println("Saldo insuficiente " + saldoCliente);
+                            while (monedas.getSaldoCliente() <= 1.40) {
+                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
                                 //introduce el dinero
                                 System.out.println("Introduzca mas monedas");
-                                saldoCliente += entrada.nextDouble();
+                                monedas.setSaldoCliente(entrada.nextDouble());
                             }
 
-                            if (saldoCliente >= 1.40) {
+                            if (monedas.getSaldoCliente() >= 1.40) {
 
                                 System.out.println("Ha elegido " + chocolate);
                                 System.out.println("Con " + Azucar + " azucar");
-                                cambio = saldoCliente - 1.40;
+                                cambio = monedas.getSaldoCliente() - 1.40;
                                 System.out.printf("Su cambio es: %.2f %n", cambio);
                                 //suma el saldo al saldoAcumulado
                                 monedas.setSaldoAcumulado(1.40);
@@ -233,7 +231,7 @@ public class MenuInterfaz {
                         case 201:
                             System.out.println("Ha elegido " + lecheFria);
                             System.out.println("Con " + Azucar + " azucar");
-                            cambio = saldoCliente - 0.50;
+                            cambio = monedas.getSaldoCliente() - 0.50;
                             System.out.printf("Su cambio es: %.2f %n", cambio);
                             //suma el saldo al saldoAcumulado
                             monedas.setSaldoAcumulado(0.50);
@@ -246,7 +244,7 @@ public class MenuInterfaz {
                         case 300:
                             System.out.println("Ha elegido " + lecheCaliente);
                             System.out.println("Con " + Azucar + " azucar");
-                            cambio = saldoCliente - 0.50;
+                            cambio = monedas.getSaldoCliente() - 0.50;
                             System.out.printf("Su cambio es: %.2f %n", cambio);
                             //suma el saldo al saldoAcumulado
                             monedas.setSaldoAcumulado(0.50);
@@ -260,7 +258,7 @@ public class MenuInterfaz {
                             System.out.println("Esa opcion no se contempla");
                             opcion = 0;
                     }
-                    saldoCliente = 0;
+                    monedas.setSaldoCliente(0);
 
                     //Fin del case 1
                     //--------------------------------------------
