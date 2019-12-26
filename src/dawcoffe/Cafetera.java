@@ -21,12 +21,19 @@ public class Cafetera {
 
     private int numVentas;
 
-    Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
-    Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-    Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-    Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-    Deposito agua = new Deposito(1000, 250, 1000, "agua");
-    Deposito leche = new Deposito(1000, 250, 1000, "leche");
+    public void crearDepositos() {
+        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
+        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
+        Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
+        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
+        Deposito agua = new Deposito(1000, 250, 1000, "agua");
+        Deposito leche = new Deposito(1000, 250, 1000, "leche");
+
+    }
+
+//    public void consultarDepositos(Deposito deposito) {
+//
+//    }
 
     public void comprobarPrecio() {
         System.out.println("....................................\npor aqui");
@@ -44,13 +51,13 @@ public class Cafetera {
     }
 
     public void mostrarInformacion(String opcion, String opcionDescafeinado, String cantAzucar) {
-              double cambio = 0;
+        double cambio = 0;
 
         if (getSaldoCliente() >= getPrecio()) {
             System.out.println("Ha elegido " + opcion);
             System.out.println("Descafeinado: " + opcionDescafeinado);
             System.out.println("Con " + cantAzucar + " azucar");
-            
+
             cambio = getSaldoCliente() - this.precio;
             System.out.printf("Su cambio es: %.2f %n", cambio);
             //suma el saldo al saldoAcumulado
