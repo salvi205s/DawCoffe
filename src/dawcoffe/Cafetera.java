@@ -16,8 +16,8 @@ public class Cafetera {
     private Scanner entrada = new Scanner(System.in);
 
     private double saldoAcumulado = 0,
-            saldoCliente = 0,
-            precios;
+            saldoCliente=0 ,
+            precio;
 
     private int numVentas;
 
@@ -28,12 +28,25 @@ public class Cafetera {
     Deposito agua = new Deposito(1000, 250, 1000, "agua");
     Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
-    public void introducirMonedas() {
+//    public void introducirMonedas(double monedas) {
+//
+//        setSaldoCliente(monedas);
+//
+//       System.out.println("saldo cliente "+this.saldoCliente);
+//    }
 
-        System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
-        setSaldoCliente(entrada.nextDouble());
-
-        System.out.println("Saldo: " + getSaldoCliente());
+    public void comprobarPrecio() {
+        System.out.println("....................................\npor aqui");
+        //si ha introducido el precio minimo para el articulo
+        System.out.println("saldo cliente "+this.saldoCliente);
+        System.out.println("precio "+this.precio);
+        
+        while (getSaldoCliente() <= precio) {
+            System.out.println("Saldo insuficiente " + this.saldoCliente );
+            //introduce el dinero
+            System.out.println("Introduzca mas monedas");
+            setSaldoCliente(entrada.nextDouble());
+        };
 
     }
 
@@ -45,8 +58,8 @@ public class Cafetera {
         this.saldoCliente += saldoCliente;
     }
 
-    public void setPrecios(double precios) {
-        this.precios = precios;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public void setNumVentas(int numVentas) {
@@ -61,12 +74,17 @@ public class Cafetera {
         return saldoCliente;
     }
 
-    public double getPrecios() {
-        return precios;
+    public double getPrecio() {
+        return precio;
     }
 
     public int getNumVentas() {
         return numVentas;
+    }
+
+    @Override
+    public String toString() {
+        return "Cafetera{" + "saldoAcumulado=" + saldoAcumulado + ", saldoCliente=" + saldoCliente + ", precio=" + precio + ", numVentas=" + numVentas + ", cafe=" + cafe + ", cafeDescafeinado=" + cafeDescafeinado + ", azucar=" + azucar + ", chocolate=" + chocolate + ", agua=" + agua + ", leche=" + leche + '}';
     }
 
 }
