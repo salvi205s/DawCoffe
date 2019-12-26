@@ -5,11 +5,15 @@
  */
 package dawcoffe;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Salva
  */
-public class Cafeteria {
+public class Cafetera {
+
+    private Scanner entrada = new Scanner(System.in);
 
     private double saldoAcumulado = 0,
             saldoCliente = 0,
@@ -23,6 +27,15 @@ public class Cafeteria {
     Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
     Deposito agua = new Deposito(1000, 250, 1000, "agua");
     Deposito leche = new Deposito(1000, 250, 1000, "leche");
+
+    public void introducirMonedas() {
+
+        System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
+        setSaldoCliente(entrada.nextDouble());
+
+        System.out.println("Saldo: " + getSaldoCliente());
+
+    }
 
     public void setSaldoAcumulado(double saldoAcumulado) {
         this.saldoAcumulado += saldoAcumulado;
