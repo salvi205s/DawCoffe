@@ -18,13 +18,14 @@ public class MenuInterfaz {
         int codigo;
         int opcion;
         String descafeinado = null;
-        Cafetera monedas = new Cafetera();
+        Cafetera cafetera = new Cafetera();
         int cantidadAzucar = 0;
         String Azucar = null;
         double saldoCliente = 0;
         double cambio = 0;
 
-        Cafetera deposito = new Cafetera();
+        double precio;
+        String menu;
 
         String cafe1 = "Café solo (0.80€), codigo 101";
         String cafe2 = "Café solo largo (0.90€), codigo 102";
@@ -37,7 +38,8 @@ public class MenuInterfaz {
         do {
             System.out.println("1. Venta de productos");
             System.out.println("2. Administración de la cafetera");
-            opcion = entrada.nextInt();
+//            opcion = entrada.nextInt();
+            opcion = 1;
 
             switch (opcion) {
                 case 1:
@@ -53,13 +55,17 @@ public class MenuInterfaz {
 
 //----------------------------------------------------------------------
                     //introduce el dinero
-                    monedas.introducirMonedas();
+                    System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
+
+                    cafetera.setSaldoCliente(2);
 //----------------------------------------------------------------------
+                    System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
                     //decide si descafeinado o no
                     if (codigo > 100 && codigo <= 104) {
                         System.out.println("Lo quiere descafeinado SI/NO");
-                        descafeinado = entrada.next();
+//                        descafeinado = entrada.next();
+                        descafeinado = "Si";
                         do {
                             if (descafeinado.equalsIgnoreCase("SI")) {
                                 descafeinado = "SI";
@@ -71,28 +77,28 @@ public class MenuInterfaz {
                     }
 
                     //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
-                    if (monedas.getSaldoCliente() >= 0.50) {
+                    if (cafetera.getSaldoCliente() >= 0.50) {
                         System.out.println("Cuanta azucar quiere");
                         System.out.println("1. ninguna");
                         System.out.println("2. poca");
                         System.out.println("3. mucha");
-                        cantidadAzucar = entrada.nextInt();
+//                        cantidadAzucar = entrada.nextInt();
+                        cantidadAzucar = 2;
 
                         //resta el contenido de azucar al deposito
-                        switch (cantidadAzucar) {
-                            case 1:
-                                deposito.azucar.servirContenido(0);
-                                break;
-                            case 2:
-                                deposito.azucar.servirContenido(6);
-
-                                break;
-                            case 3:
-                                deposito.azucar.servirContenido(12);
-
-                                break;
-                        }
-
+//                        switch (cantidadAzucar) {
+//                            case 1:
+//                                deposito.azucar.servirContenido(0);
+//                                break;
+//                            case 2:
+//                                deposito.azucar.servirContenido(6);
+//
+//                                break;
+//                            case 3:
+//                                deposito.azucar.servirContenido(12);
+//
+//                                break;
+//                        }
                     }
 
                     //guarda string de cantidad de azucar, para mostrarlo luego
@@ -109,147 +115,73 @@ public class MenuInterfaz {
 
                             break;
                     }
-
                     //Muestra el pedido del cliente....
-                    //problema con el saldo insuficiente
                     switch (codigo) {
                         case 101:
+                            cafetera.setPrecio(0.80);
+
+                            menu = cafe1;
+//----------------------------------------------------------------------
                             //si ha introducido el precio minimo para el articulo
-                            while (monedas.getSaldoCliente() <= 0.80) {
-                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
-                                //introduce el dinero
-                                System.out.println("Introduzca mas monedas");
-//                                saldoCliente += entrada.nextDouble();
-                                monedas.setSaldoCliente(entrada.nextDouble());
-                            }
+                            cafetera.comprobarPrecio();
 
-                            if (monedas.getSaldoCliente() >= 0.80) {
-                                System.out.println("Ha elegido " + cafe1);
-                                System.out.println("Descafeinado: " + descafeinado);
-                                System.out.println("Con " + Azucar + " azucar");
-                                cambio = monedas.getSaldoCliente() - 0.80;
-                                System.out.printf("Su cambio es: %.2f %n", cambio);
-                                //suma el saldo al saldoAcumulado
-                                monedas.setSaldoAcumulado(0.80);
-                                //incrementa en 1 el numero de ventas
-                                monedas.setNumVentas(+1);
-
-                            }
-
+                            cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+//----------------------------------------------------------------------
                             //resta la cantidad de cafe, agua y azucar al deposito
                             break;
                         case 102:
-                            while (monedas.getSaldoCliente() <= 0.90) {
-                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
-                                //introduce el dinero
-                                System.out.println("Introduzca mas monedas");
-                                monedas.setSaldoCliente(entrada.nextDouble());
-                            }
+                            cafetera.setPrecio(0.90);
 
-                            if (monedas.getSaldoCliente() >= 0.90) {
-                                System.out.println("Ha elegido " + cafe2);
-                                System.out.println("Descafeinado: " + descafeinado);
-                                System.out.println("Con " + Azucar + " azucar");
-                                cambio = saldoCliente - 0.90;
-                                System.out.printf("Su cambio es: %.2f %n", cambio);
-                                //suma el saldo al saldoAcumulado
-                                monedas.setSaldoAcumulado(0.90);
-                                //incrementa en 1 el numero de ventas
-                                monedas.setNumVentas(+1);
-                            }
+                            menu = cafe2;
+                            cafetera.comprobarPrecio();
+
+                            cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+
                             //resta la cantidad de cafe, agua y azucar al deposito
-
                             break;
                         case 103:
-                            while (monedas.getSaldoCliente() <= 1.10) {
-                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
-                                //introduce el dinero
-                                System.out.println("Introduzca mas monedas");
-                                monedas.setSaldoCliente(entrada.nextDouble());
-                            }
+                            cafetera.setPrecio(1.10);
 
-                            if (monedas.getSaldoCliente() >= 1.10) {
-                                System.out.println("Ha elegido " + cafe3);
-                                System.out.println("Descafeinado: " + descafeinado);
-                                System.out.println("Con " + Azucar + " azucar");
-                                cambio = monedas.getSaldoCliente() - 1.10;
-                                System.out.printf("Su cambio es: %.2f %n", cambio);
-                                //suma el saldo al saldoAcumulado
-                                monedas.setSaldoAcumulado(1.10);
-                                //incrementa en 1 el numero de ventas
-                                monedas.setNumVentas(+1);
-                            }
+                            menu = cafe3;
+
+                            cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
                             break;
                         case 104:
-                            while (monedas.getSaldoCliente() <= 1.0) {
-                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
-                                //introduce el dinero
-                                System.out.println("Introduzca mas monedas");
-                                monedas.setSaldoCliente(entrada.nextDouble());
-                            }
+                            cafetera.setPrecio(1.0);
 
-                            if (monedas.getSaldoCliente() >= 1.0) {
+                            menu = cafe4;
 
-                                System.out.println("Ha elegido " + cafe4);
-                                System.out.println("Descafeinado: " + descafeinado);
-                                System.out.println("Con " + Azucar + " azucar");
-                                cambio = monedas.getSaldoCliente() - 1.0;
-                                System.out.printf("Su cambio es: %.2f %n", cambio);
-                                //suma el saldo al saldoAcumulado
-                                monedas.setSaldoAcumulado(1.0);
-                                //incrementa en 1 el numero de ventas
-                                monedas.setNumVentas(+1);
-                            }
+                            cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                             //resta la cantidad de cafe, agua, leche y azucar al deposito
                             break;
                         case 200:
+                            cafetera.setPrecio(1.40);
 
-                            while (monedas.getSaldoCliente() <= 1.40) {
-                                System.out.println("Saldo insuficiente " + monedas.getSaldoCliente());
-                                //introduce el dinero
-                                System.out.println("Introduzca mas monedas");
-                                monedas.setSaldoCliente(entrada.nextDouble());
-                            }
+                            menu = chocolate;
 
-                            if (monedas.getSaldoCliente() >= 1.40) {
-
-                                System.out.println("Ha elegido " + chocolate);
-                                System.out.println("Con " + Azucar + " azucar");
-                                cambio = monedas.getSaldoCliente() - 1.40;
-                                System.out.printf("Su cambio es: %.2f %n", cambio);
-                                //suma el saldo al saldoAcumulado
-                                monedas.setSaldoAcumulado(1.40);
-                                //incrementa en 1 el numero de ventas
-                                monedas.setNumVentas(+1);
-                            }
+                            cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                             //resta la cantidad de chocolate al deposito
                             break;
                         case 201:
-                            System.out.println("Ha elegido " + lecheFria);
-                            System.out.println("Con " + Azucar + " azucar");
-                            cambio = monedas.getSaldoCliente() - 0.50;
-                            System.out.printf("Su cambio es: %.2f %n", cambio);
-                            //suma el saldo al saldoAcumulado
-                            monedas.setSaldoAcumulado(0.50);
-                            //incrementa en 1 el numero de ventas
-                            monedas.setNumVentas(+1);
-                            //resta la cantidad de leche al deposito
+                            cafetera.setPrecio(0.50);
 
+                            menu = lecheCaliente;
+
+                            cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+
+                            //resta la cantidad de leche al deposito
                             break;
 
                         case 300:
-                            System.out.println("Ha elegido " + lecheCaliente);
-                            System.out.println("Con " + Azucar + " azucar");
-                            cambio = monedas.getSaldoCliente() - 0.50;
-                            System.out.printf("Su cambio es: %.2f %n", cambio);
-                            //suma el saldo al saldoAcumulado
-                            monedas.setSaldoAcumulado(0.50);
-                            //incrementa en 1 el numero de ventas
-                            monedas.setNumVentas(+1);
+                            cafetera.setPrecio(0.50);
+
+                            menu = lecheFria;
+
+                            cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                             //resta la cantidad de leche al deposito
                             break;
@@ -258,7 +190,7 @@ public class MenuInterfaz {
                             System.out.println("Esa opcion no se contempla");
                             opcion = 0;
                     }
-                    monedas.setSaldoCliente(0);
+                    cafetera.setSaldoCliente(0);
 
                     //Fin del case 1
                     //--------------------------------------------
@@ -293,19 +225,19 @@ public class MenuInterfaz {
 
                         opcionAdmin = entrada.nextInt();
 
-                        switch (opcionAdmin) {
-                            case 1:
-                                System.out.println("Que deposito quiere consultar");
-                                break;
-                            case 2:
-                                deposito.azucar.servirContenido(6);
-
-                                break;
-                            case 3:
-                                deposito.azucar.servirContenido(12);
-
-                                break;
-                        }
+//                        switch (opcionAdmin) {
+//                            case 1:
+//                                System.out.println("Que deposito quiere consultar");
+//                                break;
+//                            case 2:
+//                                deposito.azucar.servirContenido(6);
+//
+//                                break;
+//                            case 3:
+//                                deposito.azucar.servirContenido(12);
+//
+//                                break;
+//                        }
                     }
                     //------------------------------------------
 
