@@ -16,7 +16,7 @@ public class Cafetera {
     private Scanner entrada = new Scanner(System.in);
 
     private double saldoAcumulado = 0,
-            saldoCliente=0 ,
+            saldoCliente = 0,
             precio;
 
     private int numVentas;
@@ -28,26 +28,36 @@ public class Cafetera {
     Deposito agua = new Deposito(1000, 250, 1000, "agua");
     Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
-//    public void introducirMonedas(double monedas) {
-//
-//        setSaldoCliente(monedas);
-//
-//       System.out.println("saldo cliente "+this.saldoCliente);
-//    }
-
     public void comprobarPrecio() {
         System.out.println("....................................\npor aqui");
         //si ha introducido el precio minimo para el articulo
-        System.out.println("saldo cliente "+this.saldoCliente);
-        System.out.println("precio "+this.precio);
-        
+        System.out.println("saldo cliente " + this.saldoCliente);
+        System.out.println("precio " + this.precio);
+
         while (getSaldoCliente() <= precio) {
-            System.out.println("Saldo insuficiente " + this.saldoCliente );
+            System.out.println("Saldo insuficiente " + this.saldoCliente);
             //introduce el dinero
             System.out.println("Introduzca mas monedas");
             setSaldoCliente(entrada.nextDouble());
         };
 
+    }
+
+    public void mostrarInformacion(String opcion, String opcionDescafeinado, String cantAzucar) {
+              double cambio = 0;
+
+        if (getSaldoCliente() >= getPrecio()) {
+            System.out.println("Ha elegido " + opcion);
+            System.out.println("Descafeinado: " + opcionDescafeinado);
+            System.out.println("Con " + cantAzucar + " azucar");
+            
+            cambio = getSaldoCliente() - this.precio;
+            System.out.printf("Su cambio es: %.2f %n", cambio);
+            //suma el saldo al saldoAcumulado
+            setSaldoAcumulado(this.precio);
+            //incrementa en 1 el numero de ventas
+            setNumVentas(+1);
+        }
     }
 
     public void setSaldoAcumulado(double saldoAcumulado) {
