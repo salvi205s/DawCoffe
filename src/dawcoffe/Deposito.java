@@ -27,7 +27,17 @@ public class Deposito {
     //metodos
     //----------------------------------
     //reponer el contenido
-    public void llenarDeposito() {
+    public void llenarDeposito(double cantidad) {
+
+        if (cantidad+cantidadActual > cantidadMax) {
+            this.cantidadActual = cantidadMax;
+
+        }
+
+        this.cantidadActual += cantidad;
+    }
+
+    public void llenarDepositoCompleto() {
         this.cantidadActual = cantidadMax;
     }
 
