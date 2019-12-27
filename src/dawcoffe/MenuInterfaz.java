@@ -228,10 +228,15 @@ public class MenuInterfaz {
                             System.out.println("Lo sentimos, pero el login no se ha podido realizan con exito");
                         } else {
                             System.out.println("Correcto");
-                            //
-                            System.out.println("1. consultar los depositos");
-                            System.out.println("2. Ver capacidad Umbral");
-                            System.out.println("3. Ver capacidad actual");
+                            
+                            //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+                            //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
+                            //Consultar saldo de ventas realizadas.
+                            //Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
+
+                            System.out.println("1. Comprobar depósitos");
+                            System.out.println("2. Comprobar estado general");
+                            System.out.println("3. Consultar saldo de ventas realizadas.");
                             System.out.println("4. Rellenar depositos");
 
                             opcionAdmin = entrada.nextInt();
@@ -239,7 +244,9 @@ public class MenuInterfaz {
 
                             switch (opcionAdmin) {
                                 case 1:
-                                    System.out.println("Que deposito quiere consultar");
+                                    if (true) {
+                                        
+                                    }
                                     break;
                                 case 2:
 
