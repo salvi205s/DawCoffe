@@ -48,7 +48,6 @@ public class MenuInterfaz {
                 System.out.println("1. Venta de productos");
                 System.out.println("2. Administración de la cafetera");
                 opcion = entrada.nextInt();
-//                opcion = 2;
 
                 switch (opcion) {
                     case 1:
@@ -62,6 +61,11 @@ public class MenuInterfaz {
                         System.out.println(lecheCaliente);
                         codigo = entrada.nextInt();
 
+                        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
+                            System.out.println("Lo sentimos pero no podemos, servirle");
+                            break;
+
+                        }
                         //introduce el dinero
                         System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
 
@@ -72,7 +76,7 @@ public class MenuInterfaz {
                         //decide si descafeinado o no
                         if (codigo > 100 && codigo <= 104) {
                             System.out.println("Lo quiere descafeinado SI/NO");
-                        descafeinado = entrada.next();
+                            descafeinado = entrada.next();
                             do {
                                 if (descafeinado.equalsIgnoreCase("SI")) {
                                     descafeinado = "SI";
@@ -82,7 +86,6 @@ public class MenuInterfaz {
                             } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
 
                         }
-
                         //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
                         if (cafetera.getSaldoCliente() >= 0.50) {
                             System.out.println("Cuanta azucar quiere");
@@ -97,10 +100,21 @@ public class MenuInterfaz {
                                     azucar.servirContenido(0);
                                     break;
                                 case 2:
+                                    if (azucar.getCantidadActual() < 6) {
+                                        System.out.println("Lo sentimos pero no, queda azucar");
+                                        azucar.servirContenido(0);
+                                    }
                                     azucar.servirContenido(6);
 
                                     break;
                                 case 3:
+                                    if (azucar.getCantidadActual() < 12) {
+                                        System.out.println("Lo sentimos pero solo queda: " + azucar.getCantidadActual());
+
+                                        int azucarRestante = (int) azucar.getCantidadActual();
+                                        azucar.servirContenido(azucarRestante);
+
+                                    }
                                     azucar.servirContenido(12);
 
                                     break;
@@ -239,7 +253,7 @@ public class MenuInterfaz {
                         }
 
                         cafetera.setSaldoCliente(0);
-                        saldoCliente=0;
+                        saldoCliente = 0;
                         System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
 
                         //Fin del case 1
@@ -301,7 +315,7 @@ public class MenuInterfaz {
                                     }
                                     break;
                                 case 2:
-                                //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
+                                    //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
                                     System.out.println("Comprobando estado general");
                                     System.out.println(cafe);
                                     System.out.println(cafeDescafeinado);
@@ -334,7 +348,7 @@ public class MenuInterfaz {
                                         opcionDeposito = entrada.nextInt();
                                     } while (opcionDeposito < 1 || opcionDeposito > 6);
                                     do {
-                                        System.out.println("¿Quiere rellenar el deposito \n1. completramente \n2. parcial");
+                                        System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
                                         llenarDeposito = entrada.nextInt();
                                     } while (llenarDeposito < 1 || llenarDeposito > 2);
 
@@ -384,7 +398,7 @@ public class MenuInterfaz {
                         System.out.println(
                                 "Esa opcion no se contempla");
                 }
-                        System.out.println("................................................");
+                System.out.println("................................................");
 
             } while (opcion < 1 || opcion > 2);
 
