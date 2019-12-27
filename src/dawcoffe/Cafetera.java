@@ -14,8 +14,10 @@ import java.util.Scanner;
  */
 public class Cafetera {
 
+    //objeto scanner para introducir texto por teclado
     private Scanner entrada = new Scanner(System.in);
 
+    //variables que iremos usando a lo largo del programa
     private double saldoAcumulado = 0,
             saldoCliente = 0,
             precio;
@@ -28,15 +30,13 @@ public class Cafetera {
 //        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
 //        Deposito agua = new Deposito(1000, 250, 1000, "agua");
 //        Deposito leche = new Deposito(1000, 250, 1000, "leche");
-    public void consultarDepositos(Deposito deposito) {
-
-        System.out.println(deposito);
-    }
-
+    
+    //metodo para comprobar el precio del articulo
     public void comprobarPrecio() {
-        //si ha introducido el precio minimo para el articulo
-
+        
+        //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
         while (getSaldoCliente() <= precio) {
+            
             System.out.println("Saldo insuficiente " + this.saldoCliente);
             //introduce el dinero
             System.out.println("Introduzca mas monedas");
@@ -45,14 +45,17 @@ public class Cafetera {
 
     }
 
+    //muestra informacion del producto elegido
     public void mostrarInformacion(String opcion, String opcionDescafeinado, String cantAzucar) {
         double cambio = 0;
 
+        //si el precio es mayor o igual al del articulo muestra la informacion
         if (getSaldoCliente() >= getPrecio()) {
             System.out.println("Ha elegido " + opcion);
             System.out.println("Descafeinado: " + opcionDescafeinado);
             System.out.println("Con " + cantAzucar + " azucar");
 
+            //calcula el cambio a devolver
             cambio = getSaldoCliente() - this.precio;
             System.out.printf("Su cambio es: %.2f %n", cambio);
             //suma el saldo al saldoAcumulado
@@ -62,6 +65,7 @@ public class Cafetera {
         }
     }
 
+    //getters y setters
     public void setSaldoAcumulado(double saldoAcumulado) {
         this.saldoAcumulado += saldoAcumulado;
     }
