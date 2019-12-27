@@ -95,19 +95,19 @@ public class MenuInterfaz {
                             cantidadAzucar = entrada.nextInt();
 
                             //resta el contenido de azucar al deposito
-//                        switch (cantidadAzucar) {
-//                            case 1:
-//                                deposito.azucar.servirContenido(0);
-//                                break;
-//                            case 2:
-//                                deposito.azucar.servirContenido(6);
-//
-//                                break;
-//                            case 3:
-//                                deposito.azucar.servirContenido(12);
-//
-//                                break;
-//                        }
+                            switch (cantidadAzucar) {
+                                case 1:
+                                    azucar.servirContenido(0);
+                                    break;
+                                case 2:
+                                    azucar.servirContenido(6);
+
+                                    break;
+                                case 3:
+                                    azucar.servirContenido(12);
+
+                                    break;
+                            }
                         }
 
                         //guarda string de cantidad de azucar, para mostrarlo luego
@@ -136,7 +136,14 @@ public class MenuInterfaz {
 
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 //----------------------------------------------------------------------
-                                //resta la cantidad de cafe, agua y azucar al deposito
+                                //resta la cantidad de cafe,y agua 
+                                if (descafeinado.equalsIgnoreCase("si")) {
+                                    cafeDescafeinado.servirContenido(8);
+                                } else {
+                                    cafe.servirContenido(8);
+
+                                }
+                                agua.servirContenido(50);
                                 break;
                             case 102:
                                 cafetera.setPrecio(0.90);
@@ -146,7 +153,14 @@ public class MenuInterfaz {
 
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
-                                //resta la cantidad de cafe, agua y azucar al deposito
+                                //resta la cantidad de cafe,y agua 
+                                if (descafeinado.equalsIgnoreCase("si")) {
+                                    cafeDescafeinado.servirContenido(8);
+                                } else {
+                                    cafe.servirContenido(8);
+
+                                }
+                                agua.servirContenido(80);
                                 break;
                             case 103:
                                 cafetera.setPrecio(1.10);
@@ -156,7 +170,16 @@ public class MenuInterfaz {
 
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
-                                //resta la cantidad de cafe, agua, leche y azucar al deposito
+                                //resta la cantidad de cafe,y agua 
+                                if (descafeinado.equalsIgnoreCase("si")) {
+                                    cafeDescafeinado.servirContenido(8);
+                                } else {
+                                    cafe.servirContenido(8);
+
+                                }
+                                agua.servirContenido(50);
+                                leche.servirContenido(20);
+
                                 break;
                             case 104:
                                 cafetera.setPrecio(1.0);
@@ -167,6 +190,14 @@ public class MenuInterfaz {
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                                 //resta la cantidad de cafe, agua, leche y azucar al deposito
+                                if (descafeinado.equalsIgnoreCase("si")) {
+                                    cafeDescafeinado.servirContenido(8);
+                                } else {
+                                    cafe.servirContenido(8);
+
+                                }
+                                agua.servirContenido(50);
+                                leche.servirContenido(10);
                                 break;
                             case 200:
                                 cafetera.setPrecio(1.40);
@@ -177,6 +208,8 @@ public class MenuInterfaz {
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                                 //resta la cantidad de chocolate al deposito
+                                chocolate.servirContenido(12);
+                                leche.servirContenido(180);
                                 break;
                             case 201:
                                 cafetera.setPrecio(0.50);
@@ -186,6 +219,8 @@ public class MenuInterfaz {
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                                 //resta la cantidad de leche al deposito
+                                leche.servirContenido(180);
+
                                 break;
 
                             case 300:
@@ -196,6 +231,8 @@ public class MenuInterfaz {
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 
                                 //resta la cantidad de leche al deposito
+                                leche.servirContenido(180);
+
                                 break;
 
                             default:
@@ -265,7 +302,7 @@ public class MenuInterfaz {
                                     }
                                     break;
                                 case 2:
-//Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
+                                //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
                                     System.out.println("Comprobando estado general");
                                     System.out.println(cafe);
                                     System.out.println(cafeDescafeinado);
@@ -341,8 +378,8 @@ public class MenuInterfaz {
                                     break;
                             }
                         }
-                        //------------------------------------------
-
+                        //Fin del case 2
+                        //--------------------------------------------
                         break;
                     default:
                         System.out.println(
