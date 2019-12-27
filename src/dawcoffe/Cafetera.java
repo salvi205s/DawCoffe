@@ -21,17 +21,12 @@ public class Cafetera {
 
     private int numVentas;
 
-        
 //        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
 //        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
 //        Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
 //        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
 //        Deposito agua = new Deposito(1000, 250, 1000, "agua");
 //        Deposito leche = new Deposito(1000, 250, 1000, "leche");
-
-  
-    
-
     public void consultarDepositos(Deposito deposito) {
 
         System.out.println(deposito);
@@ -71,7 +66,7 @@ public class Cafetera {
     }
 
     public void setSaldoCliente(double saldoCliente) {
-        this.saldoCliente += saldoCliente;
+        this.saldoCliente = saldoCliente;
     }
 
     public void setPrecio(double precio) {
