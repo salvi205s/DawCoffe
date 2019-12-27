@@ -47,7 +47,7 @@ public class MenuInterfaz {
 
                 System.out.println("1. Venta de productos");
                 System.out.println("2. Administración de la cafetera");
-            opcion = entrada.nextInt();
+                opcion = entrada.nextInt();
 //                opcion = 2;
 
                 switch (opcion) {
@@ -66,7 +66,7 @@ public class MenuInterfaz {
                         //introduce el dinero
                         System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
 
-                        saldoCliente+=entrada.nextDouble();
+                        saldoCliente += entrada.nextDouble();
                         cafetera.setSaldoCliente(saldoCliente);
 //----------------------------------------------------------------------
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
@@ -202,9 +202,9 @@ public class MenuInterfaz {
                                 System.out.println("Esa opcion no se contempla");
                                 opcion = 0;
                         }
-                        
+
                         cafetera.setSaldoCliente(0);
-                                System.out.println("El saldo del cliente es: "+cafetera.getSaldoCliente());
+                        System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
 
                         //Fin del case 1
                         //--------------------------------------------
@@ -215,6 +215,8 @@ public class MenuInterfaz {
                         int pass,
                          cont = 0;
                         int opcionAdmin = 0;
+                        int opcionDeposito;
+                        int llenarDeposito;
 
                         do {
                             System.out.println("Introduce usuario");
@@ -223,26 +225,21 @@ public class MenuInterfaz {
                             System.out.println("Introduce contraseña");
 //                            pass = entrada.nextInt();
                             pass = 1234;
-
                             cont++;
 
                         } while (user.identificacion(usuario, pass)
                                 == false && cont < 3);
-                        if (cont
-                                >= 3) {
+                        if (cont >= 3) {
                             System.out.println("Lo sentimos, pero el login no se ha podido realizan con exito");
                         } else {
                             System.out.println("Correcto");
 
-                            //Consultar saldo de ventas realizadas.
-                            //Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
                             System.out.println("1. Comprobar depósitos");
                             System.out.println("2. Comprobar estado general");
                             System.out.println("3. Consultar saldo de ventas realizadas.");
                             System.out.println("4. Rellenar depositos");
 
                             opcionAdmin = entrada.nextInt();
-//-------------------------------------------------------------------------------------------------------------------------
 
                             switch (opcionAdmin) {
                                 //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
@@ -282,10 +279,65 @@ public class MenuInterfaz {
                                     break;
                                 case 3:
                                     //Consultar saldo de ventas realizadas.
-
                                     System.out.println("Consultando saldo de ventas realizadas");
-                                    System.out.println("El numero de ventas es: "+cafetera.getNumVentas()+"\nEl saldo acumulado es: " + cafetera.getSaldoAcumulado());
+                                    System.out.println("El numero de ventas es: " + cafetera.getNumVentas() + "\nEl saldo acumulado es: " + cafetera.getSaldoAcumulado());
 
+                                    break;
+                                case 4:
+                                    //-------------------------------------------------------------------------------------------------------------------------
+
+//Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
+                                    System.out.println("Que deposito desea rellenar");
+                                    do {
+                                        System.out.println("1. Café");
+                                        System.out.println("2. cafeDescafeinado");
+                                        System.out.println("3. azucar");
+                                        System.out.println("4. chocolate");
+                                        System.out.println("5. agua");
+                                        System.out.println("6. leche");
+                                        opcionDeposito = entrada.nextInt();
+                                    } while (opcionDeposito < 1 || opcionDeposito > 6);
+                                    do {
+                                        System.out.println("¿Quiere rellenar el deposito \n1. completramente \n2. parcial");
+                                        llenarDeposito = entrada.nextInt();
+                                    } while (llenarDeposito < 1 || llenarDeposito > 2);
+
+                                    if (opcionDeposito == 1 && llenarDeposito == 1) {
+                                        cafe.llenarDepositoCompleto();
+                                    } else if (opcionDeposito == 1 && llenarDeposito == 2) {
+                                        System.out.println("Introduzca la cantidad");
+                                        cafe.llenarDeposito(entrada.nextDouble());
+                                    } //-------------------------------
+                                    else if (opcionDeposito == 2 && llenarDeposito == 1) {
+                                        cafeDescafeinado.llenarDepositoCompleto();
+                                    } else if (opcionDeposito == 2 && llenarDeposito == 2) {
+                                        System.out.println("Introduzca la cantidad");
+                                        cafeDescafeinado.llenarDeposito(entrada.nextDouble());
+                                    } //-------------------------------
+                                    else if (opcionDeposito == 3 && llenarDeposito == 1) {
+                                        azucar.llenarDepositoCompleto();
+                                    } else if (opcionDeposito == 3 && llenarDeposito == 2) {
+                                        System.out.println("Introduzca la cantidad");
+                                        azucar.llenarDeposito(entrada.nextDouble());
+                                    } //-------------------------------
+                                    else if (opcionDeposito == 4 && llenarDeposito == 1) {
+                                        chocolate.llenarDepositoCompleto();
+                                    } else if (opcionDeposito == 4 && llenarDeposito == 2) {
+                                        System.out.println("Introduzca la cantidad");
+                                        chocolate.llenarDeposito(entrada.nextDouble());
+                                    } //-------------------------------
+                                    else if (opcionDeposito == 5 && llenarDeposito == 1) {
+                                        agua.llenarDepositoCompleto();
+                                    } else if (opcionDeposito == 5 && llenarDeposito == 2) {
+                                        System.out.println("Introduzca la cantidad");
+                                        agua.llenarDeposito(entrada.nextDouble());
+                                    } //-------------------------------
+                                    else if (opcionDeposito == 6 && llenarDeposito == 1) {
+                                        leche.llenarDepositoCompleto();
+                                    } else if (opcionDeposito == 6 && llenarDeposito == 2) {
+                                        System.out.println("Introduzca la cantidad");
+                                        leche.llenarDeposito(entrada.nextDouble());
+                                    }
                                     break;
                             }
                         }
