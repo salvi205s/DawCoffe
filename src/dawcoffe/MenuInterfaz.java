@@ -17,10 +17,10 @@ public class MenuInterfaz {
     private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
     private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
     private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
+    private Deposito agua = new Deposito(1000, 250, 100, "agua");
     private Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
-    public static void menu() {
+    public void menu() {
         Scanner entrada = new Scanner(System.in);
         int codigo;
         int opcion;
@@ -39,7 +39,7 @@ public class MenuInterfaz {
         String cafe2 = "Café solo largo (0.90€), codigo 102";
         String cafe3 = "Café con leche (1.10€), codigo 103";
         String cafe4 = "Café cortado (1.00€), codigo 104";
-        String chocolate = "Chocolate (1.40€), codigo 200";
+        String Choco = "Chocolate (1.40€), codigo 200";
         String lecheFria = "Leche fría (0.50€) codigo 300";
         String lecheCaliente = "Leche caliente (0.50€), codigo 301";
         do {
@@ -57,7 +57,7 @@ public class MenuInterfaz {
                         System.out.println(cafe2);
                         System.out.println(cafe3);
                         System.out.println(cafe4);
-                        System.out.println(chocolate);
+                        System.out.println(Choco);
                         System.out.println(lecheFria);
                         System.out.println(lecheCaliente);
                         codigo = entrada.nextInt();
@@ -170,7 +170,7 @@ public class MenuInterfaz {
                             case 200:
                                 cafetera.setPrecio(1.40);
 
-                                menu = chocolate;
+                                menu = Choco;
                                 cafetera.comprobarPrecio();
 
                                 cafetera.mostrarInformacion(menu, descafeinado, Azucar);
@@ -215,9 +215,11 @@ public class MenuInterfaz {
 
                         do {
                             System.out.println("Introduce usuario");
-                            usuario = entrada.next();
+//                            usuario = entrada.next();
+                            usuario = "salva";
                             System.out.println("Introduce contraseña");
-                            pass = entrada.nextInt();
+//                            pass = entrada.nextInt();
+                            pass = 1234;
 
                             cont++;
 
@@ -228,12 +230,10 @@ public class MenuInterfaz {
                             System.out.println("Lo sentimos, pero el login no se ha podido realizan con exito");
                         } else {
                             System.out.println("Correcto");
-                            
-                            //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+
                             //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
                             //Consultar saldo de ventas realizadas.
                             //Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
-
                             System.out.println("1. Comprobar depósitos");
                             System.out.println("2. Comprobar estado general");
                             System.out.println("3. Consultar saldo de ventas realizadas.");
@@ -243,9 +243,26 @@ public class MenuInterfaz {
 //-------------------------------------------------------------------------------------------------------------------------
 
                             switch (opcionAdmin) {
+ //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+
                                 case 1:
-                                    if (true) {
-                                        
+                                    if (cafe.isReserva()) {
+                                        System.out.println(cafe);
+
+                                    } else if (cafeDescafeinado.isReserva()) {
+                                        System.out.println(cafeDescafeinado);
+
+                                    } else if (azucar.isReserva()) {
+                                        System.out.println(azucar);
+
+                                    } else if (chocolate.isReserva()) {
+                                        System.out.println(chocolate);
+
+                                    } else if (agua.isReserva()) {
+                                        System.out.println(agua);
+
+                                    } else if (leche.isReserva()) {
+                                        System.out.println(leche);
                                     }
                                     break;
                                 case 2:
