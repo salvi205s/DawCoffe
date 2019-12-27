@@ -243,7 +243,7 @@ public class MenuInterfaz {
 //-------------------------------------------------------------------------------------------------------------------------
 
                             switch (opcionAdmin) {
- //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+                                //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
 
                                 case 1:
                                     if (cafe.isReserva()) {
@@ -266,6 +266,13 @@ public class MenuInterfaz {
                                     }
                                     break;
                                 case 2:
+                                    System.out.println("Comprobando estado general");
+                                    System.out.println(cafe);
+                                    System.out.println(cafeDescafeinado);
+                                    System.out.println(azucar);
+                                    System.out.println(chocolate);
+                                    System.out.println(agua);
+                                    System.out.println(leche);
 
                                     break;
                                 case 3:
