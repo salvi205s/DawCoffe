@@ -16,7 +16,7 @@ public class Programa {
 //        MenuInterfaz menu=new MenuInterfaz();
 //        
 //        menu.menu();
-MenuInterfaz.menu();
+        MenuInterfaz.menu();
 
     }
 }
