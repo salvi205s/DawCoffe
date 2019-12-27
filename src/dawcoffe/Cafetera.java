@@ -5,6 +5,7 @@
  */
 package dawcoffe;
 
+import java.awt.Menu;
 import java.util.Scanner;
 
 /**
