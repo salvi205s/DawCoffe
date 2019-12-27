@@ -23,4 +23,14 @@ public class Usuario {
 
         return login;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public int getPassword() {
+        return password;
+    }
+    
+    
 }
