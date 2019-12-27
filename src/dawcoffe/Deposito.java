@@ -29,16 +29,22 @@ public class Deposito {
     //reponer el contenido
     public void llenarDeposito(double cantidad) {
 
-        if (cantidad+cantidadActual > cantidadMax) {
+        if (cantidad + cantidadActual > cantidadMax) {
             this.cantidadActual = cantidadMax;
 
         }
 
         this.cantidadActual += cantidad;
+        if (cantidadActual == cantidadMax) {
+            this.reserva = false;
+        }
     }
 
     public void llenarDepositoCompleto() {
         this.cantidadActual = cantidadMax;
+        if (cantidadActual == cantidadMax) {
+            this.reserva = false;
+        }
     }
 
     public void servirContenido(int cantidad) {
@@ -54,6 +60,10 @@ public class Deposito {
 
         return this.reserva;
 
+    }
+
+    public void setReserva(boolean reserva) {
+        this.reserva = reserva;
     }
 
     //getters y setters
