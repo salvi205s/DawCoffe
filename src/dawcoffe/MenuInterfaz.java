@@ -47,8 +47,8 @@ public class MenuInterfaz {
 
                 System.out.println("1. Venta de productos");
                 System.out.println("2. Administración de la cafetera");
-//            opcion = entrada.nextInt();
-                opcion = 2;
+            opcion = entrada.nextInt();
+//                opcion = 2;
 
                 switch (opcion) {
                     case 1:
@@ -66,7 +66,8 @@ public class MenuInterfaz {
                         //introduce el dinero
                         System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
 
-                        cafetera.setSaldoCliente(2);
+                        saldoCliente+=entrada.nextDouble();
+                        cafetera.setSaldoCliente(saldoCliente);
 //----------------------------------------------------------------------
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
@@ -201,7 +202,9 @@ public class MenuInterfaz {
                                 System.out.println("Esa opcion no se contempla");
                                 opcion = 0;
                         }
+                        
                         cafetera.setSaldoCliente(0);
+                                System.out.println("El saldo del cliente es: "+cafetera.getSaldoCliente());
 
                         //Fin del case 1
                         //--------------------------------------------
@@ -231,7 +234,6 @@ public class MenuInterfaz {
                         } else {
                             System.out.println("Correcto");
 
-                            //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
                             //Consultar saldo de ventas realizadas.
                             //Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
                             System.out.println("1. Comprobar depósitos");
@@ -266,6 +268,7 @@ public class MenuInterfaz {
                                     }
                                     break;
                                 case 2:
+//Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
                                     System.out.println("Comprobando estado general");
                                     System.out.println(cafe);
                                     System.out.println(cafeDescafeinado);
@@ -273,9 +276,15 @@ public class MenuInterfaz {
                                     System.out.println(chocolate);
                                     System.out.println(agua);
                                     System.out.println(leche);
+                                    System.out.println("Usuario: " + user.getUsername());
+                                    System.out.println("Contraseña: " + user.getPassword());
 
                                     break;
                                 case 3:
+                                    //Consultar saldo de ventas realizadas.
+
+                                    System.out.println("Consultando saldo de ventas realizadas");
+                                    System.out.println("El numero de ventas es: "+cafetera.getNumVentas()+"\nEl saldo acumulado es: " + cafetera.getSaldoAcumulado());
 
                                     break;
                             }
