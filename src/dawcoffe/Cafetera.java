@@ -21,25 +21,24 @@ public class Cafetera {
 
     private int numVentas;
 
-    public void crearDepositos() {
-        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
-        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-        Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-        Deposito agua = new Deposito(1000, 250, 1000, "agua");
-        Deposito leche = new Deposito(1000, 250, 1000, "leche");
+        
+//        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
+//        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
+//        Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
+//        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
+//        Deposito agua = new Deposito(1000, 250, 1000, "agua");
+//        Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
+  
+    
+
+    public void consultarDepositos(Deposito deposito) {
+
+        System.out.println(deposito);
     }
 
-//    public void consultarDepositos(Deposito deposito) {
-//
-//    }
-
     public void comprobarPrecio() {
-        System.out.println("....................................\npor aqui");
         //si ha introducido el precio minimo para el articulo
-        System.out.println("saldo cliente " + this.saldoCliente);
-        System.out.println("precio " + this.precio);
 
         while (getSaldoCliente() <= precio) {
             System.out.println("Saldo insuficiente " + this.saldoCliente);
@@ -97,11 +96,6 @@ public class Cafetera {
 
     public int getNumVentas() {
         return numVentas;
-    }
-
-    @Override
-    public String toString() {
-        return "Cafetera{" + "saldoAcumulado=" + saldoAcumulado + ", saldoCliente=" + saldoCliente + ", precio=" + precio + ", numVentas=" + numVentas + ", cafe=" + cafe + ", cafeDescafeinado=" + cafeDescafeinado + ", azucar=" + azucar + ", chocolate=" + chocolate + ", agua=" + agua + ", leche=" + leche + '}';
     }
 
 }
