@@ -17,7 +17,7 @@ public class MenuInterfaz {
     private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
     private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
     private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-    private Deposito agua = new Deposito(1000, 250, 100, "agua");
+    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
     private Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
     public void menu() {
@@ -62,20 +62,17 @@ public class MenuInterfaz {
                         System.out.println(lecheCaliente);
                         codigo = entrada.nextInt();
 
-//----------------------------------------------------------------------
                         //introduce el dinero
                         System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
 
                         saldoCliente += entrada.nextDouble();
                         cafetera.setSaldoCliente(saldoCliente);
-//----------------------------------------------------------------------
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
                         //decide si descafeinado o no
                         if (codigo > 100 && codigo <= 104) {
                             System.out.println("Lo quiere descafeinado SI/NO");
-//                        descafeinado = entrada.next();
-                            descafeinado = "Si";
+                        descafeinado = entrada.next();
                             do {
                                 if (descafeinado.equalsIgnoreCase("SI")) {
                                     descafeinado = "SI";
@@ -125,6 +122,7 @@ public class MenuInterfaz {
                                 break;
                         }
                         //Muestra el pedido del cliente....
+                        System.out.println("................................................");
                         switch (codigo) {
                             case 101:
                                 cafetera.setPrecio(0.80);
@@ -241,6 +239,7 @@ public class MenuInterfaz {
                         }
 
                         cafetera.setSaldoCliente(0);
+                        saldoCliente=0;
                         System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
 
                         //Fin del case 1
@@ -385,6 +384,7 @@ public class MenuInterfaz {
                         System.out.println(
                                 "Esa opcion no se contempla");
                 }
+                        System.out.println("................................................");
 
             } while (opcion < 1 || opcion > 2);
 
