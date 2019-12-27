@@ -80,4 +80,9 @@ public class Deposito {
         this.contenido = contenido;
     }
 
+    @Override
+    public String toString() {
+        return "Deposito{" + "cantidadMax=" + cantidadMax + ", cantidadUmbral=" + cantidadUmbral + ", cantidadActual=" + cantidadActual + ", contenido=" + contenido + ", reserva=" + reserva + '}';
+    }
+
 }
