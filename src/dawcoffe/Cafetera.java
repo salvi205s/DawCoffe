@@ -30,17 +30,21 @@ public class Cafetera {
 //        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
 //        Deposito agua = new Deposito(1000, 250, 1000, "agua");
 //        Deposito leche = new Deposito(1000, 250, 1000, "leche");
-    
     //metodo para comprobar el precio del articulo
     public void comprobarPrecio() {
-        
+
         //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
         while (getSaldoCliente() <= precio) {
-            
+
             System.out.println("Saldo insuficiente " + this.saldoCliente);
             //introduce el dinero
             System.out.println("Introduzca mas monedas");
-            setSaldoCliente(entrada.nextDouble());
+            System.out.println("saldoCliente " + getSaldoCliente());
+
+            saldoCliente += entrada.nextDouble();
+            setSaldoCliente(saldoCliente);
+            System.out.println("saldoCliente " + getSaldoCliente());
+
         };
 
     }
