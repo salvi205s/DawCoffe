@@ -254,7 +254,8 @@ public class MenuInterfaz {
 
                         cafetera.setSaldoCliente(0);
                         saldoCliente = 0;
-                        System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
+                        System.out.println("Vuelva pronto. \nQue tenga un buen dia");
+//                        System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
 
                         //Fin del case 1
 //-------------------------------------------------------------------------------------------------------------------------------
