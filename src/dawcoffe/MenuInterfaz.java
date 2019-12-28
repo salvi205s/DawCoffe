@@ -223,17 +223,6 @@ public class MenuInterfaz {
                                 chocolate.servirContenido(12);
                                 leche.servirContenido(180);
                                 break;
-                            case 201:
-                                cafetera.setPrecio(0.50);
-
-                                menu = lecheCaliente;
-
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
-
-                                //resta la cantidad de leche al deposito
-                                leche.servirContenido(180);
-
-                                break;
 
                             case 300:
                                 cafetera.setPrecio(0.50);
@@ -246,9 +235,19 @@ public class MenuInterfaz {
                                 leche.servirContenido(180);
 
                                 break;
+                            case 301:
+                                cafetera.setPrecio(0.50);
 
+                                menu = lecheCaliente;
+
+                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+
+                                //resta la cantidad de leche al deposito
+                                leche.servirContenido(180);
+
+                                break;
                             default:
-                                System.out.println("Esa opcion no se contempla");
+                                System.out.println("Esa opcion no se contempla3");
                                 opcion = 0;
                         }
 
@@ -401,7 +400,7 @@ public class MenuInterfaz {
                                         break;
                                     default:
                                         System.out.println(
-                                                "Esa opcion no se contempla");
+                                                "Esa opcion no se contempla1");
                                 }
                             } while (opcionAdmin != 5);
                         } //Fin del case 2
@@ -411,7 +410,7 @@ public class MenuInterfaz {
 
                     default:
                         System.out.println(
-                                "Esa opcion no se contempla");
+                                "Esa opcion no se contempla2");
                 }
                 System.out.println("................................................");
 
