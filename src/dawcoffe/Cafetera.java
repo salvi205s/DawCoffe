@@ -22,7 +22,7 @@ public class Cafetera {
             saldoCliente = 0,
             precio;
 
-    private int numVentas;
+    private int numVentas=0;
 
 //        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
 //        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
@@ -65,7 +65,7 @@ public class Cafetera {
             //suma el saldo al saldoAcumulado
             setSaldoAcumulado(this.precio);
             //incrementa en 1 el numero de ventas
-            setNumVentas(+1);
+            setNumVentas(1);
         }
     }
 
@@ -83,7 +83,7 @@ public class Cafetera {
     }
 
     public void setNumVentas(int numVentas) {
-        this.numVentas = numVentas;
+        this.numVentas += numVentas;
     }
 
     public double getSaldoAcumulado() {
