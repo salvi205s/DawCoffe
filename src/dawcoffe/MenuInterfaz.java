@@ -87,7 +87,6 @@ public class MenuInterfaz {
 //                            } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
 //
 //                        }
-                        
                         cafetera.restarAzucar();
                         //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
 //                        if (cafetera.getSaldoCliente() >= 0.50) {
@@ -336,43 +335,47 @@ public class MenuInterfaz {
                                             System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
                                             llenarDeposito = entrada.nextInt();
                                         } while (llenarDeposito < 1 || llenarDeposito > 2);
+                                        //-------------------------------------------------------------------------------------------------------------------------
+                                        cafetera.rellenarDeposito(opcionDeposito, llenarDeposito);
+                                        
+//                                        if (opcionDeposito == 1 && llenarDeposito == 1) {
+//                                            cafe.llenarDepositoCompleto();
+//                                        } else if (opcionDeposito == 1 && llenarDeposito == 2) {
+//                                            System.out.println("Introduzca la cantidad");
+//                                            cafe.llenarDeposito(entrada.nextDouble());
+//                                        } //-------------------------------
+//                                        else if (opcionDeposito == 2 && llenarDeposito == 1) {
+//                                            cafeDescafeinado.llenarDepositoCompleto();
+//                                        } else if (opcionDeposito == 2 && llenarDeposito == 2) {
+//                                            System.out.println("Introduzca la cantidad");
+//                                            cafeDescafeinado.llenarDeposito(entrada.nextDouble());
+//                                        } //-------------------------------
+//                                        else if (opcionDeposito == 3 && llenarDeposito == 1) {
+//                                            azucar.llenarDepositoCompleto();
+//                                        } else if (opcionDeposito == 3 && llenarDeposito == 2) {
+//                                            System.out.println("Introduzca la cantidad");
+//                                            azucar.llenarDeposito(entrada.nextDouble());
+//                                        } //-------------------------------
+//                                        else if (opcionDeposito == 4 && llenarDeposito == 1) {
+//                                            chocolate.llenarDepositoCompleto();
+//                                        } else if (opcionDeposito == 4 && llenarDeposito == 2) {
+//                                            System.out.println("Introduzca la cantidad");
+//                                            chocolate.llenarDeposito(entrada.nextDouble());
+//                                        } //-------------------------------
+//                                        else if (opcionDeposito == 5 && llenarDeposito == 1) {
+//                                            agua.llenarDepositoCompleto();
+//                                        } else if (opcionDeposito == 5 && llenarDeposito == 2) {
+//                                            System.out.println("Introduzca la cantidad");
+//                                            agua.llenarDeposito(entrada.nextDouble());
+//                                        } //-------------------------------
+//                                        else if (opcionDeposito == 6 && llenarDeposito == 1) {
+//                                            leche.llenarDepositoCompleto();
+//                                        } else if (opcionDeposito == 6 && llenarDeposito == 2) {
+//                                            System.out.println("Introduzca la cantidad");
+//                                            leche.llenarDeposito(entrada.nextDouble());
+//                                        }
+//-------------------------------------------------------------------------------------------------------------------------
 
-                                        if (opcionDeposito == 1 && llenarDeposito == 1) {
-                                            cafe.llenarDepositoCompleto();
-                                        } else if (opcionDeposito == 1 && llenarDeposito == 2) {
-                                            System.out.println("Introduzca la cantidad");
-                                            cafe.llenarDeposito(entrada.nextDouble());
-                                        } //-------------------------------
-                                        else if (opcionDeposito == 2 && llenarDeposito == 1) {
-                                            cafeDescafeinado.llenarDepositoCompleto();
-                                        } else if (opcionDeposito == 2 && llenarDeposito == 2) {
-                                            System.out.println("Introduzca la cantidad");
-                                            cafeDescafeinado.llenarDeposito(entrada.nextDouble());
-                                        } //-------------------------------
-                                        else if (opcionDeposito == 3 && llenarDeposito == 1) {
-                                            azucar.llenarDepositoCompleto();
-                                        } else if (opcionDeposito == 3 && llenarDeposito == 2) {
-                                            System.out.println("Introduzca la cantidad");
-                                            azucar.llenarDeposito(entrada.nextDouble());
-                                        } //-------------------------------
-                                        else if (opcionDeposito == 4 && llenarDeposito == 1) {
-                                            chocolate.llenarDepositoCompleto();
-                                        } else if (opcionDeposito == 4 && llenarDeposito == 2) {
-                                            System.out.println("Introduzca la cantidad");
-                                            chocolate.llenarDeposito(entrada.nextDouble());
-                                        } //-------------------------------
-                                        else if (opcionDeposito == 5 && llenarDeposito == 1) {
-                                            agua.llenarDepositoCompleto();
-                                        } else if (opcionDeposito == 5 && llenarDeposito == 2) {
-                                            System.out.println("Introduzca la cantidad");
-                                            agua.llenarDeposito(entrada.nextDouble());
-                                        } //-------------------------------
-                                        else if (opcionDeposito == 6 && llenarDeposito == 1) {
-                                            leche.llenarDepositoCompleto();
-                                        } else if (opcionDeposito == 6 && llenarDeposito == 2) {
-                                            System.out.println("Introduzca la cantidad");
-                                            leche.llenarDeposito(entrada.nextDouble());
-                                        }
                                         break;
                                     case 5:
                                         System.out.println("Saliendo de la administracion");
