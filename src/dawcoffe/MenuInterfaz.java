@@ -276,36 +276,38 @@ public class MenuInterfaz {
                                     //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
 
                                     case 1:
-                                        if (cafe.isReserva()) {
-                                            System.out.println(cafe);
-
-                                        } else if (cafeDescafeinado.isReserva()) {
-                                            System.out.println(cafeDescafeinado);
-
-                                        } else if (azucar.isReserva()) {
-                                            System.out.println(azucar);
-
-                                        } else if (chocolate.isReserva()) {
-                                            System.out.println(chocolate);
-
-                                        } else if (agua.isReserva()) {
-                                            System.out.println(agua);
-
-                                        } else if (leche.isReserva()) {
-                                            System.out.println(leche);
-                                        } else {
-                                            System.out.println("No hay depositos en reserva");
-                                        }
+                                        cafetera.reserva();
+//                                        if (cafe.isReserva()) {
+//                                            System.out.println(cafe);
+//
+//                                        } else if (cafeDescafeinado.isReserva()) {
+//                                            System.out.println(cafeDescafeinado);
+//
+//                                        } else if (azucar.isReserva()) {
+//                                            System.out.println(azucar);
+//
+//                                        } else if (chocolate.isReserva()) {
+//                                            System.out.println(chocolate);
+//
+//                                        } else if (agua.isReserva()) {
+//                                            System.out.println(agua);
+//
+//                                        } else if (leche.isReserva()) {
+//                                            System.out.println(leche);
+//                                        } else {
+//                                            System.out.println("No hay depositos en reserva");
+//                                        }
                                         break;
                                     case 2:
                                         //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
-                                        System.out.println("Comprobando estado general");
-                                        System.out.println(cafe);
-                                        System.out.println(cafeDescafeinado);
-                                        System.out.println(azucar);
-                                        System.out.println(chocolate);
-                                        System.out.println(agua);
-                                        System.out.println(leche);
+//                                        System.out.println("Comprobando estado general");
+//                                        System.out.println(cafe);
+//                                        System.out.println(cafeDescafeinado);
+//                                        System.out.println(azucar);
+//                                        System.out.println(chocolate);
+//                                        System.out.println(agua);
+//                                        System.out.println(leche);
+                                        cafetera.estadoGeneral();
                                         System.out.println("Usuario: " + user.getUsername());
                                         System.out.println("Contraseña: " + user.getPassword());
 
