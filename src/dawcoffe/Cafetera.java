@@ -56,7 +56,7 @@ public class Cafetera {
 
         //si el precio es mayor o igual al del articulo muestra la informacion
         if (getSaldoCliente() >= getPrecio()) {
-            System.out.println("Ha elegido " + opcion);
+//            System.out.println("Ha elegido " + opcion);
 //            System.out.println("Descafeinado: " + opcionDescafeinado);
 //            System.out.println("Con " + cantAzucar + " azucar");
 
@@ -68,6 +68,16 @@ public class Cafetera {
             //incrementa en 1 el numero de ventas
             setNumVentas(1);
         }
+    }
+
+    public boolean informarFaltaExistencias() {
+        boolean faltaExistencias = false;
+        
+        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
+            System.out.println("Lo sentimos pero no podemos, servirle");
+            faltaExistencias = true;
+        }
+        return faltaExistencias;
     }
 
     //metodos para restar el contenido de los depositos
@@ -232,7 +242,7 @@ public class Cafetera {
         System.out.println(leche);
     }
 
-    public void rellenarDeposito(int opcionDeposito, int llenarDeposito ) {
+    public void rellenarDeposito(int opcionDeposito, int llenarDeposito) {
         if (opcionDeposito == 1 && llenarDeposito == 1) {
             cafe.llenarDepositoCompleto();
         } else if (opcionDeposito == 1 && llenarDeposito == 2) {
