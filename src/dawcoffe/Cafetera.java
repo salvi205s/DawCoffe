@@ -50,14 +50,14 @@ public class Cafetera {
     }
 
     //muestra informacion del producto elegido
-    public void mostrarInformacion(String opcion, /*String opcionDescafeinado,*/ String cantAzucar) {
+    public void mostrarInformacion(String opcion/*, String opcionDescafeinado, String cantAzucar*/) {
         double cambio = 0;
 
         //si el precio es mayor o igual al del articulo muestra la informacion
         if (getSaldoCliente() >= getPrecio()) {
             System.out.println("Ha elegido " + opcion);
 //            System.out.println("Descafeinado: " + opcionDescafeinado);
-            System.out.println("Con " + cantAzucar + " azucar");
+//            System.out.println("Con " + cantAzucar + " azucar");
 
             //calcula el cambio a devolver
             cambio = getSaldoCliente() - this.precio;
@@ -132,6 +132,7 @@ public class Cafetera {
 
 //            leche.servirContenido(10);
         }
+
     }
 
     public void restarChocolate() {
@@ -139,6 +140,60 @@ public class Cafetera {
         chocolate.servirContenido(12);
 
         restarLeche(180);
+    }
+
+    public void restarAzucar() {
+        Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
+        int cantidadAzucar = 0;
+        String Azucar = null;
+
+        if (getSaldoCliente() >= 0.50) {
+            System.out.println("Cuanta azucar quiere");
+            System.out.println("1. ninguna");
+            System.out.println("2. poca");
+            System.out.println("3. mucha");
+            cantidadAzucar = entrada.nextInt();
+
+            //resta el contenido de azucar al deposito
+            switch (cantidadAzucar) {
+                case 1:
+                    azucar.servirContenido(0);
+                    break;
+                case 2:
+                    if (azucar.getCantidadActual() < 6) {
+                        System.out.println("Lo sentimos pero no, queda azucar");
+                        azucar.servirContenido(0);
+                    }
+                    azucar.servirContenido(6);
+                    break;
+                case 3:
+                    if (azucar.getCantidadActual() < 12) {
+                        System.out.println("Lo sentimos pero solo queda: " + azucar.getCantidadActual());
+
+                        int azucarRestante = (int) azucar.getCantidadActual();
+                        azucar.servirContenido(azucarRestante);
+
+                    }
+                    azucar.servirContenido(12);
+
+                    break;
+            }
+
+        }
+        //guarda string de cantidad de azucar, para mostrarlo luego
+        switch (cantidadAzucar) {
+            case 1:
+                Azucar = "ninguna";
+                break;
+            case 2:
+                Azucar = "poca";
+
+                break;
+            case 3:
+                Azucar = "mucha";
+
+                break;
+        }
     }
 
     //getters y setters
