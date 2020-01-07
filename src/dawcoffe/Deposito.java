@@ -102,7 +102,7 @@ public class Deposito {
 
     @Override
     public String toString() {
-        return  "Deposito de "+contenido+ " cantidadMax=" + cantidadMax + ", cantidadUmbral=" + cantidadUmbral + ", cantidadActual=" + cantidadActual +  ", reserva=" + reserva ;
+        return  "Deposito de "+contenido+ "\ncantidadMax=" + cantidadMax + "\ncantidadUmbral=" + cantidadUmbral + "\ncantidadActual=" + cantidadActual +  "\nreserva=" + reserva +"\n................................";
     }
 
 }
