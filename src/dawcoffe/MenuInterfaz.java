@@ -16,7 +16,7 @@ public class MenuInterfaz {
 //    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
 //    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
     private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
+//    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
 //    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
 //    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
@@ -179,12 +179,11 @@ public class MenuInterfaz {
 
                                 menu = cafe4;
                                 cafetera.comprobarPrecio();
-                                
+
                                 cafetera.restarCafe(codigo);
 
                                 cafetera.mostrarInformacion(menu, Azucar);
 
-                               
                                 break;
                             case 200:
                                 cafetera.setPrecio(1.40);
@@ -192,11 +191,12 @@ public class MenuInterfaz {
                                 menu = Choco;
                                 cafetera.comprobarPrecio();
 
+                                cafetera.restarChocolate();
                                 cafetera.mostrarInformacion(menu, Azucar);
 
                                 //resta la cantidad de chocolate al deposito
-                                chocolate.servirContenido(12);
-                                leche.servirContenido(180);
+//                                chocolate.servirContenido(12);
+//                                leche.servirContenido(180);
                                 break;
 
                             case 300:
@@ -204,25 +204,27 @@ public class MenuInterfaz {
 
                                 menu = lecheFria;
 
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+                                cafetera.mostrarInformacion(menu, Azucar);
+                                cafetera.restarLeche(180);
 
                                 //resta la cantidad de leche al deposito
-                                leche.servirContenido(180);
-
+//                                leche.servirContenido(180);
                                 break;
                             case 301:
                                 cafetera.setPrecio(0.50);
 
                                 menu = lecheCaliente;
 
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+                                cafetera.mostrarInformacion(menu, Azucar);
 
                                 //resta la cantidad de leche al deposito
-                                leche.servirContenido(180);
+                                cafetera.restarLeche(180);
+
+//                                leche.servirContenido(180);
 
                                 break;
                             default:
-                                System.out.println("Esa opcion no se contempla3");
+                                System.out.println("Esa opcion no se contempla");
                                 opcion = 0;
                         }
 
