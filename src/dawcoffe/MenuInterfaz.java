@@ -13,18 +13,18 @@ import java.util.Scanner;
  */
 public class MenuInterfaz {
 
-    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
-    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
+//    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
+//    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
     private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
     private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
-    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
+//    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
+//    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
     public void menu() {
         Scanner entrada = new Scanner(System.in);
         int codigo;
         int opcion;
-        String descafeinado = null;
+//        String descafeinado = null;
         Cafetera cafetera = new Cafetera();
         int cantidadAzucar = 0;
         String Azucar = null;
@@ -61,11 +61,11 @@ public class MenuInterfaz {
                         System.out.println(lecheCaliente);
                         codigo = entrada.nextInt();
 
-                        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
-                            System.out.println("Lo sentimos pero no podemos, servirle");
-                            break;
-
-                        }
+//                        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
+//                            System.out.println("Lo sentimos pero no podemos, servirle");
+//                            break;
+//
+//                        }
                         //introduce el dinero
                         System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
 
@@ -74,18 +74,18 @@ public class MenuInterfaz {
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
                         //decide si descafeinado o no
-                        if (codigo > 100 && codigo <= 104) {
-                            System.out.println("Lo quiere descafeinado SI/NO");
-                            descafeinado = entrada.next();
-                            do {
-                                if (descafeinado.equalsIgnoreCase("SI")) {
-                                    descafeinado = "SI";
-                                } else {
-                                    descafeinado = "NO";
-                                }
-                            } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
-
-                        }
+//                        if (codigo > 100 && codigo <= 104) {
+//                            System.out.println("Lo quiere descafeinado SI/NO");
+//                            descafeinado = entrada.next();
+//                            do {
+//                                if (descafeinado.equalsIgnoreCase("SI")) {
+//                                    descafeinado = "SI";
+//                                } else {
+//                                    descafeinado = "NO";
+//                                }
+//                            } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
+//
+//                        }
                         //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
                         if (cafetera.getSaldoCliente() >= 0.50) {
                             System.out.println("Cuanta azucar quiere");
@@ -135,7 +135,6 @@ public class MenuInterfaz {
 
                                 break;
                         }
-//-------------------------------------------------------------------------------------------------------------------------------
                         //Muestra el pedido del cliente....
                         System.out.println("................................................");
                         switch (codigo) {
@@ -146,16 +145,12 @@ public class MenuInterfaz {
                                 //si ha introducido el precio minimo para el articulo
                                 cafetera.comprobarPrecio();
 
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
 //----------------------------------------------------------------------
                                 //resta la cantidad de cafe,y agua 
-                                if (descafeinado.equalsIgnoreCase("si")) {
-                                    cafeDescafeinado.servirContenido(8);
-                                } else {
-                                    cafe.servirContenido(8);
+                                cafetera.restarCafe(codigo);
+                                cafetera.mostrarInformacion(menu, Azucar);
 
-                                }
-                                agua.servirContenido(50);
+//-------------------------------------------------------------------------------------------------------------------------------
                                 break;
                             case 102:
                                 cafetera.setPrecio(0.90);
@@ -163,16 +158,10 @@ public class MenuInterfaz {
                                 menu = cafe2;
                                 cafetera.comprobarPrecio();
 
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
-
                                 //resta la cantidad de cafe,y agua 
-                                if (descafeinado.equalsIgnoreCase("si")) {
-                                    cafeDescafeinado.servirContenido(8);
-                                } else {
-                                    cafe.servirContenido(8);
+                                cafetera.restarCafe(codigo);
+                                cafetera.mostrarInformacion(menu, Azucar);
 
-                                }
-                                agua.servirContenido(80);
                                 break;
                             case 103:
                                 cafetera.setPrecio(1.10);
@@ -180,17 +169,9 @@ public class MenuInterfaz {
                                 menu = cafe3;
                                 cafetera.comprobarPrecio();
 
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+                                cafetera.restarCafe(codigo);
 
-                                //resta la cantidad de cafe,y agua 
-                                if (descafeinado.equalsIgnoreCase("si")) {
-                                    cafeDescafeinado.servirContenido(8);
-                                } else {
-                                    cafe.servirContenido(8);
-
-                                }
-                                agua.servirContenido(50);
-                                leche.servirContenido(20);
+                                cafetera.mostrarInformacion(menu, Azucar);
 
                                 break;
                             case 104:
@@ -198,18 +179,12 @@ public class MenuInterfaz {
 
                                 menu = cafe4;
                                 cafetera.comprobarPrecio();
+                                
+                                cafetera.restarCafe(codigo);
 
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+                                cafetera.mostrarInformacion(menu, Azucar);
 
-                                //resta la cantidad de cafe, agua, leche y azucar al deposito
-                                if (descafeinado.equalsIgnoreCase("si")) {
-                                    cafeDescafeinado.servirContenido(8);
-                                } else {
-                                    cafe.servirContenido(8);
-
-                                }
-                                agua.servirContenido(50);
-                                leche.servirContenido(10);
+                               
                                 break;
                             case 200:
                                 cafetera.setPrecio(1.40);
@@ -217,7 +192,7 @@ public class MenuInterfaz {
                                 menu = Choco;
                                 cafetera.comprobarPrecio();
 
-                                cafetera.mostrarInformacion(menu, descafeinado, Azucar);
+                                cafetera.mostrarInformacion(menu, Azucar);
 
                                 //resta la cantidad de chocolate al deposito
                                 chocolate.servirContenido(12);
@@ -253,6 +228,7 @@ public class MenuInterfaz {
 
                         cafetera.setSaldoCliente(0);
                         saldoCliente = 0;
+                        System.out.println("");
                         System.out.println("Vuelva pronto. \nQue tenga un buen dia");
 //                        System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
 
