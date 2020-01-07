@@ -22,7 +22,7 @@ public class Cafetera {
             saldoCliente = 0,
             precio;
 
-    private int numVentas=0;
+    private int numVentas = 0;
 
 //        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
 //        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
@@ -50,13 +50,13 @@ public class Cafetera {
     }
 
     //muestra informacion del producto elegido
-    public void mostrarInformacion(String opcion, String opcionDescafeinado, String cantAzucar) {
+    public void mostrarInformacion(String opcion, /*String opcionDescafeinado,*/ String cantAzucar) {
         double cambio = 0;
 
         //si el precio es mayor o igual al del articulo muestra la informacion
         if (getSaldoCliente() >= getPrecio()) {
             System.out.println("Ha elegido " + opcion);
-            System.out.println("Descafeinado: " + opcionDescafeinado);
+//            System.out.println("Descafeinado: " + opcionDescafeinado);
             System.out.println("Con " + cantAzucar + " azucar");
 
             //calcula el cambio a devolver
@@ -66,6 +66,71 @@ public class Cafetera {
             setSaldoAcumulado(this.precio);
             //incrementa en 1 el numero de ventas
             setNumVentas(1);
+        }
+    }
+
+    //metodos para restar el contenido de los depositos
+    public void restarLeche(int cantidad) {
+        Deposito leche = new Deposito(1000, 250, 1000, "leche");
+        leche.servirContenido(cantidad);
+
+    }
+
+    //metodo deposito de cafe
+    public void restarCafe(int codigo) {
+        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
+        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
+        Deposito agua = new Deposito(1000, 250, 1000, "agua");
+        String descafeinado = null;
+
+        //decide si descafeinado o no
+        System.out.println("Lo quiere descafeinado SI/NO");
+        descafeinado = entrada.next();
+        do {
+            if (descafeinado.equalsIgnoreCase("SI")) {
+                descafeinado = "SI";
+            } else {
+                descafeinado = "NO";
+            }
+        } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
+
+        if (codigo == 101) {
+            if (descafeinado.equalsIgnoreCase("si")) {
+                cafeDescafeinado.servirContenido(8);
+            } else {
+                cafe.servirContenido(8);
+
+            }
+            agua.servirContenido(50);
+        } else if (codigo == 102) {
+            if (descafeinado.equalsIgnoreCase("si")) {
+                cafeDescafeinado.servirContenido(8);
+            } else {
+                cafe.servirContenido(8);
+
+            }
+            agua.servirContenido(80);
+        } else if (codigo == 103) {
+            if (descafeinado.equalsIgnoreCase("si")) {
+                cafeDescafeinado.servirContenido(8);
+            } else {
+                cafe.servirContenido(8);
+
+            }
+            agua.servirContenido(50);
+            restarLeche(20);
+//            leche.servirContenido(20);
+        } else if (codigo == 104) {
+            if (descafeinado.equalsIgnoreCase("si")) {
+                cafeDescafeinado.servirContenido(8);
+            } else {
+                cafe.servirContenido(8);
+
+            }
+            agua.servirContenido(50);
+            restarLeche(20);
+
+//            leche.servirContenido(10);
         }
     }
 
