@@ -11,25 +11,25 @@ package dawcoffe;
  */
 public class Usuario {
 
-    private String username = "salva";
-    private int password = 1234;
+    private final String USER_NAME = "salva";
+    private final int PASSWORD = 1234;
 
     public boolean identificacion(String usuario, int pass) {
         boolean login = false;
 
-        if (this.username.equals(usuario) && this.password == pass) {
+        if (this.USER_NAME.equals(usuario) && this.PASSWORD == pass) {
             login = true;
         }
 
         return login;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUSER_NAME() {
+        return USER_NAME;
     }
 
-    public int getPassword() {
-        return password;
+    public int getPASSWORD() {
+        return PASSWORD;
     }
     
     
