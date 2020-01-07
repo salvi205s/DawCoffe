@@ -60,7 +60,9 @@ public class MenuInterfaz {
                         System.out.println(lecheCaliente);
                         codigo = entrada.nextInt();
 
-                        //pendiente,pendiente,pendiente,pendiente,pendiente,pendiente,pendiente,pendiente,
+                        if (cafetera.informarFaltaExistencias()) {
+                            break;
+                        }
 //                        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
 //                            System.out.println("Lo sentimos pero no podemos, servirle");
 //                            break;
@@ -73,7 +75,6 @@ public class MenuInterfaz {
                         cafetera.setSaldoCliente(saldoCliente);
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
-                        //pendiente,pendiente,pendiente,pendiente,pendiente,pendiente,pendiente,pendiente,
                         //decide si descafeinado o no
 //                        if (codigo > 100 && codigo <= 104) {
 //                            System.out.println("Lo quiere descafeinado SI/NO");
@@ -307,8 +308,8 @@ public class MenuInterfaz {
 //                                        System.out.println(agua);
 //                                        System.out.println(leche);
                                         cafetera.estadoGeneral();
-                                        System.out.println("Usuario: " + user.getUsername());
-                                        System.out.println("Contraseña: " + user.getPassword());
+                                        System.out.println("Usuario: " + user.getUSER_NAME());
+                                        System.out.println("Contraseña: " + user.getPASSWORD());
 
                                         break;
                                     case 3:
