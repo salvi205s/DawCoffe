@@ -24,12 +24,13 @@ public class Cafetera {
 
     private int numVentas = 0;
 
-//        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
-//        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-//        Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-//        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-//        Deposito agua = new Deposito(1000, 250, 1000, "agua");
-//        Deposito leche = new Deposito(1000, 250, 1000, "leche");
+    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
+    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
+    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
+    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
+    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
+    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
+
     //metodo para comprobar el precio del articulo
     public void comprobarPrecio() {
 
@@ -71,16 +72,13 @@ public class Cafetera {
 
     //metodos para restar el contenido de los depositos
     public void restarLeche(int cantidad) {
-        Deposito leche = new Deposito(1000, 250, 1000, "leche");
         leche.servirContenido(cantidad);
 
     }
 
     //metodo deposito de cafe
     public void restarCafe(int codigo) {
-        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
-        Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-        Deposito agua = new Deposito(1000, 250, 1000, "agua");
+
         String descafeinado = null;
 
         //decide si descafeinado o no
@@ -89,8 +87,11 @@ public class Cafetera {
         do {
             if (descafeinado.equalsIgnoreCase("SI")) {
                 descafeinado = "SI";
+                System.out.println("Ha elegido: cafe descafeinado");
             } else {
                 descafeinado = "NO";
+                System.out.println("Ha elegido: cafe con cafeina");
+
             }
         } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
 
@@ -136,14 +137,12 @@ public class Cafetera {
     }
 
     public void restarChocolate() {
-        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
         chocolate.servirContenido(12);
 
         restarLeche(180);
     }
 
     public void restarAzucar() {
-        Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
         int cantidadAzucar = 0;
         String Azucar = null;
 
@@ -184,16 +183,53 @@ public class Cafetera {
         switch (cantidadAzucar) {
             case 1:
                 Azucar = "ninguna";
+                System.out.println("Ha elegido: sin azucar");
                 break;
             case 2:
                 Azucar = "poca";
+                System.out.println("Ha elegido: poca azucar");
 
                 break;
             case 3:
                 Azucar = "mucha";
+                System.out.println("Ha elegido: mucha azucar");
 
                 break;
         }
+    }
+
+    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+    public void reserva() {
+        if (cafe.isReserva()) {
+            System.out.println(cafe);
+
+        } else if (cafeDescafeinado.isReserva()) {
+            System.out.println(cafeDescafeinado);
+
+        } else if (azucar.isReserva()) {
+            System.out.println(azucar);
+
+        } else if (chocolate.isReserva()) {
+            System.out.println(chocolate);
+
+        } else if (agua.isReserva()) {
+            System.out.println(agua);
+
+        } else if (leche.isReserva()) {
+            System.out.println(leche);
+        } else {
+            System.out.println("No hay depositos en reserva");
+        }
+    }
+
+    public void estadoGeneral() {
+        System.out.println("Comprobando estado general");
+        System.out.println(cafe);
+        System.out.println(cafeDescafeinado);
+        System.out.println(azucar);
+        System.out.println(chocolate);
+        System.out.println(agua);
+        System.out.println(leche);
     }
 
     //getters y setters
