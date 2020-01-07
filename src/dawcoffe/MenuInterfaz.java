@@ -13,12 +13,6 @@ import java.util.Scanner;
  */
 public class MenuInterfaz {
 
-//    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
-//    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-//    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-//    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-//    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
-//    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
     public void menu() {
         Scanner entrada = new Scanner(System.in);
         int codigo;
@@ -28,7 +22,7 @@ public class MenuInterfaz {
 //        int cantidadAzucar = 0;
 //        String Azucar = null;
         double saldoCliente = 0;
-        double cambio = 0;
+//        double cambio = 0;
 
         double precio;
         String menu;
