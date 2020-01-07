@@ -134,6 +134,13 @@ public class Cafetera {
         }
     }
 
+    public void restarChocolate() {
+        Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
+        chocolate.servirContenido(12);
+
+        restarLeche(180);
+    }
+
     //getters y setters
     public void setSaldoAcumulado(double saldoAcumulado) {
         this.saldoAcumulado += saldoAcumulado;
