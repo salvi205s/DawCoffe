@@ -74,7 +74,7 @@ public class Cafetera {
 
     public boolean informarFaltaExistencias() {
         boolean faltaExistencias = false;
-        
+
         if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
             System.out.println("Lo sentimos pero no podemos, servirle");
             faltaExistencias = true;
@@ -89,23 +89,21 @@ public class Cafetera {
     }
 
     //metodo deposito de cafe
-    public void restarCafe(int codigo) {
+    public void restarCafe(int codigo, String descafeinado) {
 
-        String descafeinado = null;
-
-        //decide si descafeinado o no
-        System.out.println("Lo quiere descafeinado SI/NO");
-        descafeinado = entrada.next();
-        do {
-            if (descafeinado.equalsIgnoreCase("SI")) {
-                descafeinado = "SI";
-                System.out.println("Ha elegido: cafe descafeinado");
-            } else {
-                descafeinado = "NO";
-                System.out.println("Ha elegido: cafe con cafeina");
-
-            }
-        } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
+//        //decide si descafeinado o no
+//        System.out.println("Lo quiere descafeinado SI/NO");
+        descafeinado = descafeinado;
+//        do {
+//            if (descafeinado.equalsIgnoreCase("SI")) {
+//                descafeinado = "SI";
+//                System.out.println("Ha elegido: cafe descafeinado");
+//            } else {
+//                descafeinado = "NO";
+//                System.out.println("Ha elegido: cafe con cafeina");
+//
+//            }
+//        } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
 
         if (codigo == 101) {
             if (descafeinado.equalsIgnoreCase("si")) {
@@ -154,16 +152,15 @@ public class Cafetera {
         restarLeche(180);
     }
 
-    public void restarAzucar() {
-        int cantidadAzucar = 0;
+    public void restarAzucar(int cantidadAzucar) {
         String Azucar = null;
 
         if (getSaldoCliente() >= 0.50) {
-            System.out.println("Cuanta azucar quiere");
-            System.out.println("1. ninguna");
-            System.out.println("2. poca");
-            System.out.println("3. mucha");
-            cantidadAzucar = entrada.nextInt();
+//            System.out.println("Cuanta azucar quiere");
+//            System.out.println("1. ninguna");
+//            System.out.println("2. poca");
+//            System.out.println("3. mucha");
+            cantidadAzucar = cantidadAzucar;
 
             //resta el contenido de azucar al deposito
             switch (cantidadAzucar) {
@@ -244,42 +241,42 @@ public class Cafetera {
         System.out.println(leche);
     }
 
-    public void rellenarDeposito(int opcionDeposito, int llenarDeposito) {
+    public void rellenarDeposito(int opcionDeposito, int llenarDeposito, double cantidadDeposito) {
         if (opcionDeposito == 1 && llenarDeposito == 1) {
             cafe.llenarDepositoCompleto();
         } else if (opcionDeposito == 1 && llenarDeposito == 2) {
             System.out.println("Introduzca la cantidad");
-            cafe.llenarDeposito(entrada.nextDouble());
+            cafe.llenarDeposito(cantidadDeposito);
         } //-------------------------------
         else if (opcionDeposito == 2 && llenarDeposito == 1) {
             cafeDescafeinado.llenarDepositoCompleto();
         } else if (opcionDeposito == 2 && llenarDeposito == 2) {
             System.out.println("Introduzca la cantidad");
-            cafeDescafeinado.llenarDeposito(entrada.nextDouble());
+            cafeDescafeinado.llenarDeposito(cantidadDeposito);
         } //-------------------------------
         else if (opcionDeposito == 3 && llenarDeposito == 1) {
             azucar.llenarDepositoCompleto();
         } else if (opcionDeposito == 3 && llenarDeposito == 2) {
             System.out.println("Introduzca la cantidad");
-            azucar.llenarDeposito(entrada.nextDouble());
+            azucar.llenarDeposito(cantidadDeposito);
         } //-------------------------------
         else if (opcionDeposito == 4 && llenarDeposito == 1) {
             chocolate.llenarDepositoCompleto();
         } else if (opcionDeposito == 4 && llenarDeposito == 2) {
             System.out.println("Introduzca la cantidad");
-            chocolate.llenarDeposito(entrada.nextDouble());
+            chocolate.llenarDeposito(cantidadDeposito);
         } //-------------------------------
         else if (opcionDeposito == 5 && llenarDeposito == 1) {
             agua.llenarDepositoCompleto();
         } else if (opcionDeposito == 5 && llenarDeposito == 2) {
             System.out.println("Introduzca la cantidad");
-            agua.llenarDeposito(entrada.nextDouble());
+            agua.llenarDeposito(cantidadDeposito);
         } //-------------------------------
         else if (opcionDeposito == 6 && llenarDeposito == 1) {
             leche.llenarDepositoCompleto();
         } else if (opcionDeposito == 6 && llenarDeposito == 2) {
             System.out.println("Introduzca la cantidad");
-            leche.llenarDeposito(entrada.nextDouble());
+            leche.llenarDeposito(cantidadDeposito);
         }
     }
 
