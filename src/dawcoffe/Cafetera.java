@@ -52,23 +52,24 @@ public class Cafetera {
     }
 
     //muestra informacion del producto elegido
-    public void mostrarInformacion(String opcion/*, String opcionDescafeinado, String cantAzucar*/) {
+    public double devolverCambio(double precio/*String opcion, String opcionDescafeinado, String cantAzucar*/) {
         double cambio = 0;
 
         //si el precio es mayor o igual al del articulo muestra la informacion
-        if (getSaldoCliente() >= getPrecio()) {
+//        if (getSaldoCliente() >= getPrecio()) {
 //            System.out.println("Ha elegido " + opcion);
 //            System.out.println("Descafeinado: " + opcionDescafeinado);
 //            System.out.println("Con " + cantAzucar + " azucar");
+        //calcula el cambio a devolver
+        cambio = getSaldoCliente() - precio;
+//            System.out.printf("Su cambio es: %.2f %n", cambio);
+        //suma el saldo al saldoAcumulado
+        setSaldoAcumulado(precio);
+        //incrementa en 1 el numero de ventas
+        setNumVentas(1);
 
-            //calcula el cambio a devolver
-            cambio = getSaldoCliente() - this.precio;
-            System.out.printf("Su cambio es: %.2f %n", cambio);
-            //suma el saldo al saldoAcumulado
-            setSaldoAcumulado(this.precio);
-            //incrementa en 1 el numero de ventas
-            setNumVentas(1);
-        }
+        return cambio;
+//        }
     }
 
     public boolean informarFaltaExistencias() {
