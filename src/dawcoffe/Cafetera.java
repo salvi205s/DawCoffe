@@ -41,23 +41,14 @@ public class Cafetera {
     public Cafetera() {
     }
 
-    //metodo para comprobar el precio del articulo
-    public void comprobarPrecio() {
+  //metodo para comprobar el precio del articulo
+    public boolean comprobarPrecio(double precio) {
+        boolean precioValido = false;
+        if (getSaldoCliente() >= precio) {
+            precioValido = true;
+        }
 
-        //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
-        while (getSaldoCliente() <= precio) {
-
-            System.out.println("Saldo insuficiente " + this.saldoCliente);
-            //introduce el dinero
-            System.out.println("Introduzca mas monedas");
-            System.out.println("saldoCliente " + getSaldoCliente());
-
-            saldoCliente += entrada.nextDouble();
-            setSaldoCliente(saldoCliente);
-            System.out.println("saldoCliente " + getSaldoCliente());
-
-        };
-
+        return precioValido;
     }
 
     //muestra informacion del producto elegido
