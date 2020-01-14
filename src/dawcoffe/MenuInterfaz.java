@@ -14,8 +14,12 @@ import java.util.Scanner;
 public class MenuInterfaz {
 
     private Scanner entrada = new Scanner(System.in);
-    private Cafetera cafetera = new Cafetera();
+    private Cafetera cafetera ;
 
+    public MenuInterfaz(Cafetera cafetera) {
+
+        cafetera = new Cafetera();
+    }
     
     public void servirAzucar() {
         String Azucar = null;
