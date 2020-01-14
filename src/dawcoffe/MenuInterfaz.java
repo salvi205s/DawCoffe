@@ -13,12 +13,45 @@ import java.util.Scanner;
  */
 public class MenuInterfaz {
 
+    private Scanner entrada = new Scanner(System.in);
+    private Cafetera cafetera = new Cafetera();
+
+    
+    public void servirAzucar() {
+        String Azucar = null;
+        int cantidadAzucar = 0;
+
+        System.out.println("Cuanta azucar quiere");
+        System.out.println("1. ninguna");
+        System.out.println("2. poca");
+        System.out.println("3. mucha");
+        cantidadAzucar = entrada.nextInt();
+
+        cafetera.restarAzucar(cantidadAzucar);
+        //guarda string de cantidad de azucar, para mostrarlo luego
+        switch (cantidadAzucar) {
+            case 1:
+                Azucar = "ninguna";
+                System.out.println("Ha elegido: sin azucar");
+                break;
+            case 2:
+                Azucar = "poca";
+                System.out.println("Ha elegido: poca azucar");
+
+                break;
+            case 3:
+                Azucar = "mucha";
+                System.out.println("Ha elegido: mucha azucar");
+
+                break;
+        }
+    }
+
     public void menu() {
-        Scanner entrada = new Scanner(System.in);
         int codigo;
         int opcion;
 //        String descafeinado = null;
-        Cafetera cafetera = new Cafetera();
+//        Cafetera cafetera = new Cafetera();
 //        int cantidadAzucar = 0;
 //        String Azucar = null;
         double saldoCliente = 0;
@@ -69,64 +102,28 @@ public class MenuInterfaz {
                         cafetera.setSaldoCliente(saldoCliente);
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
-                        //decide si descafeinado o no
-//                        if (codigo > 100 && codigo <= 104) {
-//                            System.out.println("Lo quiere descafeinado SI/NO");
-//                            descafeinado = entrada.next();
-//                            do {
-//                                if (descafeinado.equalsIgnoreCase("SI")) {
-//                                    descafeinado = "SI";
-//                                } else {
-//                                    descafeinado = "NO";
-//                                }
-//                            } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
+                        servirAzucar();
+//                        System.out.println("Cuanta azucar quiere");
+//                        System.out.println("1. ninguna");
+//                        System.out.println("2. poca");
+//                        System.out.println("3. mucha");
+//                        cantidadAzucar = entrada.nextInt();
 //
-//                        }
-                        cafetera.restarAzucar();
-                        //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
-//                        if (cafetera.getSaldoCliente() >= 0.50) {
-//                            System.out.println("Cuanta azucar quiere");
-//                            System.out.println("1. ninguna");
-//                            System.out.println("2. poca");
-//                            System.out.println("3. mucha");
-//                            cantidadAzucar = entrada.nextInt();
-//
-//                            //resta el contenido de azucar al deposito
-//                            switch (cantidadAzucar) {
-//                                case 1:
-//                                    azucar.servirContenido(0);
-//                                    break;
-//                                case 2:
-//                                    if (azucar.getCantidadActual() < 6) {
-//                                        System.out.println("Lo sentimos pero no, queda azucar");
-//                                        azucar.servirContenido(0);
-//                                    }
-//                                    azucar.servirContenido(6);
-//                                    break;
-//                                case 3:
-//                                    if (azucar.getCantidadActual() < 12) {
-//                                        System.out.println("Lo sentimos pero solo queda: " + azucar.getCantidadActual());
-//
-//                                        int azucarRestante = (int) azucar.getCantidadActual();
-//                                        azucar.servirContenido(azucarRestante);
-//
-//                                    }
-//                                    azucar.servirContenido(12);
-//
-//                                    break;
-//                            }
-//                        }
+//                        cafetera.restarAzucar(cantidadAzucar);
 //                        //guarda string de cantidad de azucar, para mostrarlo luego
 //                        switch (cantidadAzucar) {
 //                            case 1:
 //                                Azucar = "ninguna";
+//                                System.out.println("Ha elegido: sin azucar");
 //                                break;
 //                            case 2:
 //                                Azucar = "poca";
+//                                System.out.println("Ha elegido: poca azucar");
 //
 //                                break;
 //                            case 3:
 //                                Azucar = "mucha";
+//                                System.out.println("Ha elegido: mucha azucar");
 //
 //                                break;
 //                        }
@@ -332,7 +329,7 @@ public class MenuInterfaz {
                                         } while (llenarDeposito < 1 || llenarDeposito > 2);
                                         //-------------------------------------------------------------------------------------------------------------------------
                                         cafetera.rellenarDeposito(opcionDeposito, llenarDeposito);
-                                        
+
 //                                        if (opcionDeposito == 1 && llenarDeposito == 1) {
 //                                            cafe.llenarDepositoCompleto();
 //                                        } else if (opcionDeposito == 1 && llenarDeposito == 2) {
@@ -370,7 +367,6 @@ public class MenuInterfaz {
 //                                            leche.llenarDeposito(entrada.nextDouble());
 //                                        }
 //-------------------------------------------------------------------------------------------------------------------------
-
                                         break;
                                     case 5:
                                         System.out.println("Saliendo de la administracion");
