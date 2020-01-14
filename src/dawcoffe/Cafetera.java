@@ -75,7 +75,7 @@ public class Cafetera {
     public boolean informarFaltaExistencias() {
         boolean faltaExistencias = false;
 
-        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
+        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12 ) {
             System.out.println("Lo sentimos pero no podemos, servirle");
             faltaExistencias = true;
         }
@@ -156,10 +156,6 @@ public class Cafetera {
         String Azucar = null;
 
         if (getSaldoCliente() >= 0.50) {
-//            System.out.println("Cuanta azucar quiere");
-//            System.out.println("1. ninguna");
-//            System.out.println("2. poca");
-//            System.out.println("3. mucha");
             cantidadAzucar = cantidadAzucar;
 
             //resta el contenido de azucar al deposito
@@ -169,14 +165,14 @@ public class Cafetera {
                     break;
                 case 2:
                     if (azucar.getCantidadActual() < 6) {
-                        System.out.println("Lo sentimos pero no, queda azucar");
+//                        System.out.println("Lo sentimos pero no, queda azucar");
                         azucar.servirContenido(0);
                     }
                     azucar.servirContenido(6);
                     break;
                 case 3:
                     if (azucar.getCantidadActual() < 12) {
-                        System.out.println("Lo sentimos pero solo queda: " + azucar.getCantidadActual());
+//                        System.out.println("Lo sentimos pero solo queda: " + azucar.getCantidadActual());
 
                         int azucarRestante = (int) azucar.getCantidadActual();
                         azucar.servirContenido(azucarRestante);
@@ -189,22 +185,22 @@ public class Cafetera {
 
         }
         //guarda string de cantidad de azucar, para mostrarlo luego
-        switch (cantidadAzucar) {
-            case 1:
-                Azucar = "ninguna";
-                System.out.println("Ha elegido: sin azucar");
-                break;
-            case 2:
-                Azucar = "poca";
-                System.out.println("Ha elegido: poca azucar");
-
-                break;
-            case 3:
-                Azucar = "mucha";
-                System.out.println("Ha elegido: mucha azucar");
-
-                break;
-        }
+//        switch (cantidadAzucar) {
+//            case 1:
+//                Azucar = "ninguna";
+//                System.out.println("Ha elegido: sin azucar");
+//                break;
+//            case 2:
+//                Azucar = "poca";
+//                System.out.println("Ha elegido: poca azucar");
+//
+//                break;
+//            case 3:
+//                Azucar = "mucha";
+//                System.out.println("Ha elegido: mucha azucar");
+//
+//                break;
+//        }
     }
 
     //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
