@@ -263,8 +263,6 @@ public class Cafetera {
 //            System.out.println("Introduzca la cantidad");
             leche.llenarDeposito(cantidad);
         }
-        System.out.println(cafe.getCantidadActual());
-        System.out.println(cafe.getCantidadMax());
 
         if (cantidad > cafe.getCantidadMax()) {
 
