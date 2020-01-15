@@ -60,7 +60,7 @@ public class MenuInterfaz {
 //        Scanner entrada = new Scanner(System.in);
         int codigo;
         int opcion;
-//        String descafeinado = null;
+        int descafeinadoSiNo;
 
 //        int cantidadAzucar = 0;
 //        String Azucar = null;
@@ -98,6 +98,8 @@ public class MenuInterfaz {
                         codigo = entrada.nextInt();
 
                         if (cafetera.informarFaltaExistencias()) {
+                            System.out.println("Lo sentimos pero no podemos, servirle");
+
                             break;
                         }
 //                    
@@ -109,18 +111,12 @@ public class MenuInterfaz {
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
                         //decide si descafeinado o no
-//                        if (codigo > 100 && codigo <= 104) {
-//                            System.out.println("Lo quiere descafeinado SI/NO");
-//                            descafeinado = entrada.next();
-//                            do {
-//                                if (descafeinado.equalsIgnoreCase("SI")) {
-//                                    descafeinado = "SI";
-//                                } else {
-//                                    descafeinado = "NO";
-//                                }
-//                            } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
-//
-//                        }
+                        do {
+                            System.out.println("Lo quiere descafeinado 1. SI\n2. NO");
+                            descafeinadoSiNo = entrada.nextInt();
+                        } while (descafeinadoSiNo < 1 || descafeinadoSiNo > 2);
+
+//                      
                         cafetera.restarAzucar();
                         //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
 //                        if (cafetera.getSaldoCliente() >= 0.50) {
@@ -177,6 +173,9 @@ public class MenuInterfaz {
 
                                 pedirMasDinero(saldoCliente);
 //                       
+                                if (descafeinadoSiNo == 1) {
+                                    cafetera.restarCafeDescafeinado(codigo);
+                                }
                                 cafetera.servirCafe(cafe1, codigo);
 
                                 break;
@@ -184,6 +183,9 @@ public class MenuInterfaz {
                                 cafetera.setPrecio(0.9);
 
                                 pedirMasDinero(saldoCliente);
+                                if (descafeinadoSiNo == 1) {
+                                    cafetera.restarCafeDescafeinado(codigo);
+                                }
                                 cafetera.servirCafe(cafe2, codigo);
 
                                 break;
@@ -191,6 +193,9 @@ public class MenuInterfaz {
                                 cafetera.setPrecio(1.10);
 
                                 pedirMasDinero(saldoCliente);
+                                if (descafeinadoSiNo == 1) {
+                                    cafetera.restarCafeDescafeinado(codigo);
+                                }
                                 cafetera.servirCafe(cafe3, codigo);
 
                                 break;
@@ -199,6 +204,9 @@ public class MenuInterfaz {
                                 cafetera.setPrecio(1);
 
                                 pedirMasDinero(saldoCliente);
+                                if (descafeinadoSiNo == 1) {
+                                    cafetera.restarCafeDescafeinado(codigo);
+                                }
                                 cafetera.servirCafe(cafe4, codigo);
 
                                 break;
