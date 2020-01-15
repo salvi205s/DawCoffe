@@ -25,11 +25,11 @@ public class Cafetera {
     private int numVentas = 0;
 
     private Deposito cafe;
-    private Deposito cafeDescafeinado ;
-    private Deposito azucar ;
+    private Deposito cafeDescafeinado;
+    private Deposito azucar;
     private Deposito chocolate;
-    private Deposito agua ;
-    private Deposito leche ;
+    private Deposito agua;
+    private Deposito leche;
 
     public Cafetera(Deposito cafe, Deposito cafeDescafeinado, Deposito azucar, Deposito chocolate, Deposito agua, Deposito leche) {
         this.cafe = cafe;
@@ -42,19 +42,39 @@ public class Cafetera {
 
     public Cafetera() {
     }
-    
-        public void servirCafe(double precio, String menu, int codigo) {
-            String opcion;
-            setPrecio(precio);
-            opcion =menu;
-            comprobarPrecio();
-            
-            restarCafe(codigo);
-            mostrarInformacion(menu);
-            
-        }
+
+    public void servirCafe(double precio, String menu, int codigo) {
+        String opcion;
+        setPrecio(precio);
+        opcion = menu;
+        comprobarPrecio();
+
+        restarCafe(codigo);
+        mostrarInformacion(menu);
+
+    }
+
+    public void servirChocolate(double precio, String menu, int codigo) {
+        String opcion;
+        setPrecio(precio);
+        opcion = menu;
+        comprobarPrecio();
         
-        
+//resta la cantidad de chocolate al deposito
+        restarChocolate(12);
+        restarLeche(180);
+        mostrarInformacion(menu);
+
+    }
+
+    public void servirLeche(double precio, String menu, int codigo) {
+        String opcion;
+        setPrecio(precio);
+        opcion = menu;
+        comprobarPrecio();
+
+        restarLeche(180);
+    }
 
     //metodo para comprobar el precio del articulo
     public void comprobarPrecio() {
@@ -97,7 +117,7 @@ public class Cafetera {
 
     public boolean informarFaltaExistencias() {
         boolean faltaExistencias = false;
-        
+
         if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
             System.out.println("Lo sentimos pero no podemos, servirle");
             faltaExistencias = true;
@@ -171,10 +191,9 @@ public class Cafetera {
 
     }
 
-    public void restarChocolate() {
-        chocolate.servirContenido(12);
+    public void restarChocolate(int cantidad) {
+        chocolate.servirContenido(cantidad);
 
-        restarLeche(180);
     }
 
     public void restarAzucar() {
