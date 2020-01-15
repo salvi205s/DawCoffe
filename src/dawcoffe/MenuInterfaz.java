@@ -16,10 +16,7 @@ public class MenuInterfaz {
     private Scanner entrada = new Scanner(System.in);
 
     private Cafetera cafetera;
-
-    public void menuCafeteria() {
-
-    }
+    private int cantidadAzucar = 0;
 
     public MenuInterfaz(Cafetera cafetera) {
         this.cafetera = cafetera;
@@ -28,7 +25,20 @@ public class MenuInterfaz {
     //pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, 
 //    //muestra informacion del producto elegido
 //    public void mostrarInformacion(String codigo) {
+//  //guarda string de cantidad de azucar, para mostrarlo luego
+//                        switch (cantidadAzucar) {
+//                            case 1:
+//                                Azucar = "ninguna";
+//                                break;
+//                            case 2:
+//                                Azucar = "poca";
 //
+//                                break;
+//                            case 3:
+//                                Azucar = "mucha";
+//
+//                                break;
+//                        }
 //        //si el precio es mayor o igual al del articulo muestra la informacion
 //        if (getSaldoCliente() >= getPrecio()) {
 //            
@@ -54,6 +64,21 @@ public class MenuInterfaz {
             System.out.println("saldoCliente " + cafetera.getSaldoCliente());
         }
 
+    }
+
+    public void servirAzucar() {
+
+        //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
+//        if (cafetera.getSaldoCliente() >= 0.50) {
+        System.out.println("Cuanta azucar quiere");
+        System.out.println("1. ninguna");
+        System.out.println("2. poca");
+        System.out.println("3. mucha");
+        cantidadAzucar = entrada.nextInt();
+
+        cafetera.restarAzucar(cantidadAzucar);
+
+//        }
     }
 
     public void menu() {
@@ -102,69 +127,23 @@ public class MenuInterfaz {
 
                             break;
                         }
-//                    
+
                         //introduce el dinero
                         System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
-
                         saldoCliente += entrada.nextDouble();
                         cafetera.setSaldoCliente(saldoCliente);
+
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
                         //decide si descafeinado o no
                         do {
-                            System.out.println("Lo quiere descafeinado 1. SI\n2. NO");
+                            System.out.println("Lo quiere descafeinado \n1. SI\n2. NO");
                             descafeinadoSiNo = entrada.nextInt();
                         } while (descafeinadoSiNo < 1 || descafeinadoSiNo > 2);
 
-//                      
-                        cafetera.restarAzucar();
-                        //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
-//                        if (cafetera.getSaldoCliente() >= 0.50) {
-//                            System.out.println("Cuanta azucar quiere");
-//                            System.out.println("1. ninguna");
-//                            System.out.println("2. poca");
-//                            System.out.println("3. mucha");
-//                            cantidadAzucar = entrada.nextInt();
-//
-//                            //resta el contenido de azucar al deposito
-//                            switch (cantidadAzucar) {
-//                                case 1:
-//                                    azucar.servirContenido(0);
-//                                    break;
-//                                case 2:
-//                                    if (azucar.getCantidadActual() < 6) {
-//                                        System.out.println("Lo sentimos pero no, queda azucar");
-//                                        azucar.servirContenido(0);
-//                                    }
-//                                    azucar.servirContenido(6);
-//                                    break;
-//                                case 3:
-//                                    if (azucar.getCantidadActual() < 12) {
-//                                        System.out.println("Lo sentimos pero solo queda: " + azucar.getCantidadActual());
-//
-//                                        int azucarRestante = (int) azucar.getCantidadActual();
-//                                        azucar.servirContenido(azucarRestante);
-//
-//                                    }
-//                                    azucar.servirContenido(12);
-//
-//                                    break;
-//                            }
-//                        }
-//                        //guarda string de cantidad de azucar, para mostrarlo luego
-//                        switch (cantidadAzucar) {
-//                            case 1:
-//                                Azucar = "ninguna";
-//                                break;
-//                            case 2:
-//                                Azucar = "poca";
-//
-//                                break;
-//                            case 3:
-//                                Azucar = "mucha";
-//
-//                                break;
-//                        }
+                        //pregunta la cantidad de azucar y la resta del contenido
+                        servirAzucar();
+
                         //Muestra el pedido del cliente....
                         System.out.println("................................................");
                         switch (codigo) {
