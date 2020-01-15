@@ -22,6 +22,10 @@ public class Deposito {
         this.cantidadUmbral = cantidadUmbral;
         this.cantidadActual = cantidadActual;
         this.contenido = contenido;
+        
+        if (cantidadActual>cantidadMax) {
+            cantidadActual=cantidadMax;
+        }
     }
 
     //metodos
@@ -90,6 +94,9 @@ public class Deposito {
 
     public void setCantidadActual(double cantidadActual) {
         this.cantidadActual = cantidadActual;
+         if (cantidadActual>cantidadMax) {
+            cantidadActual=cantidadMax;
+        }
     }
 
     public String getContenido() {
