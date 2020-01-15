@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 public class MenuInterfaz {
 
+    private Scanner entrada = new Scanner(System.in);
+
     private Cafetera cafetera;
 
     public void menuCafeteria() {
@@ -23,8 +25,39 @@ public class MenuInterfaz {
         this.cafetera = cafetera;
     }
 
+    //pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, 
+//    //muestra informacion del producto elegido
+//    public void mostrarInformacion(String codigo) {
+//
+//        //si el precio es mayor o igual al del articulo muestra la informacion
+//        if (getSaldoCliente() >= getPrecio()) {
+//            
+//            System.out.println("Ha elegido " + opcion);
+////            System.out.println("Descafeinado: " + opcionDescafeinado);
+//            System.out.println("Con " + cafetera + " azucar");
+//
+//        }
+//    }
+    public void pedirMasDinero(double saldoCliente) {
+//        double saldoCliente = 0;
+
+        //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
+        while (!cafetera.comprobarPrecio()) {
+
+            System.out.println("Saldo insuficiente " + cafetera.getSaldoCliente());
+            //introduce el dinero
+            System.out.println("Introduzca mas monedas");
+            System.out.println("saldoCliente " + cafetera.getSaldoCliente());
+
+            saldoCliente += entrada.nextDouble();
+            cafetera.setSaldoCliente(saldoCliente);
+            System.out.println("saldoCliente " + cafetera.getSaldoCliente());
+        }
+
+    }
+
     public void menu() {
-        Scanner entrada = new Scanner(System.in);
+//        Scanner entrada = new Scanner(System.in);
         int codigo;
         int opcion;
 //        String descafeinado = null;
@@ -140,32 +173,55 @@ public class MenuInterfaz {
                         System.out.println("................................................");
                         switch (codigo) {
                             case 101:
-                                cafetera.servirCafe(0.80, cafe1, codigo);
+                                cafetera.setPrecio(0.8);
+
+                                pedirMasDinero(saldoCliente);
+//                       
+                                cafetera.servirCafe(cafe1, codigo);
 
                                 break;
                             case 102:
-                                cafetera.servirCafe(0.90, cafe2, codigo);
+                                cafetera.setPrecio(0.9);
+
+                                pedirMasDinero(saldoCliente);
+                                cafetera.servirCafe(cafe2, codigo);
 
                                 break;
                             case 103:
-                                cafetera.servirCafe(1.10, cafe3, codigo);
+                                cafetera.setPrecio(1.10);
+
+                                pedirMasDinero(saldoCliente);
+                                cafetera.servirCafe(cafe3, codigo);
 
                                 break;
                             case 104:
-                                cafetera.servirCafe(1.0, cafe4, codigo);
+
+                                cafetera.setPrecio(1);
+
+                                pedirMasDinero(saldoCliente);
+                                cafetera.servirCafe(cafe4, codigo);
 
                                 break;
                             case 200:
-                                cafetera.servirChocolate(1.40, Choco, codigo);
+                                cafetera.setPrecio(1.4);
+
+                                pedirMasDinero(saldoCliente);
+                                cafetera.servirChocolate(Choco, codigo);
 
                                 break;
 
                             case 300:
-                                cafetera.servirLeche(0.50, lecheFria, codigo);
+                                cafetera.setPrecio(0.5);
+
+                                pedirMasDinero(saldoCliente);
+                                cafetera.servirLeche(lecheFria, codigo);
 
                                 break;
                             case 301:
-                                cafetera.servirLeche(0.50, lecheCaliente, codigo);
+                                cafetera.setPrecio(0.5);
+
+                                pedirMasDinero(saldoCliente);
+                                cafetera.servirLeche(lecheCaliente, codigo);
 
                                 break;
                             default:
@@ -223,36 +279,10 @@ public class MenuInterfaz {
 
                                     case 1:
                                         cafetera.reserva();
-//                                        if (cafe.isReserva()) {
-//                                            System.out.println(cafe);
-//
-//                                        } else if (cafeDescafeinado.isReserva()) {
-//                                            System.out.println(cafeDescafeinado);
-//
-//                                        } else if (azucar.isReserva()) {
-//                                            System.out.println(azucar);
-//
-//                                        } else if (chocolate.isReserva()) {
-//                                            System.out.println(chocolate);
-//
-//                                        } else if (agua.isReserva()) {
-//                                            System.out.println(agua);
-//
-//                                        } else if (leche.isReserva()) {
-//                                            System.out.println(leche);
-//                                        } else {
-//                                            System.out.println("No hay depositos en reserva");
-//                                        }
+//                                   
                                         break;
                                     case 2:
-                                        //Comprobar estado general, que muestra toda la información de todos los depósitos, así como el usuario y la contraseña del administrador.
-//                                        System.out.println("Comprobando estado general");
-//                                        System.out.println(cafe);
-//                                        System.out.println(cafeDescafeinado);
-//                                        System.out.println(azucar);
-//                                        System.out.println(chocolate);
-//                                        System.out.println(agua);
-//                                        System.out.println(leche);
+
                                         cafetera.estadoGeneral();
                                         System.out.println("Usuario: " + user.getUSER_NAME());
                                         System.out.println("Contraseña: " + user.getPASSWORD());
@@ -285,42 +315,6 @@ public class MenuInterfaz {
                                         //-------------------------------------------------------------------------------------------------------------------------
                                         cafetera.rellenarDeposito(opcionDeposito, llenarDeposito);
 
-//                                        if (opcionDeposito == 1 && llenarDeposito == 1) {
-//                                            cafe.llenarDepositoCompleto();
-//                                        } else if (opcionDeposito == 1 && llenarDeposito == 2) {
-//                                            System.out.println("Introduzca la cantidad");
-//                                            cafe.llenarDeposito(entrada.nextDouble());
-//                                        } //-------------------------------
-//                                        else if (opcionDeposito == 2 && llenarDeposito == 1) {
-//                                            cafeDescafeinado.llenarDepositoCompleto();
-//                                        } else if (opcionDeposito == 2 && llenarDeposito == 2) {
-//                                            System.out.println("Introduzca la cantidad");
-//                                            cafeDescafeinado.llenarDeposito(entrada.nextDouble());
-//                                        } //-------------------------------
-//                                        else if (opcionDeposito == 3 && llenarDeposito == 1) {
-//                                            azucar.llenarDepositoCompleto();
-//                                        } else if (opcionDeposito == 3 && llenarDeposito == 2) {
-//                                            System.out.println("Introduzca la cantidad");
-//                                            azucar.llenarDeposito(entrada.nextDouble());
-//                                        } //-------------------------------
-//                                        else if (opcionDeposito == 4 && llenarDeposito == 1) {
-//                                            chocolate.llenarDepositoCompleto();
-//                                        } else if (opcionDeposito == 4 && llenarDeposito == 2) {
-//                                            System.out.println("Introduzca la cantidad");
-//                                            chocolate.llenarDeposito(entrada.nextDouble());
-//                                        } //-------------------------------
-//                                        else if (opcionDeposito == 5 && llenarDeposito == 1) {
-//                                            agua.llenarDepositoCompleto();
-//                                        } else if (opcionDeposito == 5 && llenarDeposito == 2) {
-//                                            System.out.println("Introduzca la cantidad");
-//                                            agua.llenarDeposito(entrada.nextDouble());
-//                                        } //-------------------------------
-//                                        else if (opcionDeposito == 6 && llenarDeposito == 1) {
-//                                            leche.llenarDepositoCompleto();
-//                                        } else if (opcionDeposito == 6 && llenarDeposito == 2) {
-//                                            System.out.println("Introduzca la cantidad");
-//                                            leche.llenarDeposito(entrada.nextDouble());
-//                                        }
 //-------------------------------------------------------------------------------------------------------------------------
                                         break;
                                     case 5:
@@ -329,7 +323,7 @@ public class MenuInterfaz {
                                         break;
                                     default:
                                         System.out.println(
-                                                "Esa opcion no se contempla1");
+                                                "Esa opcion no se contempla");
                                 }
                             } while (opcionAdmin != 5);
                         } //Fin del case 2
@@ -338,8 +332,7 @@ public class MenuInterfaz {
                         break;
 
                     default:
-                        System.out.println(
-                                "Esa opcion no se contempla2");
+                        System.out.println("Esa opcion no se contempla");
                 }
                 System.out.println("................................................");
 
