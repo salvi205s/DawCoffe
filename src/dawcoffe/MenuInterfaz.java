@@ -12,13 +12,18 @@ import java.util.Scanner;
  * @author Salva
  */
 public class MenuInterfaz {
-private Cafetera cafetera ;
+
+    private Cafetera cafetera;
 //    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
 //    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
 //    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
 //    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
 //    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
 //    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
+
+    public void menuCafeteria() {
+
+    }
 
     public MenuInterfaz(Cafetera cafetera) {
         this.cafetera = cafetera;
@@ -29,7 +34,7 @@ private Cafetera cafetera ;
         int codigo;
         int opcion;
 //        String descafeinado = null;
-        
+
 //        int cantidadAzucar = 0;
 //        String Azucar = null;
         double saldoCliente = 0;
@@ -68,11 +73,7 @@ private Cafetera cafetera ;
                         if (cafetera.informarFaltaExistencias()) {
                             break;
                         }
-//                        if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
-//                            System.out.println("Lo sentimos pero no podemos, servirle");
-//                            break;
-//
-//                        }
+//                    
                         //introduce el dinero
                         System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
 
@@ -145,60 +146,66 @@ private Cafetera cafetera ;
                         System.out.println("................................................");
                         switch (codigo) {
                             case 101:
-                                cafetera.setPrecio(0.80);
+                                cafetera.servirCafe(0.80, cafe1, codigo);
 
-                                menu = cafe1;
-                                //si ha introducido el precio minimo para el articulo
-                                cafetera.comprobarPrecio();
-
-//----------------------------------------------------------------------
-                                //resta la cantidad de cafe,y agua 
-                                cafetera.restarCafe(codigo);
-                                cafetera.mostrarInformacion(menu);
-
+//                                cafetera.setPrecio(0.80);
+//
+//                                menu = cafe1;
+//                                //si ha introducido el precio minimo para el articulo
+//                                cafetera.comprobarPrecio();
+//
+////----------------------------------------------------------------------
+//                                //resta la cantidad de cafe,y agua 
+//                                cafetera.restarCafe(codigo);
+//                                cafetera.mostrarInformacion(menu);
 //-------------------------------------------------------------------------------------------------------------------------------
                                 break;
                             case 102:
-                                cafetera.setPrecio(0.90);
-
-                                menu = cafe2;
-                                cafetera.comprobarPrecio();
-
-                                //resta la cantidad de cafe,y agua 
-                                cafetera.restarCafe(codigo);
-                                cafetera.mostrarInformacion(menu);
+                                cafetera.servirCafe(0.90, cafe2, codigo);
+//                                cafetera.setPrecio(0.90);
+//
+//                                menu = cafe2;
+//                                cafetera.comprobarPrecio();
+//
+//                                //resta la cantidad de cafe,y agua 
+//                                cafetera.restarCafe(codigo);
+//                                cafetera.mostrarInformacion(menu);
 
                                 break;
                             case 103:
-                                cafetera.setPrecio(1.10);
+                                cafetera.servirCafe(1.10, cafe3, codigo);
 
-                                menu = cafe3;
-                                cafetera.comprobarPrecio();
-
-                                cafetera.restarCafe(codigo);
-
-                                cafetera.mostrarInformacion(menu);
-
+//                                cafetera.setPrecio(1.10);
+//
+//                                menu = cafe3;
+//                                cafetera.comprobarPrecio();
+//
+//                                cafetera.restarCafe(codigo);
+//
+//                                cafetera.mostrarInformacion(menu);
                                 break;
                             case 104:
-                                cafetera.setPrecio(1.0);
+                                cafetera.servirCafe(1.0, cafe4, codigo);
 
-                                menu = cafe4;
-                                cafetera.comprobarPrecio();
-
-                                cafetera.restarCafe(codigo);
-
-                                cafetera.mostrarInformacion(menu);
-
+//                                cafetera.setPrecio(1.0);
+//
+//                                menu = cafe4;
+//                                cafetera.comprobarPrecio();
+//
+//                                cafetera.restarCafe(codigo);
+//
+//                                cafetera.mostrarInformacion(menu);
                                 break;
                             case 200:
-                                cafetera.setPrecio(1.40);
+                                cafetera.servirCafe(1.40, Choco, codigo);
 
-                                menu = Choco;
-                                cafetera.comprobarPrecio();
-
-                                cafetera.restarChocolate();
-                                cafetera.mostrarInformacion(menu);
+//                                cafetera.setPrecio(1.40);
+//
+//                                menu = Choco;
+//                                cafetera.comprobarPrecio();
+//
+//                                cafetera.restarChocolate();
+//                                cafetera.mostrarInformacion(menu);
 
                                 //resta la cantidad de chocolate al deposito
 //                                chocolate.servirContenido(12);
@@ -206,6 +213,8 @@ private Cafetera cafetera ;
                                 break;
 
                             case 300:
+                                cafetera.servirCafe(0.50, lecheFria, codigo);
+
                                 cafetera.setPrecio(0.50);
 
                                 menu = lecheFria;
@@ -217,6 +226,8 @@ private Cafetera cafetera ;
 //                                leche.servirContenido(180);
                                 break;
                             case 301:
+                                cafetera.servirCafe(1.0, cafe4, codigo);
+
                                 cafetera.setPrecio(0.50);
 
                                 menu = lecheCaliente;
@@ -343,7 +354,7 @@ private Cafetera cafetera ;
                                         } while (llenarDeposito < 1 || llenarDeposito > 2);
                                         //-------------------------------------------------------------------------------------------------------------------------
                                         cafetera.rellenarDeposito(opcionDeposito, llenarDeposito);
-                                        
+
 //                                        if (opcionDeposito == 1 && llenarDeposito == 1) {
 //                                            cafe.llenarDepositoCompleto();
 //                                        } else if (opcionDeposito == 1 && llenarDeposito == 2) {
@@ -381,7 +392,6 @@ private Cafetera cafetera ;
 //                                            leche.llenarDeposito(entrada.nextDouble());
 //                                        }
 //-------------------------------------------------------------------------------------------------------------------------
-
                                         break;
                                     case 5:
                                         System.out.println("Saliendo de la administracion");
