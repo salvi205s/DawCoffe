@@ -49,6 +49,7 @@ public class MenuInterfaz {
                 break;
         }
 
+        System.out.println("...................................");
         System.out.println("Ha elegido " + menu);
         System.out.println("Descafeinado: " + descafeinado);
         System.out.println("Con " + Azucar + " azucar");
@@ -88,11 +89,11 @@ public class MenuInterfaz {
             System.out.println("Saldo insuficiente " + cafetera.getSaldoCliente());
             //introduce el dinero
             System.out.println("Introduzca mas monedas");
-            System.out.println("saldoCliente " + cafetera.getSaldoCliente());
+            System.out.println("Su saldo es: " + cafetera.getSaldoCliente());
 
             saldoCliente += entrada.nextDouble();
             cafetera.setSaldoCliente(saldoCliente);
-            System.out.println("saldoCliente " + cafetera.getSaldoCliente());
+            System.out.println("Su saldo es: " + cafetera.getSaldoCliente());
         }
 
     }
@@ -183,7 +184,7 @@ public class MenuInterfaz {
                                 cafetera.setPrecio(0.8);
 
                                 pedirMasDinero(saldoCliente);
-                                
+
                                 if (descafeinadoSiNo == 1) {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
@@ -200,7 +201,7 @@ public class MenuInterfaz {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
                                 cafetera.servirCafe(cafe2, codigo);
-                                mostrarInformacion(cafe1, descafeinadoSiNo);
+                                mostrarInformacion(cafe2, descafeinadoSiNo);
 
                                 break;
                             case 103:
@@ -211,7 +212,7 @@ public class MenuInterfaz {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
                                 cafetera.servirCafe(cafe3, codigo);
-                                mostrarInformacion(cafe1, descafeinadoSiNo);
+                                mostrarInformacion(cafe3, descafeinadoSiNo);
 
                                 break;
                             case 104:
@@ -223,7 +224,7 @@ public class MenuInterfaz {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
                                 cafetera.servirCafe(cafe4, codigo);
-                                mostrarInformacion(cafe1, descafeinadoSiNo);
+                                mostrarInformacion(cafe4, descafeinadoSiNo);
 
                                 break;
                             case 200:
@@ -307,7 +308,7 @@ public class MenuInterfaz {
 //                                   
                                         break;
                                     case 2:
-
+                                        System.out.println("Comprobando estado general");
                                         cafetera.estadoGeneral();
                                         System.out.println("Usuario: " + user.getUSER_NAME());
                                         System.out.println("Contraseña: " + user.getPASSWORD());
@@ -338,7 +339,8 @@ public class MenuInterfaz {
                                             llenarDeposito = entrada.nextInt();
                                         } while (llenarDeposito < 1 || llenarDeposito > 2);
                                         //-------------------------------------------------------------------------------------------------------------------------
-                                        cafetera.rellenarDeposito(opcionDeposito, llenarDeposito);
+                                        System.out.println("Introduzca la cantidad");
+                                        cafetera.rellenarDeposito(opcionDeposito, llenarDeposito, entrada.nextDouble());
 
 //-------------------------------------------------------------------------------------------------------------------------
                                         break;
