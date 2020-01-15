@@ -24,13 +24,32 @@ public class Cafetera {
 
     private int numVentas = 0;
 
-    private Deposito cafe = new Deposito(1000, 250, 3, "cafe");
-    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
-    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
+//    private Deposito cafe = new Deposito(1000, 250, 3, "cafe");
+//    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
+//    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
+//    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
+//    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
+//    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
+    private Deposito cafe;
+    private Deposito cafeDescafeinado ;
+    private Deposito azucar ;
+    private Deposito chocolate;
+    private Deposito agua ;
+    private Deposito leche ;
 
+    public Cafetera(Deposito cafe, Deposito cafeDescafeinado, Deposito azucar, Deposito chocolate, Deposito agua, Deposito leche) {
+        this.cafe = cafe;
+        this.cafeDescafeinado = cafeDescafeinado;
+        this.azucar = azucar;
+        this.chocolate = chocolate;
+        this.agua = agua;
+        this.leche = leche;
+    }
+
+    public Cafetera() {
+    }
+    
+    
     //metodo para comprobar el precio del articulo
     public void comprobarPrecio() {
 
