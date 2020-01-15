@@ -44,22 +44,12 @@ public class Cafetera {
     }
 
     public void servirCafe(String menu, int codigo) {
-//        String opcion;
-
-//        setPrecio(precio);
-        
-//        opcion = menu;
-//        comprobarPrecio();
 
         restarCafe(codigo);
 
     }
 
     public void servirChocolate(String menu, int codigo) {
-//        String opcion;
-//        setPrecio(precio);
-//        opcion = menu;
-//        comprobarPrecio();
 
 //resta la cantidad de chocolate al deposito
         restarChocolate(12);
@@ -68,10 +58,6 @@ public class Cafetera {
     }
 
     public void servirLeche(String menu, int codigo) {
-//        String opcion;
-//        setPrecio(precio);
-//        opcion = menu;
-//        comprobarPrecio();
 
         restarLeche(180);
     }
@@ -80,24 +66,10 @@ public class Cafetera {
     public boolean comprobarPrecio() {
 
         boolean precioCorrecto = false;
-//        System.out.println("saldoCliente " + getSaldoCliente());
-//        System.out.println("getPrecio " + getPrecio());
 
         if (getSaldoCliente() >= getPrecio()) {
             precioCorrecto = true;
         }
-//        //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
-//        while (precioCorrecto) {
-//
-////            System.out.println("Saldo insuficiente " + this.saldoCliente);
-////            //introduce el dinero
-////            System.out.println("Introduzca mas monedas");
-////            System.out.println("saldoCliente " + getSaldoCliente());
-////
-////            saldoCliente += entrada.nextDouble();
-////            setSaldoCliente(saldoCliente);
-////            System.out.println("saldoCliente " + getSaldoCliente());
-//        }
 
         return precioCorrecto;
     }
@@ -120,7 +92,6 @@ public class Cafetera {
         boolean faltaExistencias = false;
 
         if (agua.getCantidadActual() < 50 || leche.getCantidadActual() < 180 || cafe.getCantidadActual() < 8 || chocolate.getCantidadActual() < 12) {
-            System.out.println("Lo sentimos pero no podemos, servirle");
             faltaExistencias = true;
         }
         return faltaExistencias;
@@ -132,62 +103,58 @@ public class Cafetera {
 
     }
 
-    //metodo deposito de cafe
-    public void restarCafe(int codigo) {
-
+    public void restarCafeDescafeinado(int codigo) {
         String descafeinado = null;
-
-        //decide si descafeinado o no
-        System.out.println("Lo quiere descafeinado SI/NO");
-        descafeinado = entrada.next();
-        do {
-            if (descafeinado.equalsIgnoreCase("SI")) {
-                descafeinado = "SI";
-                System.out.println("Ha elegido: cafe descafeinado");
-            } else {
-                descafeinado = "NO";
-                System.out.println("Ha elegido: cafe con cafeina");
-
-            }
-        } while (!descafeinado.equalsIgnoreCase("SI") && !descafeinado.equalsIgnoreCase("NO"));
-
         if (codigo == 101) {
-            if (descafeinado.equalsIgnoreCase("si")) {
-                cafeDescafeinado.servirContenido(8);
-            } else {
-                cafe.servirContenido(8);
 
-            }
+            cafeDescafeinado.servirContenido(8);
             agua.servirContenido(50);
-        } else if (codigo == 102) {
-            if (descafeinado.equalsIgnoreCase("si")) {
-                cafeDescafeinado.servirContenido(8);
-            } else {
-                cafe.servirContenido(8);
 
-            }
+        } else if (codigo == 102) {
+            cafeDescafeinado.servirContenido(8);
+
             agua.servirContenido(80);
         } else if (codigo == 103) {
-            if (descafeinado.equalsIgnoreCase("si")) {
-                cafeDescafeinado.servirContenido(8);
-            } else {
-                cafe.servirContenido(8);
-
-            }
+            cafeDescafeinado.servirContenido(8);
             agua.servirContenido(50);
-            restarLeche(20);
-//            leche.servirContenido(20);
+            restarLeche(30);
+
         } else if (codigo == 104) {
-            if (descafeinado.equalsIgnoreCase("si")) {
-                cafeDescafeinado.servirContenido(8);
-            } else {
-                cafe.servirContenido(8);
+            cafeDescafeinado.servirContenido(8);
 
-            }
             agua.servirContenido(50);
-            restarLeche(20);
+            restarLeche(30);
 
-//            leche.servirContenido(10);
+        }
+    }
+    //metodo deposito de cafe
+
+    public void restarCafe(int codigo) {
+
+        if (codigo == 101) {
+
+            cafe.servirContenido(8);
+
+            agua.servirContenido(50);
+
+        } else if (codigo == 102) {
+
+            cafe.servirContenido(8);
+
+            agua.servirContenido(80);
+        } else if (codigo == 103) {
+
+            cafe.servirContenido(8);
+
+            agua.servirContenido(50);
+            restarLeche(30);
+        } else if (codigo == 104) {
+
+            cafe.servirContenido(8);
+
+            agua.servirContenido(50);
+            restarLeche(30);
+
         }
 
     }
