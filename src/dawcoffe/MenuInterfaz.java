@@ -197,7 +197,7 @@ public class MenuInterfaz {
 //                                cafetera.mostrarInformacion(menu);
                                 break;
                             case 200:
-                                cafetera.servirCafe(1.40, Choco, codigo);
+                                cafetera.servirChocolate(1.40, Choco, codigo);
 
 //                                cafetera.setPrecio(1.40);
 //
@@ -206,37 +206,34 @@ public class MenuInterfaz {
 //
 //                                cafetera.restarChocolate();
 //                                cafetera.mostrarInformacion(menu);
-
                                 //resta la cantidad de chocolate al deposito
 //                                chocolate.servirContenido(12);
 //                                leche.servirContenido(180);
                                 break;
 
                             case 300:
-                                cafetera.servirCafe(0.50, lecheFria, codigo);
+                                cafetera.servirLeche(0.50, lecheFria, codigo);
 
-                                cafetera.setPrecio(0.50);
-
-                                menu = lecheFria;
-
-                                cafetera.mostrarInformacion(menu);
-                                cafetera.restarLeche(180);
-
+//                                cafetera.setPrecio(0.50);
+//
+//                                menu = lecheFria;
+//
+//                                cafetera.mostrarInformacion(menu);
+//                                cafetera.restarLeche(180);
                                 //resta la cantidad de leche al deposito
 //                                leche.servirContenido(180);
                                 break;
                             case 301:
-                                cafetera.servirCafe(1.0, cafe4, codigo);
+                                cafetera.servirLeche(0.50, lecheCaliente, codigo);
 
-                                cafetera.setPrecio(0.50);
-
-                                menu = lecheCaliente;
-
-                                cafetera.mostrarInformacion(menu);
-
-                                //resta la cantidad de leche al deposito
-                                cafetera.restarLeche(180);
-
+//                                cafetera.setPrecio(0.50);
+//
+//                                menu = lecheCaliente;
+//
+//                                cafetera.mostrarInformacion(menu);
+//
+//                                //resta la cantidad de leche al deposito
+//                                cafetera.restarLeche(180);
 //                                leche.servirContenido(180);
                                 break;
                             default:
