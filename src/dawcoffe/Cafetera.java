@@ -16,7 +16,6 @@ public class Cafetera {
 
     //objeto scanner para introducir texto por teclado
 //    private Scanner entrada = new Scanner(System.in);
-
     //variables que iremos usando a lo largo del programa
     private double saldoAcumulado = 0,
             saldoCliente = 0,
@@ -187,8 +186,8 @@ public class Cafetera {
                 azucar.servirContenido(12);
 
                 break;
-                default:
-                    System.out.println("Esa opcion no se contempla");
+            default:
+                System.out.println("Esa opcion no se contempla");
         }
 
     }
@@ -225,6 +224,7 @@ public class Cafetera {
         System.out.println(agua);
         System.out.println(leche);
     }
+//-------------------------------------------------------------------------------------------------------------------------------------
 
     public void rellenarDeposito(int opcionDeposito, int llenarDeposito, double cantidad) {
         if (opcionDeposito == 1 && llenarDeposito == 1) {
@@ -263,7 +263,31 @@ public class Cafetera {
 //            System.out.println("Introduzca la cantidad");
             leche.llenarDeposito(cantidad);
         }
+        System.out.println(cafe.getCantidadActual());
+        System.out.println(cafe.getCantidadMax());
+
+        if (cantidad > cafe.getCantidadMax()) {
+
+            cafe.setCantidadActual(cafe.getCantidadMax());
+        }
+        if (cantidad > cafeDescafeinado.getCantidadMax()) {
+            cafeDescafeinado.setCantidadActual(cafeDescafeinado.getCantidadMax());
+        }
+        if (cantidad > azucar.getCantidadMax()) {
+            azucar.setCantidadActual(azucar.getCantidadMax());
+        }
+        if (cantidad > chocolate.getCantidadMax()) {
+            chocolate.setCantidadActual(chocolate.getCantidadMax());
+        }
+        if (cantidad > agua.getCantidadMax()) {
+            agua.setCantidadActual(agua.getCantidadMax());
+        }
+        if (cantidad > leche.getCantidadMax()) {
+            leche.setCantidadActual(leche.getCantidadMax());
+        }
+
     }
+//-------------------------------------------------------------------------------------------------------------------------------------
 
     //getters y setters
     public void setSaldoAcumulado(double saldoAcumulado) {
