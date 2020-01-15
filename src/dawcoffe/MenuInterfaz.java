@@ -22,32 +22,63 @@ public class MenuInterfaz {
         this.cafetera = cafetera;
     }
 
-    //pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, pendiente, 
-//    //muestra informacion del producto elegido
-//    public void mostrarInformacion(String codigo) {
-//  //guarda string de cantidad de azucar, para mostrarlo luego
-//                        switch (cantidadAzucar) {
-//                            case 1:
-//                                Azucar = "ninguna";
-//                                break;
-//                            case 2:
-//                                Azucar = "poca";
-//
-//                                break;
-//                            case 3:
-//                                Azucar = "mucha";
-//
-//                                break;
-//                        }
-//        //si el precio es mayor o igual al del articulo muestra la informacion
-//        if (getSaldoCliente() >= getPrecio()) {
-//            
-//            System.out.println("Ha elegido " + opcion);
-////            System.out.println("Descafeinado: " + opcionDescafeinado);
-//            System.out.println("Con " + cafetera + " azucar");
-//
-//        }
-//    }
+    //muestra informacion si el producto elegido es cafe
+    public void mostrarInformacion(String menu, int descafeinadoSiNo) {
+        String Azucar = null;
+        String descafeinado;
+
+        if (descafeinadoSiNo == 1) {
+            descafeinado = "Si";
+        } else {
+            descafeinado = "No";
+
+        }
+
+        //guarda string de cantidad de azucar, para mostrarlo luego
+        switch (cantidadAzucar) {
+            case 1:
+                Azucar = "ninguna";
+                break;
+            case 2:
+                Azucar = "poca";
+
+                break;
+            case 3:
+                Azucar = "mucha";
+
+                break;
+        }
+
+        System.out.println("Ha elegido " + menu);
+        System.out.println("Descafeinado: " + descafeinado);
+        System.out.println("Con " + Azucar + " azucar");
+
+    }
+//muestra informacion si el producto elegido no es cafe
+
+    public void mostrarInformacion(String menu) {
+        String Azucar = null;
+
+        //guarda string de cantidad de azucar, para mostrarlo luego
+        switch (cantidadAzucar) {
+            case 1:
+                Azucar = "ninguna";
+                break;
+            case 2:
+                Azucar = "poca";
+
+                break;
+            case 3:
+                Azucar = "mucha";
+
+                break;
+        }
+
+        System.out.println("Ha elegido " + menu);
+        System.out.println("Con " + Azucar + " azucar");
+
+    }
+
     public void pedirMasDinero(double saldoCliente) {
 //        double saldoCliente = 0;
 
@@ -85,10 +116,9 @@ public class MenuInterfaz {
 //        Scanner entrada = new Scanner(System.in);
         int codigo;
         int opcion;
-        int descafeinadoSiNo;
+        int descafeinadoSiNo = 0;
 
 //        int cantidadAzucar = 0;
-//        String Azucar = null;
         double saldoCliente = 0;
         double cambio = 0;
 
@@ -136,10 +166,12 @@ public class MenuInterfaz {
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
                         //decide si descafeinado o no
-                        do {
-                            System.out.println("Lo quiere descafeinado \n1. SI\n2. NO");
-                            descafeinadoSiNo = entrada.nextInt();
-                        } while (descafeinadoSiNo < 1 || descafeinadoSiNo > 2);
+                        if (codigo >= 101 && codigo <= 104) {
+                            do {
+                                System.out.println("Lo quiere descafeinado \n1. SI\n2. NO");
+                                descafeinadoSiNo = entrada.nextInt();
+                            } while (descafeinadoSiNo < 1 || descafeinadoSiNo > 2);
+                        }
 
                         //pregunta la cantidad de azucar y la resta del contenido
                         servirAzucar();
@@ -151,11 +183,13 @@ public class MenuInterfaz {
                                 cafetera.setPrecio(0.8);
 
                                 pedirMasDinero(saldoCliente);
-//                       
+                                
                                 if (descafeinadoSiNo == 1) {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
                                 cafetera.servirCafe(cafe1, codigo);
+
+                                mostrarInformacion(cafe1, descafeinadoSiNo);
 
                                 break;
                             case 102:
@@ -166,6 +200,7 @@ public class MenuInterfaz {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
                                 cafetera.servirCafe(cafe2, codigo);
+                                mostrarInformacion(cafe1, descafeinadoSiNo);
 
                                 break;
                             case 103:
@@ -176,6 +211,7 @@ public class MenuInterfaz {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
                                 cafetera.servirCafe(cafe3, codigo);
+                                mostrarInformacion(cafe1, descafeinadoSiNo);
 
                                 break;
                             case 104:
@@ -187,6 +223,7 @@ public class MenuInterfaz {
                                     cafetera.restarCafeDescafeinado(codigo);
                                 }
                                 cafetera.servirCafe(cafe4, codigo);
+                                mostrarInformacion(cafe1, descafeinadoSiNo);
 
                                 break;
                             case 200:
@@ -194,6 +231,7 @@ public class MenuInterfaz {
 
                                 pedirMasDinero(saldoCliente);
                                 cafetera.servirChocolate(Choco, codigo);
+                                mostrarInformacion(Choco);
 
                                 break;
 
@@ -202,6 +240,7 @@ public class MenuInterfaz {
 
                                 pedirMasDinero(saldoCliente);
                                 cafetera.servirLeche(lecheFria, codigo);
+                                mostrarInformacion(lecheFria);
 
                                 break;
                             case 301:
@@ -209,7 +248,7 @@ public class MenuInterfaz {
 
                                 pedirMasDinero(saldoCliente);
                                 cafetera.servirLeche(lecheCaliente, codigo);
-
+                                mostrarInformacion(lecheCaliente);
                                 break;
                             default:
                                 System.out.println("Esa opcion no se contempla");
@@ -219,7 +258,6 @@ public class MenuInterfaz {
 
                         cafetera.setSaldoCliente(0);
                         saldoCliente = 0;
-                        System.out.println("");
                         System.out.println("Vuelva pronto. \nQue tenga un buen dia");
 //                        System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
 
