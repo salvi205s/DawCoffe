@@ -43,56 +43,63 @@ public class Cafetera {
     public Cafetera() {
     }
 
-    public void servirCafe(double precio, String menu, int codigo) {
+    public void servirCafe(String menu, int codigo) {
 //        String opcion;
-        setPrecio(precio);
+
+//        setPrecio(precio);
+        
 //        opcion = menu;
-        comprobarPrecio();
+//        comprobarPrecio();
 
         restarCafe(codigo);
-        mostrarInformacion(menu);
 
     }
 
-    public void servirChocolate(double precio, String menu, int codigo) {
-        String opcion;
-        setPrecio(precio);
-        opcion = menu;
-        comprobarPrecio();
+    public void servirChocolate(String menu, int codigo) {
+//        String opcion;
+//        setPrecio(precio);
+//        opcion = menu;
+//        comprobarPrecio();
 
 //resta la cantidad de chocolate al deposito
         restarChocolate(12);
         restarLeche(180);
-        mostrarInformacion(menu);
 
     }
 
-    public void servirLeche(double precio, String menu, int codigo) {
-        String opcion;
-        setPrecio(precio);
-        opcion = menu;
-        comprobarPrecio();
+    public void servirLeche(String menu, int codigo) {
+//        String opcion;
+//        setPrecio(precio);
+//        opcion = menu;
+//        comprobarPrecio();
 
         restarLeche(180);
     }
 
     //metodo para comprobar el precio del articulo
-    public void comprobarPrecio() {
+    public boolean comprobarPrecio() {
 
-        //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
-        while (getSaldoCliente() <= precio) {
+        boolean precioCorrecto = false;
+//        System.out.println("saldoCliente " + getSaldoCliente());
+//        System.out.println("getPrecio " + getPrecio());
 
-            System.out.println("Saldo insuficiente " + this.saldoCliente);
-            //introduce el dinero
-            System.out.println("Introduzca mas monedas");
-            System.out.println("saldoCliente " + getSaldoCliente());
+        if (getSaldoCliente() >= getPrecio()) {
+            precioCorrecto = true;
+        }
+//        //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
+//        while (precioCorrecto) {
+//
+////            System.out.println("Saldo insuficiente " + this.saldoCliente);
+////            //introduce el dinero
+////            System.out.println("Introduzca mas monedas");
+////            System.out.println("saldoCliente " + getSaldoCliente());
+////
+////            saldoCliente += entrada.nextDouble();
+////            setSaldoCliente(saldoCliente);
+////            System.out.println("saldoCliente " + getSaldoCliente());
+//        }
 
-            saldoCliente += entrada.nextDouble();
-            setSaldoCliente(saldoCliente);
-            System.out.println("saldoCliente " + getSaldoCliente());
-
-        };
-
+        return precioCorrecto;
     }
 
     public double devolverCambio() {
