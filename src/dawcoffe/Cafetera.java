@@ -44,9 +44,9 @@ public class Cafetera {
     }
 
     public void servirCafe(double precio, String menu, int codigo) {
-        String opcion;
+//        String opcion;
         setPrecio(precio);
-        opcion = menu;
+//        opcion = menu;
         comprobarPrecio();
 
         restarCafe(codigo);
@@ -59,7 +59,7 @@ public class Cafetera {
         setPrecio(precio);
         opcion = menu;
         comprobarPrecio();
-        
+
 //resta la cantidad de chocolate al deposito
         restarChocolate(12);
         restarLeche(180);
@@ -95,24 +95,18 @@ public class Cafetera {
 
     }
 
-    //muestra informacion del producto elegido
-    public void mostrarInformacion(String opcion/*, String opcionDescafeinado, String cantAzucar*/) {
+    public double devolverCambio() {
         double cambio = 0;
 
-        //si el precio es mayor o igual al del articulo muestra la informacion
-        if (getSaldoCliente() >= getPrecio()) {
-//            System.out.println("Ha elegido " + opcion);
-//            System.out.println("Descafeinado: " + opcionDescafeinado);
-//            System.out.println("Con " + cantAzucar + " azucar");
+        //calcula el cambio a devolver
+        cambio = getSaldoCliente() - this.precio;
 
-            //calcula el cambio a devolver
-            cambio = getSaldoCliente() - this.precio;
-            System.out.printf("Su cambio es: %.2f %n", cambio);
-            //suma el saldo al saldoAcumulado
-            setSaldoAcumulado(this.precio);
-            //incrementa en 1 el numero de ventas
-            setNumVentas(1);
-        }
+//        //suma el saldo al saldoAcumulado
+        setSaldoAcumulado(this.precio);
+        //incrementa en 1 el numero de ventas
+        setNumVentas(1);
+
+        return cambio;
     }
 
     public boolean informarFaltaExistencias() {
