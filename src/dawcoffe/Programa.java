@@ -13,7 +13,7 @@ public class Programa {
 
     public static void main(String[] args) {
 
-        Deposito cafe = new Deposito(1000, 250, 3, "cafe");
+        Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
         Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
         Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
         Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
