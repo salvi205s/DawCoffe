@@ -14,12 +14,6 @@ import java.util.Scanner;
 public class MenuInterfaz {
 
     private Cafetera cafetera;
-//    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
-//    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-//    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-//    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-//    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
-//    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
 
     public void menuCafeteria() {
 
@@ -148,98 +142,37 @@ public class MenuInterfaz {
                             case 101:
                                 cafetera.servirCafe(0.80, cafe1, codigo);
 
-//                                cafetera.setPrecio(0.80);
-//
-//                                menu = cafe1;
-//                                //si ha introducido el precio minimo para el articulo
-//                                cafetera.comprobarPrecio();
-//
-////----------------------------------------------------------------------
-//                                //resta la cantidad de cafe,y agua 
-//                                cafetera.restarCafe(codigo);
-//                                cafetera.mostrarInformacion(menu);
-//-------------------------------------------------------------------------------------------------------------------------------
                                 break;
                             case 102:
                                 cafetera.servirCafe(0.90, cafe2, codigo);
-//                                cafetera.setPrecio(0.90);
-//
-//                                menu = cafe2;
-//                                cafetera.comprobarPrecio();
-//
-//                                //resta la cantidad de cafe,y agua 
-//                                cafetera.restarCafe(codigo);
-//                                cafetera.mostrarInformacion(menu);
 
                                 break;
                             case 103:
                                 cafetera.servirCafe(1.10, cafe3, codigo);
 
-//                                cafetera.setPrecio(1.10);
-//
-//                                menu = cafe3;
-//                                cafetera.comprobarPrecio();
-//
-//                                cafetera.restarCafe(codigo);
-//
-//                                cafetera.mostrarInformacion(menu);
                                 break;
                             case 104:
                                 cafetera.servirCafe(1.0, cafe4, codigo);
 
-//                                cafetera.setPrecio(1.0);
-//
-//                                menu = cafe4;
-//                                cafetera.comprobarPrecio();
-//
-//                                cafetera.restarCafe(codigo);
-//
-//                                cafetera.mostrarInformacion(menu);
                                 break;
                             case 200:
                                 cafetera.servirChocolate(1.40, Choco, codigo);
 
-//                                cafetera.setPrecio(1.40);
-//
-//                                menu = Choco;
-//                                cafetera.comprobarPrecio();
-//
-//                                cafetera.restarChocolate();
-//                                cafetera.mostrarInformacion(menu);
-                                //resta la cantidad de chocolate al deposito
-//                                chocolate.servirContenido(12);
-//                                leche.servirContenido(180);
                                 break;
 
                             case 300:
                                 cafetera.servirLeche(0.50, lecheFria, codigo);
 
-//                                cafetera.setPrecio(0.50);
-//
-//                                menu = lecheFria;
-//
-//                                cafetera.mostrarInformacion(menu);
-//                                cafetera.restarLeche(180);
-                                //resta la cantidad de leche al deposito
-//                                leche.servirContenido(180);
                                 break;
                             case 301:
                                 cafetera.servirLeche(0.50, lecheCaliente, codigo);
 
-//                                cafetera.setPrecio(0.50);
-//
-//                                menu = lecheCaliente;
-//
-//                                cafetera.mostrarInformacion(menu);
-//
-//                                //resta la cantidad de leche al deposito
-//                                cafetera.restarLeche(180);
-//                                leche.servirContenido(180);
                                 break;
                             default:
                                 System.out.println("Esa opcion no se contempla");
                                 opcion = 0;
                         }
+                        System.out.printf("Su cambio es: %.2f %n", cafetera.devolverCambio());
 
                         cafetera.setSaldoCliente(0);
                         saldoCliente = 0;
