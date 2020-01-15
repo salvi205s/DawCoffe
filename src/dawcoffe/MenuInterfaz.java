@@ -12,19 +12,24 @@ import java.util.Scanner;
  * @author Salva
  */
 public class MenuInterfaz {
-
+private Cafetera cafetera ;
 //    private Deposito cafe = new Deposito(1000, 250, 1000, "cafe");
 //    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
 //    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
 //    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
 //    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
 //    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
+
+    public MenuInterfaz(Cafetera cafetera) {
+        this.cafetera = cafetera;
+    }
+
     public void menu() {
         Scanner entrada = new Scanner(System.in);
         int codigo;
         int opcion;
 //        String descafeinado = null;
-        Cafetera cafetera = new Cafetera();
+        
 //        int cantidadAzucar = 0;
 //        String Azucar = null;
         double saldoCliente = 0;
