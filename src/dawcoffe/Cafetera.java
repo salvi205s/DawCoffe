@@ -24,12 +24,6 @@ public class Cafetera {
 
     private int numVentas = 0;
 
-//    private Deposito cafe = new Deposito(1000, 250, 3, "cafe");
-//    private Deposito cafeDescafeinado = new Deposito(1000, 250, 1000, "cafeDescafeinado");
-//    private Deposito azucar = new Deposito(1000, 250, 1000, "azucar");
-//    private Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
-//    private Deposito agua = new Deposito(1000, 250, 1000, "agua");
-//    private Deposito leche = new Deposito(1000, 250, 1000, "leche");
     private Deposito cafe;
     private Deposito cafeDescafeinado ;
     private Deposito azucar ;
@@ -49,7 +43,19 @@ public class Cafetera {
     public Cafetera() {
     }
     
-    
+        public void servirCafe(double precio, String menu, int codigo) {
+            String opcion;
+            setPrecio(precio);
+            opcion =menu;
+            comprobarPrecio();
+            
+            restarCafe(codigo);
+            mostrarInformacion(menu);
+            
+        }
+        
+        
+
     //metodo para comprobar el precio del articulo
     public void comprobarPrecio() {
 
