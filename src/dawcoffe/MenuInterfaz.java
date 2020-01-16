@@ -113,6 +113,18 @@ public class MenuInterfaz {
 //        }
     }
 
+    public void servirCafe(double saldoCliente, int descafeinadoSiNo, int codigo, String tipoCafe) {
+
+        pedirMasDinero(saldoCliente);
+
+        if (descafeinadoSiNo == 1) {
+            cafetera.restarCafeDescafeinado(codigo);
+        }
+        cafetera.servirCafe(tipoCafe, codigo);
+
+        mostrarInformacion(tipoCafe, descafeinadoSiNo);
+    }
+
     public void menu() {
 //        Scanner entrada = new Scanner(System.in);
         int codigo;
@@ -183,48 +195,24 @@ public class MenuInterfaz {
                             case 101:
                                 cafetera.setPrecio(0.8);
 
-                                pedirMasDinero(saldoCliente);
-
-                                if (descafeinadoSiNo == 1) {
-                                    cafetera.restarCafeDescafeinado(codigo);
-                                }
-                                cafetera.servirCafe(cafe1, codigo);
-
-                                mostrarInformacion(cafe1, descafeinadoSiNo);
+                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe1);
 
                                 break;
                             case 102:
                                 cafetera.setPrecio(0.9);
 
-                                pedirMasDinero(saldoCliente);
-                                if (descafeinadoSiNo == 1) {
-                                    cafetera.restarCafeDescafeinado(codigo);
-                                }
-                                cafetera.servirCafe(cafe2, codigo);
-                                mostrarInformacion(cafe2, descafeinadoSiNo);
+                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe2);
 
                                 break;
                             case 103:
                                 cafetera.setPrecio(1.10);
-
-                                pedirMasDinero(saldoCliente);
-                                if (descafeinadoSiNo == 1) {
-                                    cafetera.restarCafeDescafeinado(codigo);
-                                }
-                                cafetera.servirCafe(cafe3, codigo);
-                                mostrarInformacion(cafe3, descafeinadoSiNo);
+                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe3);
 
                                 break;
                             case 104:
 
                                 cafetera.setPrecio(1);
-
-                                pedirMasDinero(saldoCliente);
-                                if (descafeinadoSiNo == 1) {
-                                    cafetera.restarCafeDescafeinado(codigo);
-                                }
-                                cafetera.servirCafe(cafe4, codigo);
-                                mostrarInformacion(cafe4, descafeinadoSiNo);
+                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe4);
 
                                 break;
                             case 200:
