@@ -113,7 +113,8 @@ public class MenuInterfaz {
 //        }
     }
 
-    public void servirCafe(double saldoCliente, int descafeinadoSiNo, int codigo, String tipoCafe) {
+    public void servirCafe(double precio, double saldoCliente, int descafeinadoSiNo, int codigo, String tipoCafe) {
+        cafetera.setPrecio(precio);
 
         pedirMasDinero(saldoCliente);
 
@@ -123,6 +124,14 @@ public class MenuInterfaz {
         cafetera.servirCafe(tipoCafe, codigo);
 
         mostrarInformacion(tipoCafe, descafeinadoSiNo);
+    }
+
+    public void servirOtros(double precio, double saldoCliente, int codigo, String producto) {
+        cafetera.setPrecio(precio);
+
+        pedirMasDinero(saldoCliente);
+        cafetera.servirChocolate(producto, codigo);
+        mostrarInformacion(producto);
     }
 
     public void menu() {
@@ -193,52 +202,34 @@ public class MenuInterfaz {
                         System.out.println("................................................");
                         switch (codigo) {
                             case 101:
-                                cafetera.setPrecio(0.8);
-
-                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe1);
-
+                                servirCafe(0.8, saldoCliente, descafeinadoSiNo, codigo, cafe1);
                                 break;
+                                
                             case 102:
-                                cafetera.setPrecio(0.9);
 
-                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe2);
-
+                                servirCafe(0.9, saldoCliente, descafeinadoSiNo, codigo, cafe2);
                                 break;
+                                
                             case 103:
-                                cafetera.setPrecio(1.10);
-                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe3);
-
+                                servirCafe(1.10, saldoCliente, descafeinadoSiNo, codigo, cafe3);
                                 break;
+                                
                             case 104:
-
-                                cafetera.setPrecio(1);
-                                servirCafe(saldoCliente, descafeinadoSiNo, codigo, cafe4);
-
+                                servirCafe(1, saldoCliente, descafeinadoSiNo, codigo, cafe4);
                                 break;
+                                
                             case 200:
-                                cafetera.setPrecio(1.4);
-
-                                pedirMasDinero(saldoCliente);
-                                cafetera.servirChocolate(Choco, codigo);
-                                mostrarInformacion(Choco);
-
+                                servirOtros(1.4, saldoCliente, codigo, Choco);
                                 break;
 
                             case 300:
-                                cafetera.setPrecio(0.5);
-
-                                pedirMasDinero(saldoCliente);
-                                cafetera.servirLeche(lecheFria, codigo);
-                                mostrarInformacion(lecheFria);
-
+                                servirOtros(0.5, saldoCliente, codigo, lecheFria);
                                 break;
+                                
                             case 301:
-                                cafetera.setPrecio(0.5);
-
-                                pedirMasDinero(saldoCliente);
-                                cafetera.servirLeche(lecheCaliente, codigo);
-                                mostrarInformacion(lecheCaliente);
+                                servirOtros(0.5, saldoCliente, codigo, lecheCaliente);
                                 break;
+                                
                             default:
                                 System.out.println("Esa opcion no se contempla");
                                 opcion = 0;
