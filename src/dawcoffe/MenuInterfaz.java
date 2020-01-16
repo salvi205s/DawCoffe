@@ -144,6 +144,15 @@ public class MenuInterfaz {
         System.out.println("5. salir administracion ");
     }
 
+    public void elegirDepositoArellenar() {
+        System.out.println("1. Café");
+        System.out.println("2. cafeDescafeinado");
+        System.out.println("3. azucar");
+        System.out.println("4. chocolate");
+        System.out.println("5. agua");
+        System.out.println("6. leche");
+    }
+
     public void menu() {
 //        Scanner entrada = new Scanner(System.in);
         int codigo;
@@ -260,8 +269,8 @@ public class MenuInterfaz {
                         int pass,
                          cont = 0;
                         int opcionAdmin = 0;
-                        int opcionDeposito;
-                        int llenarDeposito;
+//                        int opcionDeposito;
+//                        int opcioRellenar;
 
                         do {
                             System.out.println("Introduce usuario");
@@ -292,6 +301,7 @@ public class MenuInterfaz {
                                         break;
                                     case 2:
                                         System.out.println("Comprobando estado general");
+                                        System.out.println("");
                                         cafetera.estadoGeneral();
                                         System.out.println("Usuario: " + user.getUSER_NAME());
                                         System.out.println("Contraseña: " + user.getPASSWORD());
@@ -304,28 +314,9 @@ public class MenuInterfaz {
 
                                         break;
                                     case 4:
-                                        //-------------------------------------------------------------------------------------------------------------------------
 
 //Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
-                                        System.out.println("Que deposito desea rellenar");
-                                        do {
-                                            System.out.println("1. Café");
-                                            System.out.println("2. cafeDescafeinado");
-                                            System.out.println("3. azucar");
-                                            System.out.println("4. chocolate");
-                                            System.out.println("5. agua");
-                                            System.out.println("6. leche");
-                                            opcionDeposito = entrada.nextInt();
-                                        } while (opcionDeposito < 1 || opcionDeposito > 6);
-                                        do {
-                                            System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
-                                            llenarDeposito = entrada.nextInt();
-                                        } while (llenarDeposito < 1 || llenarDeposito > 2);
-                                        //-------------------------------------------------------------------------------------------------------------------------
-                                        System.out.println("Introduzca la cantidad");
-                                        cafetera.rellenarDeposito(opcionDeposito, llenarDeposito, entrada.nextDouble());
-
-//-------------------------------------------------------------------------------------------------------------------------
+                                        rellenarDepositos();
                                         break;
                                     case 5:
                                         System.out.println("Saliendo de la administracion");
@@ -351,4 +342,29 @@ public class MenuInterfaz {
         } while (!salir.equalsIgnoreCase("Si"));
     }
 
+    public void rellenarDepositos() {
+        int opcionDeposito;
+        int opcioRellenar;
+
+        System.out.println("Que deposito desea rellenar");
+        do {
+
+            elegirDepositoArellenar();
+            opcionDeposito = entrada.nextInt();
+
+        } while (opcionDeposito < 1 || opcionDeposito > 6);
+        do {
+            System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
+            opcioRellenar = entrada.nextInt();
+        } while (opcioRellenar < 1 || opcioRellenar > 2);
+        //-------------------------------------------------------------------------------------------------------------------------
+        if (opcioRellenar == 1) {
+            cafetera.rellenarDepositoCompleto(opcionDeposito);
+        } else if (opcioRellenar == 2) {
+            System.out.println("Introduzca la cantidad");
+            cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
+        } else {
+            System.out.println("Esa opcion no se contempla");
+        }
+    }
 }
