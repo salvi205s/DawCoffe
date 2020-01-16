@@ -23,7 +23,7 @@ public class MenuInterfaz {
     }
 
     //muestra informacion si el producto elegido es cafe
-    public void mostrarInformacion(String menu, int descafeinadoSiNo) {
+    public void mostrarInformacionCafe(String menu, int descafeinadoSiNo) {
         String Azucar = null;
         String descafeinado;
 
@@ -55,9 +55,9 @@ public class MenuInterfaz {
         System.out.println("Con " + Azucar + " azucar");
 
     }
-//muestra informacion si el producto elegido no es cafe
 
-    public void mostrarInformacion(String menu) {
+//muestra informacion si el producto elegido no es cafe
+    public void mostrarInformacionOtros(String menu) {
         String Azucar = null;
 
         //guarda string de cantidad de azucar, para mostrarlo luego
@@ -123,7 +123,7 @@ public class MenuInterfaz {
         }
         cafetera.servirCafe(tipoCafe, codigo);
 
-        mostrarInformacion(tipoCafe, descafeinadoSiNo);
+        mostrarInformacionCafe(tipoCafe, descafeinadoSiNo);
     }
 
     public void servirOtros(double precio, double saldoCliente, int codigo, String producto) {
@@ -131,7 +131,17 @@ public class MenuInterfaz {
 
         pedirMasDinero(saldoCliente);
         cafetera.servirChocolate(producto, codigo);
-        mostrarInformacion(producto);
+        mostrarInformacionOtros(producto);
+    }
+
+    public void menuAdmin() {
+        System.out.println("................................................");
+
+        System.out.println("1. Comprobar depósitos");
+        System.out.println("2. Comprobar estado general");
+        System.out.println("3. Consultar saldo de ventas realizadas.");
+        System.out.println("4. Rellenar depositos");
+        System.out.println("5. salir administracion ");
     }
 
     public void menu() {
@@ -204,20 +214,20 @@ public class MenuInterfaz {
                             case 101:
                                 servirCafe(0.8, saldoCliente, descafeinadoSiNo, codigo, cafe1);
                                 break;
-                                
+
                             case 102:
 
                                 servirCafe(0.9, saldoCliente, descafeinadoSiNo, codigo, cafe2);
                                 break;
-                                
+
                             case 103:
                                 servirCafe(1.10, saldoCliente, descafeinadoSiNo, codigo, cafe3);
                                 break;
-                                
+
                             case 104:
                                 servirCafe(1, saldoCliente, descafeinadoSiNo, codigo, cafe4);
                                 break;
-                                
+
                             case 200:
                                 servirOtros(1.4, saldoCliente, codigo, Choco);
                                 break;
@@ -225,11 +235,11 @@ public class MenuInterfaz {
                             case 300:
                                 servirOtros(0.5, saldoCliente, codigo, lecheFria);
                                 break;
-                                
+
                             case 301:
                                 servirOtros(0.5, saldoCliente, codigo, lecheCaliente);
                                 break;
-                                
+
                             default:
                                 System.out.println("Esa opcion no se contempla");
                                 opcion = 0;
@@ -269,13 +279,7 @@ public class MenuInterfaz {
                         } else {
                             System.out.println("Correcto");
                             do {
-                                System.out.println("................................................");
-
-                                System.out.println("1. Comprobar depósitos");
-                                System.out.println("2. Comprobar estado general");
-                                System.out.println("3. Consultar saldo de ventas realizadas.");
-                                System.out.println("4. Rellenar depositos");
-                                System.out.println("5. salir administracion ");
+                                menuAdmin();
 
                                 opcionAdmin = entrada.nextInt();
 
