@@ -90,8 +90,10 @@ public class MenuInterfaz {
         if (edulcorante == 1) {
             System.out.println("Con " + Azucar + " azucar");
 
+        } else if (edulcorante == 2) {
+            System.out.println("Con sacarina ");
+
         }
-        System.out.println("Con sacarina ");
 
     }
 
@@ -149,7 +151,8 @@ public class MenuInterfaz {
         System.out.println("4. chocolate");
         System.out.println("5. agua");
         System.out.println("6. leche");
-        System.out.println("7. salir");
+        System.out.println("7. sacarina");
+        System.out.println("8. salir");
     }
 
     public void menu() {
@@ -202,6 +205,7 @@ public class MenuInterfaz {
 
                         if (cafetera.informarFaltaExistencias()) {
                             System.out.println("Lo sentimos pero no podemos, servirle");
+                            reserva();
                             break;
                         }
 
@@ -373,10 +377,10 @@ public class MenuInterfaz {
             elegirDepositoArellenar();
             opcionDeposito = entrada.nextInt();
 
-        } while (opcionDeposito != 7);
+        } while (opcionDeposito < 1 || opcionDeposito > 8);
 
         do {
-            if (opcionDeposito == 7) {
+            if (opcionDeposito == 8) {
                 break;
             }
             System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
@@ -407,22 +411,28 @@ public class MenuInterfaz {
         if (cafetera.getCafe().isReserva()) {
             System.out.println(cafetera.getCafe());
 
-        } else if (cafetera.getCafeDescafeinado().isReserva()) {
+        }
+        if (cafetera.getCafeDescafeinado().isReserva()) {
             System.out.println(cafetera.getCafeDescafeinado());
 
-        } else if (cafetera.getAzucar().isReserva()) {
+        }
+        if (cafetera.getAzucar().isReserva()) {
             System.out.println(cafetera.getAzucar());
 
-        } else if (cafetera.getChocolate().isReserva()) {
+        }
+        if (cafetera.getChocolate().isReserva()) {
             System.out.println(cafetera.getChocolate());
 
-        } else if (cafetera.getAgua().isReserva()) {
+        }
+        if (cafetera.getAgua().isReserva()) {
             System.out.println(cafetera.getAgua());
 
-        } else if (cafetera.getLeche().isReserva()) {
+        }
+        if (cafetera.getLeche().isReserva()) {
             System.out.println(cafetera.getLeche());
 
-        } else if (cafetera.getSacarina().isReserva()) {
+        }
+        if (cafetera.getSacarina().isReserva()) {
             System.out.println(cafetera.getSacarina());
 
         } else {
