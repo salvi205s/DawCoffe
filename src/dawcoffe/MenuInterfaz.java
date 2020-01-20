@@ -171,6 +171,10 @@ public class MenuInterfaz {
         String cafe2 = "Café solo largo (0.90€), codigo 102";
         String cafe3 = "Café con leche (1.10€), codigo 103";
         String cafe4 = "Café cortado (1.00€), codigo 104";
+        String cafe5 = "Café solo descafeinado (0.80€), codigo 101";
+        String cafe6 = "Café solo largo descafeinado(0.90€), codigo 102";
+        String cafe7 = "Café con leche descafeinado(1.10€), codigo 103";
+        String cafe8 = "Café cortado descafeinado(1.00€), codigo 104";
         String Choco = "Chocolate (1.40€), codigo 200";
         String lecheFria = "Leche fría (0.50€) codigo 300";
         String lecheCaliente = "Leche caliente (0.50€), codigo 301";
@@ -188,6 +192,10 @@ public class MenuInterfaz {
                         System.out.println(cafe2);
                         System.out.println(cafe3);
                         System.out.println(cafe4);
+                        System.out.println(cafe5);
+                        System.out.println(cafe6);
+                        System.out.println(cafe7);
+                        System.out.println(cafe8);
                         System.out.println(Choco);
                         System.out.println(lecheFria);
                         System.out.println(lecheCaliente);
@@ -234,6 +242,22 @@ public class MenuInterfaz {
                                 break;
 
                             case 104:
+                                servirCafe(1, saldoCliente, descafeinadoSiNo, codigo, cafe4);
+                                break;
+                            case 105:
+                                servirCafe(0.8, saldoCliente, descafeinadoSiNo, codigo, cafe1);
+                                break;
+
+                            case 106:
+
+                                servirCafe(0.9, saldoCliente, descafeinadoSiNo, codigo, cafe2);
+                                break;
+
+                            case 107:
+                                servirCafe(1.10, saldoCliente, descafeinadoSiNo, codigo, cafe3);
+                                break;
+
+                            case 108:
                                 servirCafe(1, saldoCliente, descafeinadoSiNo, codigo, cafe4);
                                 break;
 
