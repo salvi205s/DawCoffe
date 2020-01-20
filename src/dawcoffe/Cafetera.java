@@ -102,37 +102,7 @@ public class Cafetera {
 
     }
 
-    public void restarCafeDescafeinado(int codigo) {
-        String descafeinado = null;
-
-        switch (codigo) {
-            case 101:
-                cafeDescafeinado.servirContenido(8);
-                agua.servirContenido(50);
-                break;
-
-            case 102:
-                cafeDescafeinado.servirContenido(8);
-                agua.servirContenido(80);
-                break;
-
-            case 103:
-                cafeDescafeinado.servirContenido(8);
-                agua.servirContenido(50);
-                restarLeche(30);
-                break;
-
-            case 104:
-                cafeDescafeinado.servirContenido(8);
-                agua.servirContenido(50);
-                restarLeche(30);
-                break;
-
-        }
-
-    }
     //metodo deposito de cafe
-
     public void restarCafe(int codigo) {
         switch (codigo) {
             case 101:
@@ -156,7 +126,27 @@ public class Cafetera {
                 agua.servirContenido(50);
                 restarLeche(30);
                 break;
+            case 105:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(50);
+                break;
 
+            case 106:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(80);
+                break;
+
+            case 107:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(50);
+                restarLeche(30);
+                break;
+
+            case 108:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(50);
+                restarLeche(30);
+                break;
         }
 
     }
@@ -218,8 +208,6 @@ public class Cafetera {
 //            System.out.println("No hay depositos en reserva");
 //        }
 //    }
-
-
 //-------------------------------------------------------------------------------------------------------------------------------------
     public void rellenarDepositoParcialmente(int opcionDeposito, double cantidad) {
 
