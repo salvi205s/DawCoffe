@@ -42,11 +42,11 @@ public class Cafetera {
     public Cafetera() {
     }
 
-    public void servirCafe(String menu, int codigo) {
-
-        restarCafe(codigo);
-
-    }
+//    public void servirCafe(String menu, int codigo) {
+//
+//        restarCafe(codigo);
+//
+//    }
 
     public void servirChocolate(String menu, int codigo) {
 
@@ -56,10 +56,10 @@ public class Cafetera {
 
     }
 
-    public void servirLeche(String menu, int codigo) {
-
-        restarLeche(180);
-    }
+//    public void servirLeche(String menu, int codigo) {
+//
+//        restarLeche(180);
+//    }
 
     //metodo para comprobar el precio del articulo
     public boolean comprobarPrecio() {
@@ -158,6 +158,7 @@ public class Cafetera {
 
     public void restarAzucar(int cantidadAzucar) {
 
+        System.out.println("Ha elegido "+cantidadAzucar);
         //resta el contenido de azucar al deposito
         switch (cantidadAzucar) {
             case 1:
@@ -185,29 +186,7 @@ public class Cafetera {
 
     }
 
-//    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
-//    public void reserva() {
-//        if (cafe.isReserva()) {
-//            System.out.println(cafe);
-//
-//        } else if (cafeDescafeinado.isReserva()) {
-//            System.out.println(cafeDescafeinado);
-//
-//        } else if (azucar.isReserva()) {
-//            System.out.println(azucar);
-//
-//        } else if (chocolate.isReserva()) {
-//            System.out.println(chocolate);
-//
-//        } else if (agua.isReserva()) {
-//            System.out.println(agua);
-//
-//        } else if (leche.isReserva()) {
-//            System.out.println(leche);
-//        } else {
-//            System.out.println("No hay depositos en reserva");
-//        }
-//    }
+
 //-------------------------------------------------------------------------------------------------------------------------------------
     public void rellenarDepositoParcialmente(int opcionDeposito, double cantidad) {
 
