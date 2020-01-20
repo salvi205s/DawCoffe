@@ -64,19 +64,28 @@ public class MenuInterfaz {
 
     }
 
-    public void servirAzucar() {
+    private void elegirEdulcorante() {
+//pregunta la cantidad de azucar y la resta del contenido
+        System.out.println("Que edulcorante quiere \n1. azucar \n2. sacarina");
+        int edulcorante = entrada.nextInt();
 
-        //si saldo cliente es mayor que el precio minimo, decide cantidad de azucar
-//        if (cafetera.getSaldoCliente() >= 0.50) {
-        System.out.println("Cuanta azucar quiere");
-        System.out.println("1. ninguna");
-        System.out.println("2. poca");
-        System.out.println("3. mucha");
-        cantidadAzucar = entrada.nextInt();
+        switch (edulcorante) {
+            case 1:
+                System.out.println("Cuanta azucar quiere");
+                System.out.println("1. ninguna");
+                System.out.println("2. poca");
+                System.out.println("3. mucha");
+                cantidadAzucar = entrada.nextInt();
 
-        cafetera.restarAzucar(cantidadAzucar);
+                cafetera.restarAzucar(cantidadAzucar);
+                break;
+            case 2:
+                cafetera.restarSacarina();
+                break;
+            default:
+                System.out.println("Esa opcion no se contempla");
+        }
 
-//        }
     }
 
     public void servirCafe(double precio, double saldoCliente, int codigo, String tipoCafe) {
@@ -198,7 +207,7 @@ public class MenuInterfaz {
                         System.out.println("saldoCliente " + cafetera.getSaldoCliente());
 
                         //pregunta la cantidad de azucar y la resta del contenido
-                        servirAzucar();
+                        elegirEdulcorante();
 
                         //Muestra el pedido del cliente....
                         System.out.println("................................................");
@@ -382,10 +391,10 @@ public class MenuInterfaz {
                 cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
                 break;
             default:
-            System.out.println("Esa opcion no se contempla");
+                System.out.println("Esa opcion no se contempla");
 
         }
-       
+
     }
     //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
 
