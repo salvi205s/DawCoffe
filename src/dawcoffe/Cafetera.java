@@ -41,8 +41,6 @@ public class Cafetera {
         this.sacarina = sacarina;
     }
 
-    
-
     public Cafetera() {
     }
 
@@ -51,7 +49,6 @@ public class Cafetera {
 //        restarCafe(codigo);
 //
 //    }
-
     public void servirChocolate(String menu, int codigo) {
 
 //resta la cantidad de chocolate al deposito
@@ -64,7 +61,6 @@ public class Cafetera {
 //
 //        restarLeche(180);
 //    }
-
     //metodo para comprobar el precio del articulo
     public boolean comprobarPrecio() {
 
@@ -162,7 +158,7 @@ public class Cafetera {
 
     public void restarAzucar(int cantidadAzucar) {
 
-        System.out.println("Ha elegido "+cantidadAzucar);
+        System.out.println("Ha elegido " + cantidadAzucar);
         //resta el contenido de azucar al deposito
         switch (cantidadAzucar) {
             case 1:
@@ -189,10 +185,10 @@ public class Cafetera {
         }
 
     }
+
     public void restarSacarina() {
         sacarina.servirContenido(6);
     }
-
 
 //-------------------------------------------------------------------------------------------------------------------------------------
     public void rellenarDepositoParcialmente(int opcionDeposito, double cantidad) {
@@ -222,6 +218,10 @@ public class Cafetera {
                 leche.llenarDeposito(cantidad);
                 break;
             case 7:
+                sacarina.llenarDeposito(cantidad);
+                break;
+            case 8:
+
                 break;
         }
 
@@ -243,6 +243,9 @@ public class Cafetera {
         }
         if (cantidad > leche.getCantidadMax()) {
             leche.setCantidadActual(leche.getCantidadMax());
+        }
+        if (cantidad > sacarina.getCantidadMax()) {
+            sacarina.setCantidadActual(sacarina.getCantidadMax());
         }
 
     }
@@ -272,8 +275,13 @@ public class Cafetera {
             case 6:
                 leche.llenarDepositoCompleto();
                 break;
-                 case 7:
+             case 7:
+                sacarina.llenarDepositoCompleto();
                 break;
+            case 8:
+
+                break;
+        
         }
 
     }
@@ -334,6 +342,10 @@ public class Cafetera {
 
     public Deposito getLeche() {
         return leche;
+    }
+
+    public Deposito getSacarina() {
+        return sacarina;
     }
 
 }
