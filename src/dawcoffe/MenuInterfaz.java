@@ -204,7 +204,7 @@ public class MenuInterfaz {
                         saldoCliente += entrada.nextDouble();
                         cafetera.setSaldoCliente(saldoCliente);
 
-                        System.out.println("saldoCliente " + cafetera.getSaldoCliente());
+                        System.out.println("su saldo es " + cafetera.getSaldoCliente());
 
                         //pregunta la cantidad de azucar y la resta del contenido
                         elegirEdulcorante();
@@ -356,6 +356,8 @@ public class MenuInterfaz {
         System.out.println(cafetera.getChocolate());
         System.out.println(cafetera.getAgua());
         System.out.println(cafetera.getLeche());
+        System.out.println(cafetera.getLeche());
+        System.out.println(cafetera.getSacarina());
     }
 
     public void rellenarDepositos() {
