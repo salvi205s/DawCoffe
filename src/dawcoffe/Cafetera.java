@@ -104,55 +104,58 @@ public class Cafetera {
 
     public void restarCafeDescafeinado(int codigo) {
         String descafeinado = null;
-        if (codigo == 101) {
 
-            cafeDescafeinado.servirContenido(8);
-            agua.servirContenido(50);
+        switch (codigo) {
+            case 101:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(50);
+                break;
 
-        } else if (codigo == 102) {
-            cafeDescafeinado.servirContenido(8);
+            case 102:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(80);
+                break;
 
-            agua.servirContenido(80);
-        } else if (codigo == 103) {
-            cafeDescafeinado.servirContenido(8);
-            agua.servirContenido(50);
-            restarLeche(30);
+            case 103:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(50);
+                restarLeche(30);
+                break;
 
-        } else if (codigo == 104) {
-            cafeDescafeinado.servirContenido(8);
-
-            agua.servirContenido(50);
-            restarLeche(30);
+            case 104:
+                cafeDescafeinado.servirContenido(8);
+                agua.servirContenido(50);
+                restarLeche(30);
+                break;
 
         }
+
     }
     //metodo deposito de cafe
 
     public void restarCafe(int codigo) {
+        switch (codigo) {
+            case 101:
+                cafe.servirContenido(8);
+                agua.servirContenido(50);
+                break;
 
-        if (codigo == 101) {
+            case 102:
+                cafe.servirContenido(8);
+                agua.servirContenido(80);
+                break;
 
-            cafe.servirContenido(8);
+            case 103:
+                cafe.servirContenido(8);
+                agua.servirContenido(50);
+                restarLeche(30);
+                break;
 
-            agua.servirContenido(50);
-
-        } else if (codigo == 102) {
-
-            cafe.servirContenido(8);
-
-            agua.servirContenido(80);
-        } else if (codigo == 103) {
-
-            cafe.servirContenido(8);
-
-            agua.servirContenido(50);
-            restarLeche(30);
-        } else if (codigo == 104) {
-
-            cafe.servirContenido(8);
-
-            agua.servirContenido(50);
-            restarLeche(30);
+            case 104:
+                cafe.servirContenido(8);
+                agua.servirContenido(50);
+                restarLeche(30);
+                break;
 
         }
 
@@ -216,14 +219,7 @@ public class Cafetera {
         }
     }
 
-//    public void estadoGeneral() {
-//        System.out.println(cafe);
-//        System.out.println(cafeDescafeinado);
-//        System.out.println(azucar);
-//        System.out.println(chocolate);
-//        System.out.println(agua);
-//        System.out.println(leche);
-//    }
+
 //-------------------------------------------------------------------------------------------------------------------------------------
     public void rellenarDepositoParcialmente(int opcionDeposito, double cantidad) {
 
@@ -361,7 +357,5 @@ public class Cafetera {
     public Deposito getLeche() {
         return leche;
     }
-    
-    
 
 }
