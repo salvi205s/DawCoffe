@@ -214,6 +214,8 @@ public class Cafetera {
             case 6:
                 leche.llenarDeposito(cantidad);
                 break;
+            case 7:
+                break;
         }
 
         if (cantidad > cafe.getCantidadMax()) {
@@ -262,6 +264,8 @@ public class Cafetera {
 
             case 6:
                 leche.llenarDepositoCompleto();
+                break;
+                 case 7:
                 break;
         }
 
