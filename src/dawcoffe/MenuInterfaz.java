@@ -302,7 +302,7 @@ public class MenuInterfaz {
                                     case 2:
                                         System.out.println("Comprobando estado general");
                                         System.out.println("");
-                                        cafetera.estadoGeneral();
+                                        estadoGeneral();
                                         System.out.println("Usuario: " + user.getUSER_NAME());
                                         System.out.println("Contraseña: " + user.getPASSWORD());
 
@@ -341,7 +341,14 @@ public class MenuInterfaz {
 
         } while (!salir.equalsIgnoreCase("Si"));
     }
-
+    public void estadoGeneral() {
+        System.out.println(cafetera.getCafe());
+        System.out.println(cafetera.getCafeDescafeinado());
+        System.out.println(cafetera.getAzucar());
+        System.out.println(cafetera.getChocolate());
+        System.out.println(cafetera.getAgua());
+        System.out.println(cafetera.getLeche());
+    }
     public void rellenarDepositos() {
         int opcionDeposito;
         int opcioRellenar;
