@@ -133,6 +133,7 @@ public class MenuInterfaz {
         System.out.println("4. chocolate");
         System.out.println("5. agua");
         System.out.println("6. leche");
+        System.out.println("7. salir");
     }
 
     public void menu() {
@@ -321,8 +322,7 @@ public class MenuInterfaz {
 
                                         break;
                                     default:
-                                        System.out.println(
-                                                "Esa opcion no se contempla");
+                                        System.out.println("Esa opcion no se contempla");
                                 }
                             } while (opcionAdmin != 5);
                         } //Fin del case 2
@@ -351,7 +351,7 @@ public class MenuInterfaz {
 
     public void rellenarDepositos() {
         int opcionDeposito;
-        int opcioRellenar;
+        int opcioRellenar = 0;
 
         System.out.println("Que deposito desea rellenar");
         do {
@@ -359,20 +359,33 @@ public class MenuInterfaz {
             elegirDepositoArellenar();
             opcionDeposito = entrada.nextInt();
 
-        } while (opcionDeposito < 1 || opcionDeposito > 6);
+        } while (opcionDeposito != 7);
+
         do {
+            if (opcionDeposito == 7) {
+                break;
+            }
             System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
             opcioRellenar = entrada.nextInt();
         } while (opcioRellenar < 1 || opcioRellenar > 2);
         //-------------------------------------------------------------------------------------------------------------------------
-        if (opcioRellenar == 1) {
-            cafetera.rellenarDepositoCompleto(opcionDeposito);
-        } else if (opcioRellenar == 2) {
-            System.out.println("Introduzca la cantidad");
-            cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
-        } else {
+        switch (opcioRellenar) {
+            case 0:
+                System.out.println("Saliendo...");
+                break;
+            case 1:
+                cafetera.rellenarDepositoCompleto(opcionDeposito);
+
+                break;
+            case 2:
+                System.out.println("Introduzca la cantidad");
+                cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
+                break;
+            default:
             System.out.println("Esa opcion no se contempla");
+
         }
+       
     }
     //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
 
