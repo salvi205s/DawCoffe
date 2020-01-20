@@ -418,8 +418,13 @@ public class MenuInterfaz {
 
         } else if (cafetera.getLeche().isReserva()) {
             System.out.println(cafetera.getLeche());
+            
+        } else if (cafetera.getSacarina().isReserva()) {
+            System.out.println(cafetera.getSacarina());
+
         } else {
             System.out.println("No hay depositos en reserva");
+
         }
     }
 }
