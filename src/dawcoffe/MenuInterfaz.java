@@ -202,7 +202,6 @@ public class MenuInterfaz {
 
                         if (cafetera.informarFaltaExistencias()) {
                             System.out.println("Lo sentimos pero no podemos, servirle");
-
                             break;
                         }
 
@@ -213,7 +212,7 @@ public class MenuInterfaz {
 
                         System.out.println("su saldo es " + cafetera.getSaldoCliente());
 
-                        //pregunta la cantidad de azucar y la resta del contenido
+                        //llama al metodo elegirEdulcorante
                         elegirEdulcorante();
 
                         //Muestra el pedido del cliente....
@@ -224,7 +223,6 @@ public class MenuInterfaz {
                                 break;
 
                             case 102:
-
                                 servirCafe(0.9, saldoCliente, codigo, cafe2);
                                 break;
 
@@ -240,7 +238,6 @@ public class MenuInterfaz {
                                 break;
 
                             case 106:
-
                                 servirCafe(0.9, saldoCliente, codigo, cafe6);
                                 break;
 
