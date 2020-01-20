@@ -296,7 +296,7 @@ public class MenuInterfaz {
                                     //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
 
                                     case 1:
-                                        cafetera.reserva();
+                                        reserva();
 //                                   
                                         break;
                                     case 2:
@@ -341,6 +341,7 @@ public class MenuInterfaz {
 
         } while (!salir.equalsIgnoreCase("Si"));
     }
+
     public void estadoGeneral() {
         System.out.println(cafetera.getCafe());
         System.out.println(cafetera.getCafeDescafeinado());
@@ -349,6 +350,7 @@ public class MenuInterfaz {
         System.out.println(cafetera.getAgua());
         System.out.println(cafetera.getLeche());
     }
+
     public void rellenarDepositos() {
         int opcionDeposito;
         int opcioRellenar;
@@ -372,6 +374,30 @@ public class MenuInterfaz {
             cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
         } else {
             System.out.println("Esa opcion no se contempla");
+        }
+    }
+    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+
+    public void reserva() {
+        if (cafetera.getCafe().isReserva()) {
+            System.out.println(cafetera.getCafe());
+
+        } else if (cafetera.getCafeDescafeinado().isReserva()) {
+            System.out.println(cafetera.getCafeDescafeinado());
+
+        } else if (cafetera.getAzucar().isReserva()) {
+            System.out.println(cafetera.getAzucar());
+
+        } else if (cafetera.getChocolate().isReserva()) {
+            System.out.println(cafetera.getChocolate());
+
+        } else if (cafetera.getAgua().isReserva()) {
+            System.out.println(cafetera.getAgua());
+
+        } else if (cafetera.getLeche().isReserva()) {
+            System.out.println(cafetera.getLeche());
+        } else {
+            System.out.println("No hay depositos en reserva");
         }
     }
 }
