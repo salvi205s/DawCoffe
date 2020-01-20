@@ -29,15 +29,19 @@ public class Cafetera {
     private Deposito chocolate;
     private Deposito agua;
     private Deposito leche;
+    private Deposito sacarina;
 
-    public Cafetera(Deposito cafe, Deposito cafeDescafeinado, Deposito azucar, Deposito chocolate, Deposito agua, Deposito leche) {
+    public Cafetera(Deposito cafe, Deposito cafeDescafeinado, Deposito azucar, Deposito chocolate, Deposito agua, Deposito leche, Deposito sacarina) {
         this.cafe = cafe;
         this.cafeDescafeinado = cafeDescafeinado;
         this.azucar = azucar;
         this.chocolate = chocolate;
         this.agua = agua;
         this.leche = leche;
+        this.sacarina = sacarina;
     }
+
+    
 
     public Cafetera() {
     }
@@ -184,6 +188,9 @@ public class Cafetera {
                 System.out.println("Esa opcion no se contempla");
         }
 
+    }
+    public void restarSacarina() {
+        sacarina.servirContenido(6);
     }
 
 
