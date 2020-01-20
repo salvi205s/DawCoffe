@@ -19,8 +19,9 @@ public class Programa {
         Deposito chocolate = new Deposito(1000, 250, 1000, "chocolate");
         Deposito agua = new Deposito(1000, 250, 1000, "agua");
         Deposito leche = new Deposito(1000, 250, 1000, "leche");
+        Deposito sacarina = new Deposito(1000, 250, 1000, "sacarina");
 //        Se crea el objeto menu
-        Cafetera cafetera = new Cafetera(cafe, cafeDescafeinado, azucar, chocolate, agua, leche);
+        Cafetera cafetera = new Cafetera(cafe, cafeDescafeinado, azucar, chocolate, agua, leche, sacarina);
         MenuInterfaz menu = new MenuInterfaz(cafetera);
 
         //y se llama
