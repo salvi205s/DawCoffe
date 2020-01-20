@@ -17,35 +17,13 @@ public class MenuInterfaz {
 
     private Cafetera cafetera;
     private int cantidadAzucar = 0;
+    private int edulcorante = 0;
 
     public MenuInterfaz(Cafetera cafetera) {
         this.cafetera = cafetera;
     }
 
 //muestra informacion si el producto elegido no es cafe
-    public void mostrarInformacion(String menu) {
-        String Azucar = null;
-
-        //guarda string de cantidad de azucar, para mostrarlo luego
-        switch (cantidadAzucar) {
-            case 1:
-                Azucar = "ninguna";
-                break;
-            case 2:
-                Azucar = "poca";
-
-                break;
-            case 3:
-                Azucar = "mucha";
-
-                break;
-        }
-
-        System.out.println("Ha elegido " + menu);
-        System.out.println("Con " + Azucar + " azucar");
-
-    }
-
     public void pedirMasDinero(double saldoCliente) {
 //        double saldoCliente = 0;
 
@@ -67,7 +45,7 @@ public class MenuInterfaz {
     private void elegirEdulcorante() {
 //pregunta la cantidad de azucar y la resta del contenido
         System.out.println("Que edulcorante quiere \n1. azucar \n2. sacarina");
-        int edulcorante = entrada.nextInt();
+        edulcorante = entrada.nextInt();
 
         switch (edulcorante) {
             case 1:
@@ -78,13 +56,42 @@ public class MenuInterfaz {
                 cantidadAzucar = entrada.nextInt();
 
                 cafetera.restarAzucar(cantidadAzucar);
+                edulcorante = 1;
                 break;
             case 2:
                 cafetera.restarSacarina();
+                edulcorante = 2;
                 break;
             default:
                 System.out.println("Esa opcion no se contempla");
         }
+
+    }
+
+    public void mostrarInformacion(String menu) {
+        String Azucar = null;
+
+        //guarda string de cantidad de azucar, para mostrarlo luego
+        switch (cantidadAzucar) {
+            case 1:
+                Azucar = "ninguna";
+                break;
+            case 2:
+                Azucar = "poca";
+
+                break;
+            case 3:
+                Azucar = "mucha";
+
+                break;
+        }
+
+        System.out.println("Ha elegido " + menu);
+        if (edulcorante == 1) {
+            System.out.println("Con " + Azucar + " azucar");
+
+        }
+        System.out.println("Con sacarina ");
 
     }
 
@@ -356,7 +363,6 @@ public class MenuInterfaz {
         System.out.println(cafetera.getChocolate());
         System.out.println(cafetera.getAgua());
         System.out.println(cafetera.getLeche());
-        System.out.println(cafetera.getLeche());
         System.out.println(cafetera.getSacarina());
     }
 
@@ -398,8 +404,8 @@ public class MenuInterfaz {
         }
 
     }
-    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
 
+    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
     public void reserva() {
         if (cafetera.getCafe().isReserva()) {
             System.out.println(cafetera.getCafe());
@@ -418,7 +424,7 @@ public class MenuInterfaz {
 
         } else if (cafetera.getLeche().isReserva()) {
             System.out.println(cafetera.getLeche());
-            
+
         } else if (cafetera.getSacarina().isReserva()) {
             System.out.println(cafetera.getSacarina());
 
