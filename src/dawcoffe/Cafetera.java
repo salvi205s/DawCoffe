@@ -216,35 +216,41 @@ public class Cafetera {
         }
     }
 
-    public void estadoGeneral() {
-        System.out.println(cafe);
-        System.out.println(cafeDescafeinado);
-        System.out.println(azucar);
-        System.out.println(chocolate);
-        System.out.println(agua);
-        System.out.println(leche);
-    }
+//    public void estadoGeneral() {
+//        System.out.println(cafe);
+//        System.out.println(cafeDescafeinado);
+//        System.out.println(azucar);
+//        System.out.println(chocolate);
+//        System.out.println(agua);
+//        System.out.println(leche);
+//    }
 //-------------------------------------------------------------------------------------------------------------------------------------
-
     public void rellenarDepositoParcialmente(int opcionDeposito, double cantidad) {
-        if (opcionDeposito == 1) {
-//            System.out.println("Introduzca la cantidad");
-            cafe.llenarDeposito(cantidad);
-        } //-------------------------------
-        if (opcionDeposito == 2) {
-            cafeDescafeinado.llenarDeposito(cantidad);
-        } //-------------------------------
-        if (opcionDeposito == 3) {
-            azucar.llenarDeposito(cantidad);
-        } //-------------------------------
-        if (opcionDeposito == 4) {
-            chocolate.llenarDeposito(cantidad);
-        } //-------------------------------
-        if (opcionDeposito == 5) {
-            agua.llenarDeposito(cantidad);
-        } //-------------------------------
-        if (opcionDeposito == 6) {
-            leche.llenarDeposito(cantidad);
+
+        switch (opcionDeposito) {
+            case 1:
+                cafe.llenarDeposito(cantidad);
+                break;
+
+            case 2:
+                cafeDescafeinado.llenarDeposito(cantidad);
+                break;
+
+            case 3:
+                azucar.llenarDeposito(cantidad);
+                break;
+
+            case 4:
+                chocolate.llenarDeposito(cantidad);
+                break;
+
+            case 5:
+                agua.llenarDeposito(cantidad);
+                break;
+
+            case 6:
+                leche.llenarDeposito(cantidad);
+                break;
         }
 
         if (cantidad > cafe.getCantidadMax()) {
@@ -270,24 +276,30 @@ public class Cafetera {
     }
 
     public void rellenarDepositoCompleto(int opcionDeposito) {
-        if (opcionDeposito == 1) {
-            cafe.llenarDepositoCompleto();
+        switch (opcionDeposito) {
+            case 1:
+                cafe.llenarDepositoCompleto();
+                break;
 
-        } //-------------------------------
-        if (opcionDeposito == 2) {
-            cafeDescafeinado.llenarDepositoCompleto();
-        } //-------------------------------
-        if (opcionDeposito == 3) {
-            azucar.llenarDepositoCompleto();
-        } //-------------------------------
-        if (opcionDeposito == 4) {
-            chocolate.llenarDepositoCompleto();
-        }  //-------------------------------
-        if (opcionDeposito == 5) {
-            agua.llenarDepositoCompleto();
-        } //-------------------------------
-        if (opcionDeposito == 6) {
-            leche.llenarDepositoCompleto();
+            case 2:
+                cafeDescafeinado.llenarDepositoCompleto();
+                break;
+
+            case 3:
+                azucar.llenarDepositoCompleto();
+                break;
+
+            case 4:
+                chocolate.llenarDepositoCompleto();
+                break;
+
+            case 5:
+                agua.llenarDepositoCompleto();
+                break;
+
+            case 6:
+                leche.llenarDepositoCompleto();
+                break;
         }
 
     }
@@ -325,5 +337,31 @@ public class Cafetera {
     public int getNumVentas() {
         return numVentas;
     }
+
+    public Deposito getCafe() {
+        return cafe;
+    }
+
+    public Deposito getCafeDescafeinado() {
+        return cafeDescafeinado;
+    }
+
+    public Deposito getAzucar() {
+        return azucar;
+    }
+
+    public Deposito getChocolate() {
+        return chocolate;
+    }
+
+    public Deposito getAgua() {
+        return agua;
+    }
+
+    public Deposito getLeche() {
+        return leche;
+    }
+    
+    
 
 }
