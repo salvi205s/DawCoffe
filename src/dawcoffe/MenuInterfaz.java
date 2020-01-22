@@ -19,6 +19,7 @@ public class MenuInterfaz {
     private int cantidadAzucar = 0;
     private int edulcorante = 0;
 
+    //constructor que recibe una cafetera
     public MenuInterfaz(Cafetera cafetera) {
         this.cafetera = cafetera;
     }
@@ -42,23 +43,31 @@ public class MenuInterfaz {
 
     }
 
+    //metodo para elegir el edulcorante
     private void elegirEdulcorante() {
-//pregunta la cantidad de azucar y la resta del contenido
+
+//      pregunta que edulcorante quiere
         System.out.println("Que edulcorante quiere \n1. azucar \n2. sacarina");
         edulcorante = entrada.nextInt();
 
         switch (edulcorante) {
             case 1:
+                
+                //pregunta la cantidad de azucar y la resta del contenido
                 System.out.println("Cuanta azucar quiere");
                 System.out.println("1. ninguna");
                 System.out.println("2. poca");
                 System.out.println("3. mucha");
                 cantidadAzucar = entrada.nextInt();
 
+                //la resta del deposito
                 cafetera.restarAzucar(cantidadAzucar);
+                
+//              pone la eleccion a 1 que es azucar
                 edulcorante = 1;
                 break;
             case 2:
+                //si elige sacarina, la resta, y pone la eleccion a 2
                 cafetera.restarSacarina();
                 edulcorante = 2;
                 break;
@@ -68,7 +77,9 @@ public class MenuInterfaz {
 
     }
 
+    //metodo para mostrar la informacion final
     public void mostrarInformacion(String menu) {
+        //iniciamos la variable azucar a null
         String Azucar = null;
 
         //guarda string de cantidad de azucar, para mostrarlo luego
@@ -86,6 +97,7 @@ public class MenuInterfaz {
                 break;
         }
 
+        //muestra el menu, y el edulcorante elegido
         System.out.println("Ha elegido " + menu);
         if (edulcorante == 1) {
             System.out.println("Con " + Azucar + " azucar");
@@ -97,36 +109,41 @@ public class MenuInterfaz {
 
     }
 
+    //metodo que llama a los metodos necesarios para servir un cafe
     public void servirCafe(double precio, double saldoCliente, int codigo, String tipoCafe) {
+        //establecemos el precio del articulo que lo recibe por parametro
         cafetera.setPrecio(precio);
 
+        //metodo para comprobar que el dinero introducido sea suficiente
         pedirMasDinero(saldoCliente);
 
-//        cafetera.servirCafe(tipoCafe, codigo);
+        //restamos los ingredientes del cafe
         cafetera.restarCafe(codigo);
 
+        //mostramos la informacion
         mostrarInformacion(tipoCafe);
 
     }
 
+    //metodo que llama a los metodos necesarios para servir un productos que no son cafe
     public void servirOtros(double precio, double saldoCliente, int codigo, String producto) {
         cafetera.setPrecio(precio);
 
-        //revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, revisar, 
         pedirMasDinero(saldoCliente);
 
         switch (codigo) {
             case 200:
-                cafetera.servirChocolate(producto, codigo);
+                cafetera.servirChocolate();
 
                 break;
 
             case 300:
-                cafetera.restarLeche(180);
+                cafetera.servirLeche();
+
                 break;
 
             case 301:
-                cafetera.restarLeche(180);
+                cafetera.servirLeche();
 
                 break;
         }
