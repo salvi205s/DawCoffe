@@ -13,9 +13,13 @@ import java.util.Scanner;
  */
 public class MenuInterfaz {
 
+    //necesitaremos el objeto Scanner, asi que lo importamos
     private Scanner entrada = new Scanner(System.in);
 
+    //creamos el objeto cafetera, ya que lo recibira el menu, como parametro
     private Cafetera cafetera;
+
+    //necesitaremos estas variables en varios metodos, asi que las creamos en la clase, fuera de los metodos
     private int cantidadAzucar = 0;
     private int edulcorante = 0;
 
@@ -24,11 +28,11 @@ public class MenuInterfaz {
         this.cafetera = cafetera;
     }
 
-//muestra informacion si el producto elegido no es cafe
+//metodo que pide mas monedas si no llega a la cantidad del articulo elegido
     public void pedirMasDinero(double saldoCliente) {
-//        double saldoCliente = 0;
 
         //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
+        //lo pewdira hasta que comprobar precio sea true(hasta que el dinero introducido sea mayor o igual, que el precio del articulo)
         while (!cafetera.comprobarPrecio()) {
 
             System.out.println("Saldo insuficiente " + cafetera.getSaldoCliente());
@@ -52,7 +56,7 @@ public class MenuInterfaz {
 
         switch (edulcorante) {
             case 1:
-                
+
                 //pregunta la cantidad de azucar y la resta del contenido
                 System.out.println("Cuanta azucar quiere");
                 System.out.println("1. ninguna");
@@ -62,7 +66,7 @@ public class MenuInterfaz {
 
                 //la resta del deposito
                 cafetera.restarAzucar(cantidadAzucar);
-                
+
 //              pone la eleccion a 1 que es azucar
                 edulcorante = 1;
                 break;
@@ -77,7 +81,7 @@ public class MenuInterfaz {
 
     }
 
-    //metodo para mostrar la informacion final
+    //metodo para mostrar la informacion final, que recibe como parametro la eleccion del usuario, ya que la informacion mostrada dependera de la eleccion
     public void mostrarInformacion(String menu) {
         //iniciamos la variable azucar a null
         String Azucar = null;
@@ -127,10 +131,13 @@ public class MenuInterfaz {
 
     //metodo que llama a los metodos necesarios para servir un productos que no son cafe
     public void servirOtros(double precio, double saldoCliente, int codigo, String producto) {
+        //establecemos el precio del articulo que lo recibe por parametro
         cafetera.setPrecio(precio);
 
+        //metodo para comprobar que el dinero introducido sea suficiente
         pedirMasDinero(saldoCliente);
 
+        //dependiendo del codigo, servira una cosa u otra
         switch (codigo) {
             case 200:
                 cafetera.servirChocolate();
@@ -148,9 +155,11 @@ public class MenuInterfaz {
                 break;
         }
 
+        //mostrara la informacion dependiendo del producto elegido
         mostrarInformacion(producto);
     }
 
+    //menu de administracion, que nos da a elegir, entre varias opciones del menu de administracion
     public void menuAdmin() {
         System.out.println("................................................");
 
@@ -161,6 +170,7 @@ public class MenuInterfaz {
         System.out.println("5. salir administracion ");
     }
 
+    //metodo para elegir, que deposito queremos rellenar
     public void elegirDepositoArellenar() {
         System.out.println("1. Café");
         System.out.println("2. cafeDescafeinado");
@@ -172,208 +182,7 @@ public class MenuInterfaz {
         System.out.println("8. salir");
     }
 
-    public void menu() {
-//        Scanner entrada = new Scanner(System.in);
-        int codigo;
-        int opcion;
-        int descafeinadoSiNo = 0;
-
-//        int cantidadAzucar = 0;
-        double saldoCliente = 0;
-        double cambio = 0;
-
-        double precio;
-        String menu;
-        String salir = "no";
-
-        String cafe1 = "Café solo (0.80€), codigo 101";
-        String cafe2 = "Café solo largo (0.90€), codigo 102";
-        String cafe3 = "Café con leche (1.10€), codigo 103";
-        String cafe4 = "Café cortado (1.00€), codigo 104";
-        String cafe5 = "Café solo descafeinado (0.80€), codigo 105";
-        String cafe6 = "Café solo largo descafeinado(0.90€), codigo 106";
-        String cafe7 = "Café con leche descafeinado(1.10€), codigo 107";
-        String cafe8 = "Café cortado descafeinado(1.00€), codigo 108";
-        String Choco = "Chocolate (1.40€), codigo 200";
-        String lecheFria = "Leche fría (0.50€) codigo 300";
-        String lecheCaliente = "Leche caliente (0.50€), codigo 301";
-        do {
-            do {
-
-                System.out.println("1. Venta de productos");
-                System.out.println("2. Administración de la cafetera");
-                opcion = entrada.nextInt();
-
-                switch (opcion) {
-                    case 1:
-                        //muestra el menu
-                        System.out.println(cafe1);
-                        System.out.println(cafe2);
-                        System.out.println(cafe3);
-                        System.out.println(cafe4);
-                        System.out.println(cafe5);
-                        System.out.println(cafe6);
-                        System.out.println(cafe7);
-                        System.out.println(cafe8);
-                        System.out.println(Choco);
-                        System.out.println(lecheFria);
-                        System.out.println(lecheCaliente);
-                        codigo = entrada.nextInt();
-
-                        if (cafetera.informarFaltaExistencias()) {
-                            System.out.println("Lo sentimos pero no podemos, servirle");
-                            reserva();
-                            break;
-                        }
-
-                        //introduce el dinero
-                        System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
-                        saldoCliente += entrada.nextDouble();
-                        cafetera.setSaldoCliente(saldoCliente);
-
-                        System.out.println("su saldo es " + cafetera.getSaldoCliente());
-
-                        //llama al metodo elegirEdulcorante
-                        elegirEdulcorante();
-
-                        //Muestra el pedido del cliente....
-                        System.out.println("................................................");
-                        switch (codigo) {
-                            case 101:
-                                servirCafe(0.8, saldoCliente, codigo, cafe1);
-                                break;
-
-                            case 102:
-                                servirCafe(0.9, saldoCliente, codigo, cafe2);
-                                break;
-
-                            case 103:
-                                servirCafe(1.10, saldoCliente, codigo, cafe3);
-                                break;
-
-                            case 104:
-                                servirCafe(1, saldoCliente, codigo, cafe4);
-                                break;
-                            case 105:
-                                servirCafe(0.8, saldoCliente, codigo, cafe5);
-                                break;
-
-                            case 106:
-                                servirCafe(0.9, saldoCliente, codigo, cafe6);
-                                break;
-
-                            case 107:
-                                servirCafe(1.10, saldoCliente, codigo, cafe7);
-                                break;
-
-                            case 108:
-                                servirCafe(1, saldoCliente, codigo, cafe8);
-                                break;
-
-                            case 200:
-                                servirOtros(1.4, saldoCliente, codigo, Choco);
-                                break;
-
-                            case 300:
-                                servirOtros(0.5, saldoCliente, codigo, lecheFria);
-                                break;
-
-                            case 301:
-                                servirOtros(0.5, saldoCliente, codigo, lecheCaliente);
-                                break;
-
-                            default:
-                                System.out.println("Esa opcion no se contempla");
-                                opcion = 0;
-                        }
-                        System.out.printf("Su cambio es: %.2f %n", cafetera.devolverCambio());
-
-                        cafetera.setSaldoCliente(0);
-                        saldoCliente = 0;
-                        System.out.println("Vuelva pronto. \nQue tenga un buen dia");
-//                        System.out.println("El saldo del cliente es: " + cafetera.getSaldoCliente());
-
-                        //Fin del case 1
-//-------------------------------------------------------------------------------------------------------------------------------
-                        break;
-                    case 2:
-                        Usuario user = new Usuario();
-                        String usuario;
-                        int pass,
-                         cont = 0;
-                        int opcionAdmin = 0;
-//                        int opcionDeposito;
-//                        int opcioRellenar;
-
-                        do {
-                            System.out.println("Introduce usuario");
-//                            usuario = entrada.next();
-                            usuario = "salva";
-                            System.out.println("Introduce contraseña en numeros");
-//                            pass = entrada.nextInt();
-                            pass = 1234;
-                            cont++;
-
-                        } while (user.identificacion(usuario, pass) == false && cont < 3);
-
-                        if (cont >= 3) {
-                            System.out.println("Lo sentimos, pero el login no se ha podido realizan con exito");
-                        } else {
-                            System.out.println("Correcto");
-                            do {
-                                menuAdmin();
-
-                                opcionAdmin = entrada.nextInt();
-
-                                switch (opcionAdmin) {
-                                    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
-
-                                    case 1:
-                                        reserva();
-//                                   
-                                        break;
-                                    case 2:
-                                        System.out.println("Comprobando estado general");
-                                        System.out.println("");
-                                        estadoGeneral();
-                                        System.out.println("Usuario: " + user.getUSER_NAME());
-                                        System.out.println("Contraseña: " + user.getPASSWORD());
-
-                                        break;
-                                    case 3:
-                                        //Consultar saldo de ventas realizadas.
-                                        System.out.println("Consultando saldo de ventas realizadas");
-                                        System.out.println("El numero de ventas es: " + cafetera.getNumVentas() + "\nEl saldo acumulado es: " + cafetera.getSaldoAcumulado());
-
-                                        break;
-                                    case 4:
-
-//Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
-                                        rellenarDepositos();
-                                        break;
-                                    case 5:
-                                        System.out.println("Saliendo de la administracion");
-
-                                        break;
-                                    default:
-                                        System.out.println("Esa opcion no se contempla");
-                                }
-                            } while (opcionAdmin != 5);
-                        } //Fin del case 2
-                        //--------------------------------------------
-
-                        break;
-
-                    default:
-                        System.out.println("Esa opcion no se contempla");
-                }
-                System.out.println("................................................");
-
-            } while (opcion < 1 || opcion > 2);
-
-        } while (!salir.equalsIgnoreCase("Si"));
-    }
-
+    //metodo para ver el estado general de los depositos
     public void estadoGeneral() {
         System.out.println(cafetera.getCafe());
         System.out.println(cafetera.getCafeDescafeinado());
@@ -384,38 +193,51 @@ public class MenuInterfaz {
         System.out.println(cafetera.getSacarina());
     }
 
+    //metodo para rellenar los depositos
     public void rellenarDepositos() {
+        //guarda el deposito a rellenar
         int opcionDeposito;
+        //guarda la opcion de rellenar completamente o parcial
         int opcioRellenar = 0;
 
         System.out.println("Que deposito desea rellenar");
         do {
 
+            //controlamos que pida al admin la opcion del deposito a rellenar, hasta que meta una opcion valida
             elegirDepositoArellenar();
             opcionDeposito = entrada.nextInt();
 
         } while (opcionDeposito < 1 || opcionDeposito > 8);
 
         do {
+            //si la opcion es 8, salimos del bucle
             if (opcionDeposito == 8) {
                 break;
             }
+            //evaluamos que pida como quiere rellenar el deposito, hasta que meta una opcion valida
             System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
             opcioRellenar = entrada.nextInt();
         } while (opcioRellenar < 1 || opcioRellenar > 2);
-        //-------------------------------------------------------------------------------------------------------------------------
+
+        //procedemos a las acciones
         switch (opcioRellenar) {
+            //si es cero, es porque el admin a elegido la opcion 8(salir)
             case 0:
                 System.out.println("Saliendo...");
                 break;
+
+            //si es 1, rellena el deposito completo
             case 1:
                 cafetera.rellenarDepositoCompleto(opcionDeposito);
-
                 break;
+
+            //si es 2 pide la cantidad para rellenar
             case 2:
                 System.out.println("Introduzca la cantidad");
                 cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
                 break;
+
+            // sino informa de que esa opcion no existe
             default:
                 System.out.println("Esa opcion no se contempla");
 
@@ -423,7 +245,7 @@ public class MenuInterfaz {
 
     }
 
-    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+    //metodo para Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
     public void reserva() {
         if (cafetera.getCafe().isReserva()) {
             System.out.println(cafetera.getCafe());
@@ -457,4 +279,241 @@ public class MenuInterfaz {
 
         }
     }
+
+    //metodo menu
+    public void menu() {
+        //variable que guarda el articulo elegido por el usuario
+        int codigo;
+        //variable que guarda la elecion del menu principal, (comprar o administar)
+        int opcion;
+
+        //variable que guarda, si descafeinado o no
+        int descafeinadoSiNo = 0;
+
+        //guardamos las monedas que introduce el cliente
+        double saldoCliente = 0;
+//        double cambio = 0;
+
+        //guarda el precio del articulo
+        double precio;
+        //guarda el String menu
+        String menu;
+        //guarda la condicion para salir del programa(Que es nunca, ya que no queremos que termine)
+        String salir = "no";
+
+        String cafe1 = "Café solo (0.80€), codigo 101";
+        String cafe2 = "Café solo largo (0.90€), codigo 102";
+        String cafe3 = "Café con leche (1.10€), codigo 103";
+        String cafe4 = "Café cortado (1.00€), codigo 104";
+        String cafe5 = "Café solo descafeinado (0.80€), codigo 105";
+        String cafe6 = "Café solo largo descafeinado(0.90€), codigo 106";
+        String cafe7 = "Café con leche descafeinado(1.10€), codigo 107";
+        String cafe8 = "Café cortado descafeinado(1.00€), codigo 108";
+        String Choco = "Chocolate (1.40€), codigo 200";
+        String lecheFria = "Leche fría (0.50€) codigo 300";
+        String lecheCaliente = "Leche caliente (0.50€), codigo 301";
+
+        do {
+            do {
+                //pedimos al usuario que elija que quiere hacer
+                System.out.println("1. Venta de productos");
+                System.out.println("2. Administración de la cafetera");
+                opcion = entrada.nextInt();
+
+                //si quiere comprar un producto.....
+                switch (opcion) {
+                    case 1:
+                        //muestra el menu
+                        System.out.println(cafe1);
+                        System.out.println(cafe2);
+                        System.out.println(cafe3);
+                        System.out.println(cafe4);
+                        System.out.println(cafe5);
+                        System.out.println(cafe6);
+                        System.out.println(cafe7);
+                        System.out.println(cafe8);
+                        System.out.println(Choco);
+                        System.out.println(lecheFria);
+                        System.out.println(lecheCaliente);
+                        codigo = entrada.nextInt();
+
+                        //si hay falta de existencias, informamos al usuario, y le decimos que deposito es
+                        if (cafetera.informarFaltaExistencias()) {
+                            System.out.println("Lo sentimos pero no podemos, servirle");
+                            reserva();
+                            break;
+                        }
+
+                        //pedimos al usuario que introduzca las monedas, las sumamoms en la variable saldoCliente, y se las pasamos al setSaldoCliente
+                        System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
+                        saldoCliente += entrada.nextDouble();
+                        cafetera.setSaldoCliente(saldoCliente);
+
+                        //informamos de la cantidad introducida
+                        System.out.println("su saldo es " + cafetera.getSaldoCliente());
+
+                        //llama al metodo elegirEdulcorante
+                        elegirEdulcorante();
+
+                        //servimos lo que haya pedido el cliente
+                        System.out.println("................................................");
+                        switch (codigo) {
+                            case 101:
+                                //llamamos al metodo servirCafe, que recibe los parametros necesarios para ello
+                                servirCafe(0.8, saldoCliente, codigo, cafe1);
+                                break;
+
+                            case 102:
+                                servirCafe(0.9, saldoCliente, codigo, cafe2);
+                                break;
+
+                            case 103:
+                                servirCafe(1.10, saldoCliente, codigo, cafe3);
+                                break;
+
+                            case 104:
+                                servirCafe(1, saldoCliente, codigo, cafe4);
+                                break;
+                            case 105:
+                                servirCafe(0.8, saldoCliente, codigo, cafe5);
+                                break;
+
+                            case 106:
+                                servirCafe(0.9, saldoCliente, codigo, cafe6);
+                                break;
+
+                            case 107:
+                                servirCafe(1.10, saldoCliente, codigo, cafe7);
+                                break;
+
+                            case 108:
+                                servirCafe(1, saldoCliente, codigo, cafe8);
+                                break;
+
+                            case 200:
+                                //a partir de aqui ya no sirve cafe, por lo que llamamos al metodo servirOtros, que hace casi lo mismo
+                                servirOtros(1.4, saldoCliente, codigo, Choco);
+                                break;
+
+                            case 300:
+                                servirOtros(0.5, saldoCliente, codigo, lecheFria);
+                                break;
+
+                            case 301:
+                                servirOtros(0.5, saldoCliente, codigo, lecheCaliente);
+                                break;
+
+                            default:
+                                //si el codigo no es ninguno de los anteriores informamos que esa opcion no existe
+                                System.out.println("Esa opcion no se contempla");
+                                //y ponemos la opcion del menu principal a cero, para volver a el(comprar o administar)
+                                opcion = 0;
+                        }
+//                        informamos del cambio a devolver
+                        System.out.printf("Su cambio es: %.2f %n", cafetera.devolverCambio());
+
+                        //ponemos las monedas introducidas por el usuario a cero
+                        cafetera.setSaldoCliente(0);
+                        saldoCliente = 0;
+                        //y nos despedimos
+                        System.out.println("Vuelva pronto. \nQue tenga un buen dia");
+
+                        //Fin del case 1
+//-------------------------------------------------------------------------------------------------------------------------------
+                        break;
+                    //si quiere administrar la cafetera.....
+                    case 2:
+                        //creamos el objeto Usuario, para autenticarnos
+                        Usuario user = new Usuario();
+                        //guarda el usuario introducido
+                        String usuario;
+                        //guarda la contraseña introducida
+                        int pass,
+                        //guarda los intentos, de autenticacion     
+                         cont = 0;
+                        //guarda la opcion del administrador, sobre lo que quire hacer, en el menu de administracion
+                        int opcionAdmin = 0;
+
+                        do {
+                            //pedimos el usuario y la contraseña
+                            System.out.println("Introduce usuario");
+//                            usuario = entrada.next();
+                            usuario = "salva";
+                            System.out.println("Introduce contraseña en numeros");
+//                            pass = entrada.nextInt();
+                            pass = 1234;
+                            //y sumamos un intento
+                            cont++;
+
+                            //se pedira usuario y contraseña hasta que la autenticacion sea positiva o los intentos sean mayor de 3
+                        } while (user.identificacion(usuario, pass) == false && cont < 3);
+
+                        //si los intentos son mas de 3, informamos de que la autenticacion no ha sido posible
+                        if (cont >= 3) {
+                            System.out.println("Lo sentimos, pero el login no se ha podido realizan con exito");
+                        } else {
+                            //si los intentos son menor o igual de 3, informamos de que ha sido correcto
+                            System.out.println("Correcto");
+                            do {
+                                //mostramos el menu de administracion y guardamos la opcion
+                                menuAdmin();
+                                opcionAdmin = entrada.nextInt();
+
+                                //dependiendo de la opcion del admin, llevamos a cabo la opcion
+                                switch (opcionAdmin) {
+                                    //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+                                    case 1:
+                                        reserva();
+                                        break;
+
+                                    //comprobar el estado general de los depositos, que informa del estado de los depositos asi como del usuario y contraseña
+                                    case 2:
+                                        System.out.println("Comprobando estado general");
+                                        System.out.println("");
+                                        estadoGeneral();
+                                        System.out.println("Usuario: " + user.getUSER_NAME());
+                                        System.out.println("Contraseña: " + user.getPASSWORD());
+                                        break;
+
+                                    //Consultar saldo de ventas realizadas.
+                                    case 3:
+                                        System.out.println("Consultando saldo de ventas realizadas");
+                                        System.out.println("El numero de ventas es: " + cafetera.getNumVentas() + "\nEl saldo acumulado es: " + cafetera.getSaldoAcumulado());
+                                        break;
+
+//Rellenar depósitos. Se pregunta el depósito a rellenar y luego se dan dos opciones: rellenar completo o indicar la cantidad de producto a reponer.
+                                    case 4:
+                                        rellenarDepositos();
+                                        break;
+
+                                    //informamos de que estamos saliendo de el menu de administracion
+                                    case 5:
+                                        System.out.println("Saliendo de la administracion");
+                                        break;
+
+                                    //informamos de que la opcion elegida por el admin, no existe
+                                    default:
+                                        System.out.println("Esa opcion no se contempla");
+                                }
+
+                                //todo esto se repetira, mientras la opcion elegida, no sea 5(salir)
+                            } while (opcionAdmin != 5);
+                        } //Fin del case 2
+                        //--------------------------------------------
+
+                        break;
+
+                    //si la opcion del usuario, en el menu principal(comprar o administrar) no es 1 o 2, informamos de que esa opcion no existe
+                    default:
+                        System.out.println("Esa opcion no se contempla");
+                }
+                System.out.println("................................................");
+
+                //y mostrara el menu principal mientras la opcion elegida, no sea 1 o 2
+            } while (opcion < 1 || opcion > 2);
+
+            //como el programa tiene que estar siempre funcionando, ponemos una condicion que no se va a actualizar nunca
+        } while (!salir.equalsIgnoreCase("Si"));
+    }
+
 }
