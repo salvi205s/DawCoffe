@@ -306,6 +306,47 @@ public class Cafetera {
         }
 
     }
+     //metodo para Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
+    public boolean reserva() {
+        boolean reserva=false;
+        
+        if (getCafe().isReserva()) {
+            System.out.println(getCafe());
+            reserva=true;
+        }
+        if (getCafeDescafeinado().isReserva()) {
+            System.out.println(getCafeDescafeinado());
+            reserva=true;
+
+        }
+        if (getAzucar().isReserva()) {
+            System.out.println(getAzucar());
+            reserva=true;
+
+        }
+        if (getChocolate().isReserva()) {
+            System.out.println(getChocolate());
+            reserva=true;
+
+        }
+        if (getAgua().isReserva()) {
+            System.out.println(getAgua());
+            reserva=true;
+
+        }
+        if (getLeche().isReserva()) {
+            System.out.println(getLeche());
+            reserva=true;
+
+        }
+        if (getSacarina().isReserva()) {
+            System.out.println(getSacarina());
+            reserva=true;
+
+        } 
+        
+        return reserva;
+    }
 //-------------------------------------------------------------------------------------------------------------------------------------
 
     //getters y setters
