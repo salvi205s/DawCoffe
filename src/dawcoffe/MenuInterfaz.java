@@ -37,6 +37,7 @@ public class MenuInterfaz {
         //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
         //lo pedira hasta que comprobar precio sea true(hasta que el dinero introducido sea mayor o igual, que el precio del articulo)
         do {
+            //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
             try {
                 while (!cafetera.comprobarPrecio()) {
                     System.out.println("Saldo insuficiente " + cafetera.getSaldoCliente());
@@ -65,6 +66,7 @@ public class MenuInterfaz {
 
 //      pregunta que edulcorante quiere
         do {
+            //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
             try {
 
                 do {
@@ -244,6 +246,7 @@ public class MenuInterfaz {
 
         System.out.println("Que deposito desea rellenar");
         do {
+            //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
             try {
                 do {
 //controlamos que pida al admin la opcion del deposito a rellenar, hasta que meta una opcion valida
@@ -295,6 +298,7 @@ public class MenuInterfaz {
             //si es 2 pide la cantidad para rellenar
             case 2:
                 do {
+                    //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
                     try {
                         System.out.println("Introduzca la cantidad");
                         cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
@@ -354,6 +358,7 @@ public class MenuInterfaz {
             do {
                 //pedimos al usuario que elija que quiere hacer
                 do {
+                    //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
                     try {
                         System.out.println("1. Venta de productos");
                         System.out.println("2. Administración de la cafetera");
@@ -373,7 +378,7 @@ public class MenuInterfaz {
                     case 1:
                         //muestra el menu
                         do {
-
+                            //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
                             try {
                                 System.out.println(cafe1);
                                 System.out.println(cafe2);
@@ -414,6 +419,7 @@ public class MenuInterfaz {
 
                         //pedimos al usuario que introduzca las monedas, las sumamoms en la variable saldoCliente, y se las pasamos al setSaldoCliente
                         do {
+                            //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
                             try {
                                 System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
                                 saldoCliente += entrada.nextDouble();
@@ -527,6 +533,7 @@ public class MenuInterfaz {
                             usuario = "salva";
 
                             do {
+                                //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
                                 try {
                                     System.out.println("Introduce contraseña en numeros");
 //                                    pass = entrada.nextInt();
@@ -554,6 +561,7 @@ public class MenuInterfaz {
                             do {
                                 //mostramos el menu de administracion y guardamos la opcion
                                 do {
+                                    //Controlamos que si el usuario se equivoca, introduciendo los datos, el programa no se corte
                                     try {
                                         menuAdmin();
                                         opcionAdmin = entrada.nextInt();
