@@ -5,6 +5,7 @@
  */
 package dawcoffe;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -310,13 +311,33 @@ public class MenuInterfaz {
                         }
 
                         //pedimos al usuario que introduzca las monedas, las sumamoms en la variable saldoCliente, y se las pasamos al setSaldoCliente
-                        System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
-                        saldoCliente += entrada.nextDouble();
-                        cafetera.setSaldoCliente(saldoCliente);
+                        boolean errorMonedas;
 
-                        //informamos de la cantidad introducida
-                        System.out.println("su saldo es " + cafetera.getSaldoCliente());
+                        do {
+                            try {
+                                System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
+                                saldoCliente += entrada.nextDouble();
+                                cafetera.setSaldoCliente(saldoCliente);
 
+                                //informamos de la cantidad introducida
+                                System.out.println("su saldo es " + cafetera.getSaldoCliente());
+                                errorMonedas = false;
+                            } catch (InputMismatchException ime) {
+                                System.out.println("separe los decimales con una coma, por favor");
+                                entrada.nextLine();
+                                errorMonedas = true;
+                                cafetera.setSaldoCliente(0);
+
+                            }
+
+                        } while (errorMonedas);
+
+//                        System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
+//                        saldoCliente += entrada.nextDouble();
+//                        cafetera.setSaldoCliente(saldoCliente);
+//
+//                        //informamos de la cantidad introducida
+//                        System.out.println("su saldo es " + cafetera.getSaldoCliente());
                         //llama al metodo elegirEdulcorante
                         elegirEdulcorante();
 
