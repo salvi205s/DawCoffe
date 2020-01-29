@@ -23,6 +23,8 @@ public class MenuInterfaz {
     //necesitaremos estas variables en varios metodos, asi que las creamos en la clase, fuera de los metodos
     private int cantidadAzucar = 0;
     private int edulcorante = 0;
+    private boolean errorMonedas;
+    private boolean errorNumeros;
 
     //constructor que recibe una cafetera
     public MenuInterfaz(Cafetera cafetera) {
@@ -33,18 +35,28 @@ public class MenuInterfaz {
     public void pedirMasDinero(double saldoCliente) {
 
         //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
-        //lo pewdira hasta que comprobar precio sea true(hasta que el dinero introducido sea mayor o igual, que el precio del articulo)
-        while (!cafetera.comprobarPrecio()) {
+        //lo pedira hasta que comprobar precio sea true(hasta que el dinero introducido sea mayor o igual, que el precio del articulo)
+        do {
+            try {
+                while (!cafetera.comprobarPrecio()) {
+                    System.out.println("Saldo insuficiente " + cafetera.getSaldoCliente());
+                    //introduce el dinero
+                    System.out.println("Introduzca mas monedas");
 
-            System.out.println("Saldo insuficiente " + cafetera.getSaldoCliente());
-            //introduce el dinero
-            System.out.println("Introduzca mas monedas");
-            System.out.println("Su saldo es: " + cafetera.getSaldoCliente());
+                    System.out.println("Su saldo es: " + cafetera.getSaldoCliente());
+                    saldoCliente += entrada.nextDouble();
+                    cafetera.setSaldoCliente(saldoCliente);
 
-            saldoCliente += entrada.nextDouble();
-            cafetera.setSaldoCliente(saldoCliente);
-            System.out.println("Su saldo es: " + cafetera.getSaldoCliente());
-        }
+                    System.out.println("Su saldo es: " + cafetera.getSaldoCliente());
+                    errorMonedas = false;
+                }
+
+            } catch (InputMismatchException ime) {
+                System.out.println("Introduzca numeros, y separe los decimales con una coma, por favor");
+                entrada.nextLine();
+                errorMonedas = true;
+            }
+        } while (errorMonedas);
 
     }
 
@@ -52,33 +64,62 @@ public class MenuInterfaz {
     private void elegirEdulcorante() {
 
 //      pregunta que edulcorante quiere
-        System.out.println("Que edulcorante quiere \n1. azucar \n2. sacarina");
-        edulcorante = entrada.nextInt();
+        do {
+            try {
 
-        switch (edulcorante) {
-            case 1:
+                do {
+                    System.out.println("Que edulcorante quiere \n1. azucar \n2. sacarina");
+                    edulcorante = entrada.nextInt();
+                } while (edulcorante < 1 || edulcorante > 2);
 
-                //pregunta la cantidad de azucar y la resta del contenido
-                System.out.println("Cuanta azucar quiere");
-                System.out.println("1. ninguna");
-                System.out.println("2. poca");
-                System.out.println("3. mucha");
-                cantidadAzucar = entrada.nextInt();
+                errorNumeros = false;
 
-                //la resta del deposito
-                cafetera.restarAzucar(cantidadAzucar);
+            } catch (InputMismatchException ime) {
+                System.out.println("Introduzca numeros, por favor");
+                System.out.println("");
+                entrada.nextLine();
+                errorNumeros = true;
+
+            }
+        } while (errorNumeros);
+
+        do {
+            try {
+
+                switch (edulcorante) {
+                    case 1:
+
+                        do {
+                            //pregunta la cantidad de azucar y la resta del contenido
+                            System.out.println("Cuanta azucar quiere");
+                            System.out.println("1. ninguna");
+                            System.out.println("2. poca");
+                            System.out.println("3. mucha");
+                            cantidadAzucar = entrada.nextInt();
+                        } while (cantidadAzucar < 1 || cantidadAzucar > 3);
+
+                        //la resta del deposito
+                        cafetera.restarAzucar(cantidadAzucar);
 
 //              pone la eleccion a 1 que es azucar
-                edulcorante = 1;
-                break;
-            case 2:
-                //si elige sacarina, la resta, y pone la eleccion a 2
-                cafetera.restarSacarina();
-                edulcorante = 2;
-                break;
-            default:
-                System.out.println("Esa opcion no se contempla");
-        }
+                        edulcorante = 1;
+                        break;
+                    case 2:
+                        //si elige sacarina, la resta, y pone la eleccion a 2
+                        cafetera.restarSacarina();
+                        edulcorante = 2;
+                        break;
+                    default:
+                        System.out.println("Esa opcion no se contempla");
+                }
+                errorNumeros = false;
+            } catch (InputMismatchException ime) {
+                System.out.println("Introduzca numeros, por favor");
+                errorNumeros = true;
+                entrada.nextLine();
+
+            }
+        } while (errorNumeros);
 
     }
 
@@ -249,9 +290,9 @@ public class MenuInterfaz {
     //metodo menu
     public void menu() {
         //variable que guarda el articulo elegido por el usuario
-        int codigo;
+        int codigo = 0;
         //variable que guarda la elecion del menu principal, (comprar o administar)
-        int opcion;
+        int opcion = 0;
 
         //variable que guarda, si descafeinado o no
         int descafeinadoSiNo = 0;
@@ -282,26 +323,57 @@ public class MenuInterfaz {
         do {
             do {
                 //pedimos al usuario que elija que quiere hacer
-                System.out.println("1. Venta de productos");
-                System.out.println("2. Administración de la cafetera");
-                opcion = entrada.nextInt();
+                do {
+                    try {
+                        System.out.println("1. Venta de productos");
+                        System.out.println("2. Administración de la cafetera");
+                        opcion = entrada.nextInt();
+
+                        errorNumeros = false;
+                    } catch (InputMismatchException ime) {
+                        System.out.println("Introduzca numeros, por favor");
+                        errorNumeros = true;
+                        entrada.nextLine();
+
+                    }
+                } while (errorNumeros);
 
                 //si quiere comprar un producto.....
                 switch (opcion) {
                     case 1:
                         //muestra el menu
-                        System.out.println(cafe1);
-                        System.out.println(cafe2);
-                        System.out.println(cafe3);
-                        System.out.println(cafe4);
-                        System.out.println(cafe5);
-                        System.out.println(cafe6);
-                        System.out.println(cafe7);
-                        System.out.println(cafe8);
-                        System.out.println(Choco);
-                        System.out.println(lecheFria);
-                        System.out.println(lecheCaliente);
-                        codigo = entrada.nextInt();
+                        do {
+
+                            try {
+                                System.out.println(cafe1);
+                                System.out.println(cafe2);
+                                System.out.println(cafe3);
+                                System.out.println(cafe4);
+                                System.out.println(cafe5);
+                                System.out.println(cafe6);
+                                System.out.println(cafe7);
+                                System.out.println(cafe8);
+                                System.out.println(Choco);
+                                System.out.println(lecheFria);
+                                System.out.println(lecheCaliente);
+
+                                codigo = entrada.nextInt();
+
+                                errorNumeros = false;
+                            } catch (InputMismatchException ime) {
+                                System.out.println("Introduzca numeros, por favor");
+                                System.out.println("");
+                                entrada.nextLine();
+                                errorNumeros = true;
+
+                            }
+
+                            if ((codigo < 101 || codigo > 301)) {
+                                errorNumeros = true;
+                                System.out.println("Por favor, introduzca un codigo valido\n");
+                            }
+
+                        } while (errorNumeros);
 
                         //si hay falta de existencias, informamos al usuario, y le decimos que deposito es
                         if (cafetera.informarFaltaExistencias()) {
@@ -311,8 +383,6 @@ public class MenuInterfaz {
                         }
 
                         //pedimos al usuario que introduzca las monedas, las sumamoms en la variable saldoCliente, y se las pasamos al setSaldoCliente
-                        boolean errorMonedas;
-
                         do {
                             try {
                                 System.out.println("Introduzca el dinero (separe los decimales con una coma, por favor)");
@@ -323,10 +393,9 @@ public class MenuInterfaz {
                                 System.out.println("su saldo es " + cafetera.getSaldoCliente());
                                 errorMonedas = false;
                             } catch (InputMismatchException ime) {
-                                System.out.println("separe los decimales con una coma, por favor");
+                                System.out.println("Introduzca numero, y separe los decimales con una coma, por favor");
                                 entrada.nextLine();
                                 errorMonedas = true;
-                                cafetera.setSaldoCliente(0);
 
                             }
 
