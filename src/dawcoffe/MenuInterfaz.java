@@ -238,29 +238,48 @@ public class MenuInterfaz {
     //metodo para rellenar los depositos
     public void rellenarDepositos() {
         //guarda el deposito a rellenar
-        int opcionDeposito;
+        int opcionDeposito = 0;
         //guarda la opcion de rellenar completamente o parcial
         int opcioRellenar = 0;
 
         System.out.println("Que deposito desea rellenar");
         do {
+            try {
+                do {
+//controlamos que pida al admin la opcion del deposito a rellenar, hasta que meta una opcion valida
+                    elegirDepositoArellenar();
+                    opcionDeposito = entrada.nextInt();
+                } while (opcionDeposito < 1 || opcionDeposito > 8);
 
-            //controlamos que pida al admin la opcion del deposito a rellenar, hasta que meta una opcion valida
-            elegirDepositoArellenar();
-            opcionDeposito = entrada.nextInt();
+                errorNumeros = false;
 
-        } while (opcionDeposito < 1 || opcionDeposito > 8);
-
-        do {
-            //si la opcion es 8, salimos del bucle
-            if (opcionDeposito == 8) {
-                break;
+            } catch (InputMismatchException ime) {
+                System.out.println("Introduce numeros");
+                errorNumeros = true;
+                entrada.nextLine();
             }
-            //evaluamos que pida como quiere rellenar el deposito, hasta que meta una opcion valida
-            System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
-            opcioRellenar = entrada.nextInt();
-        } while (opcioRellenar < 1 || opcioRellenar > 2);
+        } while (errorNumeros);
+        do {
+            try {
+                do {
+                    //si la opcion es 8, salimos del bucle
+                    if (opcionDeposito == 8) {
+                        break;
+                    }
+                    //evaluamos que pida como quiere rellenar el deposito, hasta que meta una opcion valida
 
+                    System.out.println("¿Quiere rellenar el deposito \n1. completamente \n2. parcial");
+                    opcioRellenar = entrada.nextInt();
+
+                } while (opcioRellenar < 1 || opcioRellenar > 2);
+                errorNumeros = false;
+
+            } catch (InputMismatchException ime) {
+                System.out.println("Introduce numeros");
+                errorNumeros = true;
+                entrada.nextLine();
+            }
+        } while (errorNumeros);
         //procedemos a las acciones
         switch (opcioRellenar) {
             //si es cero, es porque el admin a elegido la opcion 8(salir)
@@ -275,8 +294,19 @@ public class MenuInterfaz {
 
             //si es 2 pide la cantidad para rellenar
             case 2:
-                System.out.println("Introduzca la cantidad");
-                cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
+                do {
+                    try {
+                        System.out.println("Introduzca la cantidad");
+                        cafetera.rellenarDepositoParcialmente(opcionDeposito, entrada.nextDouble());
+                        errorNumeros = false;
+
+                    } catch (InputMismatchException ime) {
+                        System.out.println("Introduce numeros");
+                        errorNumeros = true;
+                        entrada.nextLine();
+                    }
+                } while (errorNumeros);
+
                 break;
 
             // sino informa de que esa opcion no existe
@@ -483,20 +513,32 @@ public class MenuInterfaz {
                         //guarda el usuario introducido
                         String usuario;
                         //guarda la contraseña introducida
-                        int pass,
+                        int pass = 0,
                         //guarda los intentos, de autenticacion     
                          cont = 0;
                         //guarda la opcion del administrador, sobre lo que quire hacer, en el menu de administracion
                         int opcionAdmin = 0;
 
                         do {
+
                             //pedimos el usuario y la contraseña
                             System.out.println("Introduce usuario");
 //                            usuario = entrada.next();
                             usuario = "salva";
-                            System.out.println("Introduce contraseña en numeros");
-//                            pass = entrada.nextInt();
-                            pass = 1234;
+
+                            do {
+                                try {
+                                    System.out.println("Introduce contraseña en numeros");
+//                                    pass = entrada.nextInt();
+                                    pass = 1234;
+
+                                    errorNumeros = false;
+                                } catch (InputMismatchException ime) {
+                                    errorNumeros = true;
+                                    entrada.nextLine();
+                                }
+                            } while (errorNumeros);
+
                             //y sumamos un intento
                             cont++;
 
@@ -511,8 +553,19 @@ public class MenuInterfaz {
                             System.out.println("Correcto");
                             do {
                                 //mostramos el menu de administracion y guardamos la opcion
-                                menuAdmin();
-                                opcionAdmin = entrada.nextInt();
+                                do {
+                                    try {
+                                        menuAdmin();
+                                        opcionAdmin = entrada.nextInt();
+
+                                        errorNumeros = false;
+                                    } catch (InputMismatchException ime) {
+                                        System.out.println("Introduce un numero valido");
+
+                                        errorNumeros = true;
+                                        entrada.nextLine();
+                                    }
+                                } while (errorNumeros);
 
                                 //dependiendo de la opcion del admin, llevamos a cabo la opcion
                                 switch (opcionAdmin) {
