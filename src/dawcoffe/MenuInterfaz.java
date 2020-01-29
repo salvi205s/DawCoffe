@@ -245,41 +245,6 @@ public class MenuInterfaz {
 
     }
 
-    //metodo para Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
-    public void reserva() {
-        if (cafetera.getCafe().isReserva()) {
-            System.out.println(cafetera.getCafe());
-
-        }
-        if (cafetera.getCafeDescafeinado().isReserva()) {
-            System.out.println(cafetera.getCafeDescafeinado());
-
-        }
-        if (cafetera.getAzucar().isReserva()) {
-            System.out.println(cafetera.getAzucar());
-
-        }
-        if (cafetera.getChocolate().isReserva()) {
-            System.out.println(cafetera.getChocolate());
-
-        }
-        if (cafetera.getAgua().isReserva()) {
-            System.out.println(cafetera.getAgua());
-
-        }
-        if (cafetera.getLeche().isReserva()) {
-            System.out.println(cafetera.getLeche());
-
-        }
-        if (cafetera.getSacarina().isReserva()) {
-            System.out.println(cafetera.getSacarina());
-
-        } else {
-            System.out.println("No hay depositos en reserva");
-
-        }
-    }
-
     //metodo menu
     public void menu() {
         //variable que guarda el articulo elegido por el usuario
@@ -340,7 +305,7 @@ public class MenuInterfaz {
                         //si hay falta de existencias, informamos al usuario, y le decimos que deposito es
                         if (cafetera.informarFaltaExistencias()) {
                             System.out.println("Lo sentimos pero no podemos, servirle");
-                            reserva();
+                            cafetera.reserva();
                             break;
                         }
 
@@ -463,9 +428,12 @@ public class MenuInterfaz {
                                 switch (opcionAdmin) {
                                     //Comprobar depósitos, que verifica cada indicador de cada depósito, informando de aquellos depósitos que deben ser rellenados.
                                     case 1:
-                                        reserva();
-                                        break;
+                                        if (!cafetera.reserva()) {
+                                            System.out.println("No hay depositos en reserva");
 
+                                        }
+
+                                        break;
                                     //comprobar el estado general de los depositos, que informa del estado de los depositos asi como del usuario y contraseña
                                     case 2:
                                         System.out.println("Comprobando estado general");
