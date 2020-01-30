@@ -32,7 +32,7 @@ public class MenuInterfaz {
     }
 
 //metodo que pide mas monedas si no llega a la cantidad del articulo elegido
-    public void pedirMasDinero(double saldoCliente) {
+    private void pedirMasDinero(double saldoCliente) {
 
         //si no ha introducido el precio minimo para el articulo, avisara del saldo insuficiente
         //lo pedira hasta que comprobar precio sea true(hasta que el dinero introducido sea mayor o igual, que el precio del articulo)
@@ -126,7 +126,7 @@ public class MenuInterfaz {
     }
 
     //metodo para mostrar la informacion final, que recibe como parametro la eleccion del usuario, ya que la informacion mostrada dependera de la eleccion
-    public void mostrarInformacion(String menu) {
+    private void mostrarInformacion(String menu) {
         //iniciamos la variable azucar a null
         String Azucar = null;
 
@@ -158,7 +158,7 @@ public class MenuInterfaz {
     }
 
     //metodo que llama a los metodos necesarios para servir un cafe
-    public void servirCafe(double precio, double saldoCliente, int codigo, String tipoCafe) {
+    private void servirCafe(double precio, double saldoCliente, int codigo, String tipoCafe) {
         //establecemos el precio del articulo que lo recibe por parametro
         cafetera.setPrecio(precio);
 
@@ -174,7 +174,7 @@ public class MenuInterfaz {
     }
 
     //metodo que llama a los metodos necesarios para servir un productos que no son cafe
-    public void servirOtros(double precio, double saldoCliente, int codigo, String producto) {
+    private void servirOtros(double precio, double saldoCliente, int codigo, String producto) {
         //establecemos el precio del articulo que lo recibe por parametro
         cafetera.setPrecio(precio);
 
@@ -204,7 +204,7 @@ public class MenuInterfaz {
     }
 
     //menu de administracion, que nos da a elegir, entre varias opciones del menu de administracion
-    public void menuAdmin() {
+    private void menuAdmin() {
         System.out.println("................................................");
 
         System.out.println("1. Comprobar depósitos");
@@ -215,7 +215,7 @@ public class MenuInterfaz {
     }
 
     //metodo para elegir, que deposito queremos rellenar
-    public void elegirDepositoArellenar() {
+    private void elegirDepositoArellenar() {
         System.out.println("1. Café");
         System.out.println("2. cafeDescafeinado");
         System.out.println("3. azucar");
@@ -227,7 +227,7 @@ public class MenuInterfaz {
     }
 
     //metodo para ver el estado general de los depositos
-    public void estadoGeneral() {
+    private void estadoGeneral() {
         System.out.println(cafetera.getCafe());
         System.out.println(cafetera.getCafeDescafeinado());
         System.out.println(cafetera.getAzucar());
@@ -238,7 +238,7 @@ public class MenuInterfaz {
     }
 
     //metodo para rellenar los depositos
-    public void rellenarDepositos() {
+    private void rellenarDepositos() {
         //guarda el deposito a rellenar
         int opcionDeposito = 0;
         //guarda la opcion de rellenar completamente o parcial
