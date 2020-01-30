@@ -111,7 +111,7 @@ public class Cafetera {
     }
 
     //metodos para restar el contenido del deposito de leche
-    public void restarLeche(int cantidad) {
+    private void restarLeche(int cantidad) {
 
         //llama al metodo servirContenido, de la clase deposito
         leche.servirContenido(cantidad);
@@ -170,7 +170,7 @@ public class Cafetera {
     }
 
     //metodo que resta chocolate, del deposito
-    public void restarChocolate(int cantidad) {
+    private void restarChocolate(int cantidad) {
         chocolate.servirContenido(cantidad);
 
     }
