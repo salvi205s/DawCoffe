@@ -123,7 +123,14 @@ public class Deposito {
 
     @Override
     public String toString() {
-        return "Deposito de " + contenido + "\ncantidadMax=" + cantidadMax + "\ncantidadUmbral=" + cantidadUmbral + "\ncantidadActual=" + cantidadActual + "\nreserva=" + reserva + "\n................................";
+        String reserv;
+        
+        if (isReserva()) {
+            reserv="Si";
+        }else{
+            reserv="No";
+        }
+        return "Deposito de " + contenido + ":\n \tcantidadMax=" + cantidadMax + "\n\tcantidadUmbral=" + cantidadUmbral + "\n\tcantidadActual=" + cantidadActual + "\n\treserva=" + reserv + "\n................................";
     }
 
 }
