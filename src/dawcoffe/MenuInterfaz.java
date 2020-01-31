@@ -324,7 +324,7 @@ public class MenuInterfaz {
     //metodo menu
     public void menu() {
         //variable que guarda el articulo elegido por el usuario
-        int codigo = 0;
+        int codigoArticulo = 0;
         //variable que guarda la elecion del menu principal, (comprar o administar)
         int opcion = 0;
 
@@ -392,7 +392,7 @@ public class MenuInterfaz {
                                 System.out.println(lecheFria);
                                 System.out.println(lecheCaliente);
 
-                                codigo = entrada.nextInt();
+                                codigoArticulo = entrada.nextInt();
 
                                 errorNumeros = false;
                             } catch (InputMismatchException ime) {
@@ -403,9 +403,10 @@ public class MenuInterfaz {
 
                             }
 
-                            if ((codigo < 101 || codigo > 301)) {
+                            //controlamos que no se pueda meter un codigo, que no este en la lista
+                            if ((codigoArticulo < 101 || codigoArticulo > 108) && codigoArticulo!=200 && codigoArticulo!=300 && codigoArticulo!=301) {
                                 errorNumeros = true;
-                                System.out.println("Por favor, introduzca un codigo valido\n");
+                                System.out.println("Por favor, introduzca un codigo valido\n.....................................................");
                             }
 
                         } while (errorNumeros);
@@ -448,50 +449,50 @@ public class MenuInterfaz {
 
                         //servimos lo que haya pedido el cliente
                         System.out.println("................................................");
-                        switch (codigo) {
+                        switch (codigoArticulo) {
                             case 101:
                                 //llamamos al metodo servirCafe, que recibe los parametros necesarios para ello
-                                servirCafe(0.8, saldoCliente, codigo, cafe1);
+                                servirCafe(0.8, saldoCliente, codigoArticulo, cafe1);
                                 break;
 
                             case 102:
-                                servirCafe(0.9, saldoCliente, codigo, cafe2);
+                                servirCafe(0.9, saldoCliente, codigoArticulo, cafe2);
                                 break;
 
                             case 103:
-                                servirCafe(1.10, saldoCliente, codigo, cafe3);
+                                servirCafe(1.10, saldoCliente, codigoArticulo, cafe3);
                                 break;
 
                             case 104:
-                                servirCafe(1, saldoCliente, codigo, cafe4);
+                                servirCafe(1, saldoCliente, codigoArticulo, cafe4);
                                 break;
                             case 105:
-                                servirCafe(0.8, saldoCliente, codigo, cafe5);
+                                servirCafe(0.8, saldoCliente, codigoArticulo, cafe5);
                                 break;
 
                             case 106:
-                                servirCafe(0.9, saldoCliente, codigo, cafe6);
+                                servirCafe(0.9, saldoCliente, codigoArticulo, cafe6);
                                 break;
 
                             case 107:
-                                servirCafe(1.10, saldoCliente, codigo, cafe7);
+                                servirCafe(1.10, saldoCliente, codigoArticulo, cafe7);
                                 break;
 
                             case 108:
-                                servirCafe(1, saldoCliente, codigo, cafe8);
+                                servirCafe(1, saldoCliente, codigoArticulo, cafe8);
                                 break;
 
                             case 200:
                                 //a partir de aqui ya no sirve cafe, por lo que llamamos al metodo servirOtros, que hace casi lo mismo
-                                servirOtros(1.4, saldoCliente, codigo, Choco);
+                                servirOtros(1.4, saldoCliente, codigoArticulo, Choco);
                                 break;
 
                             case 300:
-                                servirOtros(0.5, saldoCliente, codigo, lecheFria);
+                                servirOtros(0.5, saldoCliente, codigoArticulo, lecheFria);
                                 break;
 
                             case 301:
-                                servirOtros(0.5, saldoCliente, codigo, lecheCaliente);
+                                servirOtros(0.5, saldoCliente, codigoArticulo, lecheCaliente);
                                 break;
 
                             default:
